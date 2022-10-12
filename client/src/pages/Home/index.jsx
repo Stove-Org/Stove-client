@@ -1,5 +1,7 @@
+import Greeting from "../../components/oranisms/Greeting";
+
 const Home = () => {
-  return <div>Home</div>;
+  return <Greeting />;
 };
 
 export default Home;
