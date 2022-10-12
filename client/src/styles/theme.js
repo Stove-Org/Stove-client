@@ -20,34 +20,36 @@ const color = {
 };
 
 const typography = {
-  HeadBold: {
-    fontSize: 40,
-    fontWeight: 700,
-  },
-  HeadRgBold: {
-    fontSize: 24,
-    fontWeight: 700,
-  },
-  SmHeadBold: {
-    fontSize: 20,
-    fontWeight: 700,
-  },
-  HeadRg: {
-    fontSize: 28,
-    fontWeight: 300,
-  },
-  bodyRg: {
-    fontSize: 14,
-    fontWeight: 400,
-  },
-  bodyRgBold: {
-    fontSize: 14,
-    fontWeight: 700,
-  },
-  captionMd: {
-    fontSize: 13,
-    fontWeight: 400,
-  },
+  bodySmRegular: `
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family:NotoSansKR-Regular;
+  `,
+  bodySmBold: `
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family:NotoSansKR-Bold;
+  `,
+  bodyRg: `
+    font-size: 1.4rem;
+    font-weight: normal;
+    font-family:NotoSansKR-Regular;
+  `,
+  bodyRgBold: `
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family:NotoSansKR-Bold;
+  `,
+  headRg: `
+    font-size: 1.8rem;
+    font-weight: normal;
+    font-family:NotoSansKR-Regular;
+  `,
+  headRgBold: `
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family:NotoSansKR-Bold;
+  `,
 };
 
 const theme = {

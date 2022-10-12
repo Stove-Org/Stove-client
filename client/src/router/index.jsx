@@ -8,23 +8,25 @@ import Setting from "../pages/Setting";
 import NextLCKRoster from "../pages/NextLCK/NextLCKRoster";
 import NextLCKResult from "../pages/NextLCK/NextLCKResult";
 import News from "../pages/News";
+import Search from "../pages/Search";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* 헤더 푸터 X */}
-        <Route exact path="/signIn" element={<SignIn />} />
-        <Route exact path="/signUp" element={<SignUp />} />
-
         {/* 헤더 푸터 O */}
         <Route element={<PageTemplate />}>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/setting" element={<Setting />} />
-          <Route exact path="/nextlck" element={<NextLCKRoster />} />
-          <Route exact path="/nextlck/:id" element={<NextLCKResult />} />
-          <Route exact path="/news" element={<News />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/setting" element={<Setting />} />
+          <Route path="/nextlck" element={<NextLCKRoster />} />
+          <Route path="/nextlck/:id" element={<NextLCKResult />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/search/:id" element={<Search />} />
         </Route>
+
+        {/* 헤더 푸터 X */}
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );

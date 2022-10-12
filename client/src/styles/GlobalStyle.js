@@ -16,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
+  a {
+      text-decoration: none;
+      color: black;
+    }
+
 `;
 
 export default GlobalStyle;
