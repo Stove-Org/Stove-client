@@ -22,7 +22,7 @@ const Header = () => {
           <Link to="/news">News</Link>
         </Nav>
       </HeaderLeft>
-      <div>
+      <HeaderRight>
         <Button
           text={"로그인"}
           type={"primary"}
@@ -33,7 +33,7 @@ const Header = () => {
           type={"reverse"}
           onClick={() => navigate("/signup")}
         />
-      </div>
+      </HeaderRight>
     </HeaderWrapper>
   );
 };
@@ -49,6 +49,11 @@ const HeaderLeft = styled.div`
   display: flex;
   flex-grow: 1;
   align-items: center;
+`;
+const HeaderRight = styled.div`
+  & > button + button {
+    margin-left: 10px;
+  }
 `;
 
 const Logo = styled.img`
