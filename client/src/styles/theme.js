@@ -50,10 +50,25 @@ const typography = {
     font-weight: bold;
     font-family:NotoSansKR-Bold;
   `,
+  headTablet: `
+    font-size: 1.8rem;
+    font-weight: Light;
+    font-family:NotoSansKR-Light;
+  `,
+  headBoldablet: `
+    font-size: 2.8rem;
+    font-weight: Medium;
+    font-family:NotoSansKR-Medium;
+  `,
   head: `
     font-size: 2.4rem;
     font-weight: Light;
     font-family:NotoSansKR-Light;
+  `,
+  headMd: `
+    font-size: 2.4rem;
+    font-weight: Bold;
+    font-family:NotoSansKR-Bold;
   `,
   headBold: `
     font-size: 3.8rem;

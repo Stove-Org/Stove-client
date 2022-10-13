@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
+import SliderLCKLogo from "../../atoms/SliderLCKLogo";
 
 const Greeting = () => {
   const navigate = useNavigate();
@@ -23,25 +24,47 @@ const Greeting = () => {
           onClick={() => navigate("/nextlck")}
         />
       </Banner>
-      <article>
-        <section>
+      <ContentsWrapper>
+        <Content>
           <h4>2023 LCK 이적시장 살펴보기</h4>
           <div>들어갈곳입니다</div>
-        </section>
-        <section>
-          <h4>
-            실시간 <span>Hot</span> Pro-Wiki 🔥
-          </h4>
+        </Content>
+        <Content>
+          <h4>Next LCK 실시간 순위</h4>
           <div>들어갈곳입니다</div>
-        </section>
-        <section>
+        </Content>
+        <Content>
           <h4>LCK 프랜차이즈 팀</h4>
-          {/* <SliderLckLogo /> */}
-        </section>
-      </article>
+          <SliderLCKLogo />
+        </Content>
+      </ContentsWrapper>
     </GreetingWrapper>
   );
 };
+
+const ContentsWrapper = styled.article`
+  margin: 40px 0 0;
+`;
+
+const Content = styled.section`
+  margin: 0 20px 40px;
+
+  & > h4 {
+    ${(props) => props.theme.typography.headRgBold};
+    padding: 0 0 20px;
+    span {
+      color: ${(props) => props.theme.color.main100};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0 0 40px;
+
+    & > h4 {
+      ${(props) => props.theme.typography.headMd};
+    }
+  }
+`;
 
 const GreetingWrapper = styled.div`
   width: 100%;
@@ -60,7 +83,7 @@ const Banner = styled.article`
 
   @media screen and (min-width: 768px) {
     & > button {
-      top: 186px;
+      top: 173px;
       left: 100px;
     }
   }
@@ -100,8 +123,21 @@ const BannerTextWrapper = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    top: 26px;
+    top: 44px;
     left: 100px;
+
+    p {
+      ${(props) => props.theme.typography.headTablet};
+      line-height: 1.5;
+    }
+    p:first-child {
+      ${(props) => props.theme.typography.headBoldablet};
+      padding-bottom: 14px;
+    }
+  }
+  @media screen and (min-width: 1080px) {
+    top: 54px;
+    left: 160px;
 
     p {
       ${(props) => props.theme.typography.head};
@@ -111,10 +147,6 @@ const BannerTextWrapper = styled.div`
       ${(props) => props.theme.typography.headBold};
       padding-bottom: 14px;
     }
-  }
-  @media screen and (min-width: 1080px) {
-    top: 54px;
-    left: 160px;
   }
 `;
 
