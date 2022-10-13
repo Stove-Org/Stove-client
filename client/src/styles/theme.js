@@ -50,6 +50,16 @@ const typography = {
     font-weight: bold;
     font-family:NotoSansKR-Bold;
   `,
+  head: `
+    font-size: 2.4rem;
+    font-weight: Light;
+    font-family:NotoSansKR-Light;
+  `,
+  headBold: `
+    font-size: 3.8rem;
+    font-weight: Medium;
+    font-family:NotoSansKR-Medium;
+  `,
 };
 
 const theme = {

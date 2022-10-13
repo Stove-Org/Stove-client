@@ -7,16 +7,21 @@ const PageTemplate = () => {
   return (
     <>
       <PageTemplateWrapper>
-        <div>
+        <PageTemplateInnerWrapper>
           <Header />
-        </div>
+        </PageTemplateInnerWrapper>
       </PageTemplateWrapper>
       <Line />
       <PageTemplateWrapper>
-        <div>
+        <PageTemplateInnerWrapper>
           <Outlet />
+        </PageTemplateInnerWrapper>
+      </PageTemplateWrapper>
+      <Line />
+      <PageTemplateWrapper>
+        <PageTemplateInnerWrapper>
           <Footer />
-        </div>
+        </PageTemplateInnerWrapper>
       </PageTemplateWrapper>
     </>
   );
@@ -26,6 +31,17 @@ const PageTemplateWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const PageTemplateInnerWrapper = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    width: 718px;
+  }
+  @media screen and (min-width: 1080px) {
+    width: 1080px;
+  }
 `;
 
 const Line = styled.div`
