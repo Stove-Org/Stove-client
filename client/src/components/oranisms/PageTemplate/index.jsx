@@ -18,11 +18,11 @@ const PageTemplate = () => {
         </PageTemplateInnerWrapper>
       </PageTemplateWrapper>
       <Line />
-      <PageTemplateWrapper>
+      <PageTemplateFooterWrapper>
         <PageTemplateInnerWrapper>
           <Footer />
         </PageTemplateInnerWrapper>
-      </PageTemplateWrapper>
+      </PageTemplateFooterWrapper>
     </>
   );
 };
@@ -31,6 +31,9 @@ const PageTemplateWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const PageTemplateFooterWrapper = styled(PageTemplateWrapper)`
+  background-color: ${(props) => props.theme.color.grayScale.gray10};
 `;
 
 const PageTemplateInnerWrapper = styled.div`
