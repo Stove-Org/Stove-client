@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
 const Button = ({ text, type, onClick }) => {
-  const btnType = ["primary", "reverse", "light", "dark"].includes(type)
+  const btnType = [
+    "primary",
+    "reverse",
+    "light",
+    "dark",
+    "kakaoShare",
+  ].includes(type)
     ? type
     : "default";
   return (
@@ -39,11 +45,17 @@ const ButtonStyle = styled.button`
             color: #fff;
             border-color: #000;
             `;
+      case "kakaoShare":
+        return `
+            background-color: #FEE500;
+            color: #000000;
+            border-color: #FEE500;
+            `;
       default:
         return `
-            background-color: #F7F7F7;
+            background-color: #EEEEEE;
             color: #000;
-            border-color: #F7F7F7;
+            border-color: #EEEEEE;
             `;
     }
   }}
@@ -54,10 +66,6 @@ const ButtonStyle = styled.button`
   border-radius: 3px;
   padding: 8px 15px;
   white-space: nowrap;
-
-  & + & {
-    margin-left: 10px;
-  }
 `;
 
 Button.defaultProps = {

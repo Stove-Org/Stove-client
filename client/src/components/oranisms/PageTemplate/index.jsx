@@ -6,23 +6,23 @@ import Footer from "../../molecules/Footer";
 const PageTemplate = () => {
   return (
     <>
-      <PageTemplateWrapper>
+      <PageTemplateWhiteBgColor>
         <PageTemplateInnerWrapper>
           <Header />
         </PageTemplateInnerWrapper>
-      </PageTemplateWrapper>
+      </PageTemplateWhiteBgColor>
       <Line />
-      <PageTemplateWrapper>
+      <PageTemplateWhiteBgColor>
         <PageTemplateInnerWrapper>
           <Outlet />
         </PageTemplateInnerWrapper>
-      </PageTemplateWrapper>
+      </PageTemplateWhiteBgColor>
       <Line />
-      <PageTemplateFooterWrapper>
+      <PageTemplateWrapper>
         <PageTemplateInnerWrapper>
           <Footer />
         </PageTemplateInnerWrapper>
-      </PageTemplateFooterWrapper>
+      </PageTemplateWrapper>
     </>
   );
 };
@@ -32,8 +32,9 @@ const PageTemplateWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const PageTemplateFooterWrapper = styled(PageTemplateWrapper)`
-  background-color: ${(props) => props.theme.color.grayScale.gray10};
+
+const PageTemplateWhiteBgColor = styled(PageTemplateWrapper)`
+  background-color: ${(props) => props.theme.color.white};
 `;
 
 const PageTemplateInnerWrapper = styled.div`

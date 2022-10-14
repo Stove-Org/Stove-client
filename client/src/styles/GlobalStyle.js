@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-size: 62.5%;
+    background-color: ${(props) => props.theme.color.grayScale.gray10};
   }
 
   a {
