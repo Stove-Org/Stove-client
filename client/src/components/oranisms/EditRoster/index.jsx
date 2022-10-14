@@ -1,21 +1,14 @@
 import styled from "styled-components";
 
 import Button from "../../atoms/Button";
+import RosterDnD from "../../molecules/RosterDnD";
 
 const EditRoster = ({ players, roster, setRoster }) => {
-  console.log(players);
-  console.log(players[0].nickName);
-
   return (
     <ContainerWrapper>
-      <PlayerWrapper>
-        {players.map((player) => (
-          <div key={player.id}>{player.nickName}</div>
-        ))}
-      </PlayerWrapper>
-      <EditRosterWrapper>EditRosterWrapper</EditRosterWrapper>
+      <RosterDnD players={players} roster={roster} setRoster={setRoster} />
       <SideWrapper>
-        <Button text={"초기화하기"} type={"light"} onClick={() => {}} />
+        <Button text={"초기화"} onClick={() => {}} />
         <Button text={"저장하기"} type={"primary"} onClick={() => {}} />
         <Button text={"공유하기"} type={"light"} onClick={() => {}} />
         <Button
@@ -34,24 +27,18 @@ const ContainerWrapper = styled.div`
   margin-bottom: 40px;
 
   & > div + div {
-    margin-left: 30px;
+    margin-left: 10px;
   }
 `;
-const BoxWrapper = styled.div`
-  background-color: ${(props) => props.theme.color.grayScale.gray20};
-  border-radius: 3px;
-  padding: 10px;
-`;
-const PlayerWrapper = styled(BoxWrapper)`
-  overflow-y: scroll;
-  width: 170px;
-`;
-const EditRosterWrapper = styled(BoxWrapper)`
-  flex-grow: 1;
-`;
-const SideWrapper = styled(BoxWrapper)`
+const SideWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  border-radius: 3px;
+  padding: 0 10px;
+
+  & > button + button {
+    margin-top: 10px;
+  }
 `;
 
 export default EditRoster;
