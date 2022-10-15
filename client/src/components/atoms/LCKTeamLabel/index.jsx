@@ -19,8 +19,9 @@ const LCKTeamLabel = ({ teamName }) => {
 };
 
 const TeamLabel = styled.div`
+  flex-grow: 1;
   ${(props) => props.theme.typography.bodyRgBold};
-  width: 60px;
+  width: 100%;
   padding: 8px 10px;
   text-align: center;
   border-radius: 3px;

@@ -22,22 +22,39 @@ const EditRoster = ({ players, roster, setRoster }) => {
 };
 
 const ContainerWrapper = styled.div`
+  height: auto;
   display: flex;
-  height: 60vh;
+  flex-direction: column;
   margin-bottom: 40px;
 
   & > div + div {
-    margin-left: 10px;
+    margin: 10px 0 0;
+  }
+
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1080px) {
+    flex-direction: row;
+
+    & > div + div {
+      margin: 0 0 0 10px;
+    }
   }
 `;
 const SideWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  padding: 0 10px;
+  padding: 20px 0 0;
 
   & > button + button {
     margin-top: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1080px) {
+    padding: 0;
   }
 `;
 
