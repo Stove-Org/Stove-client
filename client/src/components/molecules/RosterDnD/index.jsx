@@ -5,7 +5,7 @@ import LCKTeamLabel from "../../atoms/LCKTeamLabel";
 
 const RosterDnD = ({ players, roster, setRoster }) => {
   return (
-    <>
+    <RosterDnDWrapper>
       <PlayerWrapper>
         {players.map((player) => (
           <PlayerBlock key={player.id}>{player.nickName}</PlayerBlock>
@@ -55,10 +55,14 @@ const RosterDnD = ({ players, roster, setRoster }) => {
           </RosterWrapper>
         ))}
       </EditRosterWrapper>
-    </>
+    </RosterDnDWrapper>
   );
 };
-
+const RosterDnDWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  max-height: 530px;
+`;
 const BoxWrapper = styled.div`
   background-color: ${(props) => props.theme.color.grayScale.gray20};
   border-radius: 3px;
@@ -66,17 +70,18 @@ const BoxWrapper = styled.div`
   overflow-y: auto;
 `;
 const PlayerWrapper = styled(BoxWrapper)`
-  width: 150px;
+  min-width: 110px;
 `;
 const EditRosterWrapper = styled(BoxWrapper)`
   flex-grow: 1;
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 const PlayerBlock = styled.div`
-  width: 100%;
+  width: 90px;
   padding: 10px 0;
   background-color: ${(props) => props.theme.color.white};
   ${(props) => props.theme.typography.bodyRg};
@@ -86,9 +91,20 @@ const PlayerBlock = styled.div`
   & + & {
     margin-top: 10px;
   }
+
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1080px) {
+    width: 115px;
+  }
 `;
 const RosterWrapper = styled.div`
   display: flex;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const RosterPositionWrapper = styled.div`
@@ -98,20 +114,27 @@ const RosterPositionWrapper = styled.div`
   margin-left: 20px;
 `;
 const RosterPosition = styled.div`
-  width: 100%;
+  width: 90px;
   text-align: center;
   border-radius: 3px;
 
   & + & {
     margin-left: 10px;
   }
+
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1080px) {
+    width: 115px;
+  }
 `;
 const PositionLabel = styled.div`
+  width: 100%;
   ${(props) => props.theme.typography.bodyRgBold};
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 5px;
+  padding: 10px 0;
   border-radius: 3px;
 `;
 const TruePositionLabel = styled(PositionLabel)`

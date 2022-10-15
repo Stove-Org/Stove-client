@@ -77,9 +77,21 @@ const DUMMY_DATA = [
   },
   {
     id: 11,
-    nickName: "Life",
-    name: "김정민",
-    position: "SPT",
+    nickName: "Nuguri",
+    name: "장하권",
+    position: "TOP",
+  },
+  {
+    id: 12,
+    nickName: "Canyon",
+    name: "김건부",
+    position: "JGL",
+  },
+  {
+    id: 13,
+    nickName: "Deokdam",
+    name: "서대길",
+    position: "BOT",
   },
 ];
 
