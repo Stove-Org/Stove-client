@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const NewsList = ({ newsUrl, newsImg, headline, newsDate }) => {
-  console.log(newsImg);
   return (
     <NewsListWrapper>
       <NewsListInnerWrapper
