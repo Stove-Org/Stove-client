@@ -9,10 +9,7 @@ const NewsList = ({ newsUrl, newsImg, headline, newsDate }) => {
         rel="noopener noreferrer"
       >
         <NewsImgWrapper>
-          <NewsImg
-            newsImg={newsImg}
-            style={{ backgroundImage: `url(${newsImg})` }}
-          />
+          <NewsImg style={{ backgroundImage: `url(${newsImg})` }} />
         </NewsImgWrapper>
         <NewsHeadline>
           <Headline>{headline}</Headline>
@@ -44,8 +41,8 @@ const NewsListInnerWrapper = styled.a`
   }
 `;
 const NewsImgWrapper = styled.div`
-  min-width: 152px;
-  height: 108px;
+  min-width: 160px;
+  height: 100px;
 `;
 const NewsImg = styled.div`
   width: 100%;

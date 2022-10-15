@@ -1,13 +1,23 @@
 import styled from "styled-components";
 
 import PageTitle from "../../components/atoms/PageTitle";
+import HotNewsLayout from "../../components/molecules/HotNewsLayout";
 import NewsList from "../../components/atoms/NewsList";
 
 const News = ({ news }) => {
+  const firstHotNews = news[0];
+  const hotNews = [];
+  for (let i = 1; i < 4; i++) {
+    hotNews.push(news[i]);
+  }
+  console.log(firstHotNews);
+
   return (
     <>
       <PageTitle title={"오늘의 HOT 뉴스"} />
-      <NewsWrapper>클릭수</NewsWrapper>
+      <NewsWrapper>
+        <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} />
+      </NewsWrapper>
 
       <PageTitle title={"최신 뉴스"} />
       <NewsWrapper>
