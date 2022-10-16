@@ -9,11 +9,11 @@ const EditRoster = ({ players, roster, setRoster }) => {
       <RosterDnD players={players} roster={roster} setRoster={setRoster} />
       <SideWrapper>
         <Button text={"초기화"} onClick={() => {}} />
-        <Button text={"저장하기"} type={"primary"} onClick={() => {}} />
-        <Button text={"공유하기"} type={"light"} onClick={() => {}} />
+        <Button text={"저장하기"} styleType={"primary"} onClick={() => {}} />
+        <Button text={"공유하기"} styleType={"light"} onClick={() => {}} />
         <Button
           text={"카카오톡 공유하기"}
-          type={"kakaoShare"}
+          styleType={"kakaoShare"}
           onClick={() => {}}
         />
       </SideWrapper>

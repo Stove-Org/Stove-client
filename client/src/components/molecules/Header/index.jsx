@@ -25,12 +25,12 @@ const Header = () => {
       <HeaderRight>
         <Button
           text={"로그인"}
-          type={"primary"}
+          styleType={"primary"}
           onClick={() => navigate("/signin")}
         />
         <Button
           text={"회원가입"}
-          type={"reverse"}
+          styleType={"reverse"}
           onClick={() => navigate("/signup")}
         />
       </HeaderRight>

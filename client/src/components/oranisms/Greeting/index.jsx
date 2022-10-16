@@ -20,7 +20,7 @@ const Greeting = () => {
         </BannerTextWrapper>
         <Button
           text={"바로가기 >"}
-          type={"primary"}
+          styleType={"primary"}
           onClick={() => navigate("/nextlck")}
         />
       </Banner>
