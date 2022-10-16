@@ -9,7 +9,7 @@ const AuthPageTemplate = () => {
   return (
     <TemplateWrapper>
       <Link to="/">
-        <img
+        <Logo
           src={process.env.PUBLIC_URL + `assets/svg/stovelogo.svg`}
           alt="main logo of Stove"
         />
@@ -19,7 +19,7 @@ const AuthPageTemplate = () => {
         <Outlet />
         {isSignUp && (
           <SignUpButton>
-            회원이신가요?{" "}
+            이미 회원이신가요?{" "}
             <button onClick={() => navigate("/signin")}>로그인하러 가기</button>
           </SignUpButton>
         )}
@@ -37,6 +37,9 @@ const TemplateWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const Logo = styled.img`
+  width: 140px;
+`;
 
 const TemplateInnerWrapper = styled.div`
   display: flex;
@@ -44,19 +47,19 @@ const TemplateInnerWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.color.white};
-  margin-top: 20px;
-  padding: 20px 40px;
+  margin-top: 40px;
+  padding: 40px 60px;
   border-radius: 3px;
 `;
 
 const Title = styled.h1`
   padding-bottom: 10px;
-  ${(props) => props.theme.typography.headRgBold};
+  ${(props) => props.theme.typography.headMd};
 `;
 
 const SignUpButton = styled.div`
-  margin-top: 10px;
-  ${(props) => props.theme.typography.bodySmRegular};
+  margin-top: 20px;
+  ${(props) => props.theme.typography.bodyRg};
 
   & > button {
     color: ${(props) => props.theme.color.main100};
