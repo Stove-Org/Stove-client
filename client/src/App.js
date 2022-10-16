@@ -5,6 +5,7 @@ import theme from "./styles/theme";
 import GlobalStyle from "./styles/GlobalStyle";
 
 import PageTemplate from "./components/oranisms/PageTemplate";
+import AuthPageTemplate from "./components/oranisms/AuthPageTemplate";
 import Home from "./pages/Home";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
@@ -49,8 +50,10 @@ function App() {
             <Route path="/search/:id" element={<Search />} />
           </Route>
 
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
+          <Route element={<AuthPageTemplate />}>
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signUp" element={<SignUp />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
