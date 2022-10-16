@@ -6,10 +6,14 @@ import GlobalStyle from "./styles/GlobalStyle";
 
 import PageTemplate from "./components/oranisms/PageTemplate";
 import AuthPageTemplate from "./components/oranisms/AuthPageTemplate";
+import SettingTemplate from "./components/oranisms/SettingTemplate";
+
 import Home from "./pages/Home";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import SettingEdit from "./pages/Setting/SettingEdit";
+import SettingChangePwd from "./pages/Setting/SettingChangePwd";
+import SettingLeave from "./pages/Setting/SettingLeave";
 import NextLCKRoster from "./pages/NextLCK/NextLCKRoster";
 import NextLCKResult from "./pages/NextLCK/NextLCKResult";
 import News from "./pages/News";
@@ -31,7 +35,14 @@ function App() {
         <Routes>
           <Route element={<PageTemplate />}>
             <Route path="/" element={<Home />} />
-            <Route path="/setting/edit" element={<SettingEdit />} />
+            <Route element={<SettingTemplate />}>
+              <Route path="/setting/edit" element={<SettingEdit />} />
+              <Route
+                path="/setting/change-password"
+                element={<SettingChangePwd />}
+              />
+              <Route path="/setting/leave" element={<SettingLeave />} />
+            </Route>
             <Route
               path="/nextlck"
               element={

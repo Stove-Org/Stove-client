@@ -1,10 +1,9 @@
-const Setting = () => {
+const SettingEdit = () => {
   return (
     <>
-      <div>sideMenu</div>
-      <div>contents</div>
+      <div>SettingEdit</div>
     </>
   );
 };
 
-export default Setting;
+export default SettingEdit;
