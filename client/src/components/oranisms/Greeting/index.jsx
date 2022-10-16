@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import SliderLCKLogo from "../../atoms/SliderLCKLogo";
+import bannerImg from "../../../assets/img/banner_2022LCKFinal.jpg";
 
 const Greeting = () => {
   const navigate = useNavigate();
@@ -9,10 +10,7 @@ const Greeting = () => {
   return (
     <GreetingWrapper>
       <Banner>
-        <BannerBgImg
-          src={process.env.PUBLIC_URL + "assets/img/banner_2022LCKFinal.jpg"}
-          alt="2022 LCK Final"
-        />
+        <BannerBgImg src={bannerImg} alt="2022 LCK Final" />
         <BannerTextWrapper>
           <p>Who's next LCK?</p>
           <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>

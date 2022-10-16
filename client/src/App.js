@@ -9,7 +9,7 @@ import AuthPageTemplate from "./components/oranisms/AuthPageTemplate";
 import Home from "./pages/Home";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
-import Setting from "./pages/Setting";
+import SettingEdit from "./pages/Setting/SettingEdit";
 import NextLCKRoster from "./pages/NextLCK/NextLCKRoster";
 import NextLCKResult from "./pages/NextLCK/NextLCKResult";
 import News from "./pages/News";
@@ -31,7 +31,7 @@ function App() {
         <Routes>
           <Route element={<PageTemplate />}>
             <Route path="/" element={<Home />} />
-            <Route path="/setting" element={<Setting />} />
+            <Route path="/setting/edit" element={<SettingEdit />} />
             <Route
               path="/nextlck"
               element={

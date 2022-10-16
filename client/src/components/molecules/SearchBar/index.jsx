@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import searchIcon from "../../../assets/svg/search.svg";
 
 const SearchBar = () => {
   const [searchTxt, setSearchTxt] = useState("");
@@ -23,10 +24,7 @@ const SearchBar = () => {
         autoComplete="off"
       />
       <SearchButton onClick={() => navigate(`/search/${searchTxt}`)}>
-        <img
-          src={process.env.PUBLIC_URL + "assets/svg/search.svg"}
-          alt="search button"
-        />
+        <img src={searchIcon} alt="search button" />
       </SearchButton>
     </>
   );

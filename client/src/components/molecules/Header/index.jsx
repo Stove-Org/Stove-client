@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import SearchBar from "../SearchBar";
 import Button from "../../atoms/Button";
+import stoveLogo from "../../../assets/svg/stovelogo.svg";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -11,10 +12,7 @@ const Header = () => {
     <HeaderWrapper>
       <HeaderLeft>
         <Link to="/">
-          <Logo
-            src={process.env.PUBLIC_URL + "assets/svg/stovelogo.svg"}
-            alt="main logo of Stove"
-          />
+          <Logo src={stoveLogo} alt="main logo of Stove" />
         </Link>
         <SearchBar />
         <Nav>
