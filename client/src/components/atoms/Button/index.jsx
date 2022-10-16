@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-const Button = ({ text, type, onClick }) => {
-  const btnType = [
+const Button = ({ text, styleType, onClick, type }) => {
+  const btnStyle = [
     "primary",
     "reverse",
     "light",
     "dark",
     "kakaoShare",
-  ].includes(type)
-    ? type
+  ].includes(styleType)
+    ? styleType
     : "default";
   return (
-    <ButtonStyle onClick={onClick} btnType={btnType}>
+    <ButtonStyle onClick={onClick} type={type} btnStyle={btnStyle}>
       {text}
     </ButtonStyle>
   );
@@ -19,8 +19,8 @@ const Button = ({ text, type, onClick }) => {
 
 const ButtonStyle = styled.button`
   ${(props) => props.theme.typography.bodyRg};
-  ${({ btnType }) => {
-    switch (btnType) {
+  ${({ btnStyle }) => {
+    switch (btnStyle) {
       case "primary":
         return `
             background-color: #F54242;
@@ -69,7 +69,7 @@ const ButtonStyle = styled.button`
 `;
 
 Button.defaultProps = {
-  type: "default",
+  styleType: "default",
 };
 
 export default Button;
