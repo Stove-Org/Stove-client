@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../../components/atoms/Button";
 
 import SettingInput from "../../components/atoms/SettingInput";
+import SettingFooter from "../../components/atoms/SettingFooter";
 
 const SettingEdit = () => {
   const [nickname, setNickname] = useState("기존닉네임");
@@ -24,7 +25,9 @@ const SettingEdit = () => {
           onChange={(e) => setNickname(e.target.value)}
         />
       </SettingInput>
-      <Button styleType={"primary"} text={"저장"} />
+      <SettingFooter>
+        <Button styleType={"primary"} text={"저장"} />
+      </SettingFooter>
     </>
   );
 };
