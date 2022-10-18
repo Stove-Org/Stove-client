@@ -6,6 +6,10 @@ const SettingFooter = ({ children }) => {
 
 const SettingFooterWrapper = styled.div`
   margin-top: 40px;
+
+  & > button + button {
+    margin-left: 10px;
+  }
 `;
 
 export default SettingFooter;

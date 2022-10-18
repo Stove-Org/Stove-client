@@ -47,8 +47,8 @@ const typography = {
   `,
   descriptionBold: `
     font-size: 1.6rem;
-    font-weight: bold;
-    font-family:NotoSansKR-Bold;
+    font-weight: Medium;
+    font-family:NotoSansKR-Medium;
   `,
   headRg: `
     font-size: 1.8rem;

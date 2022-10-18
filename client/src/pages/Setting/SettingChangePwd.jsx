@@ -4,30 +4,46 @@ import SettingInput from "../../components/atoms/SettingInput";
 import SettingFooter from "../../components/atoms/SettingFooter";
 
 const SettingChangePwd = () => {
+  const [pwd, setPwd] = useState({
+    currentPwd: "",
+    newPwd: "",
+    newPwdCofirm: "",
+  });
+
+  const onChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    setPwd({ ...pwd, [name]: value });
+  };
+
   return (
     <>
       <SettingInput>
         <aside>현재 비밀번호 입력</aside>
         <input
           type="password"
-          // value={nickname}
-          // onChange={(e) => setNickname(e.target.value)}
+          name="currentPwd"
+          value={pwd.currentPwd}
+          onChange={onChange}
         />
       </SettingInput>
       <SettingInput>
         <aside>신규 비밀번호 입력</aside>
         <input
           type="password"
-          // value={nickname}
-          // onChange={(e) => setNickname(e.target.value)}
+          name="newPwd"
+          value={pwd.newPwd}
+          onChange={onChange}
         />
       </SettingInput>
       <SettingInput>
         <aside>신규 비밀번호 재입력</aside>
         <input
           type="password"
-          // value={nickname}
-          // onChange={(e) => setNickname(e.target.value)}
+          name="newPwdCofirm"
+          value={pwd.newPwdCofirm}
+          onChange={onChange}
         />
       </SettingInput>
       <SettingFooter>
