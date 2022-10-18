@@ -49,7 +49,7 @@ const SettingTemplate = () => {
 
 const TemplateWrapper = styled.div`
   display: flex;
-  height: 70vh;
+  min-height: 70vh;
 `;
 const SideMenu = styled.div`
   width: 160px;
