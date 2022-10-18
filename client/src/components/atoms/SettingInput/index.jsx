@@ -18,7 +18,8 @@ const SettingWrapper = styled.div`
   }
 
   & > aside {
-    width: 140px;
+    min-width: 140px;
+    padding-right: 20px;
   }
 
   & > div {
