@@ -8,9 +8,10 @@ import PageTemplate from "./components/oranisms/PageTemplate";
 import AuthPageTemplate from "./components/oranisms/AuthPageTemplate";
 import SettingTemplate from "./components/oranisms/SettingTemplate";
 
-import Home from "./pages/Home";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
+
+import Home from "./pages/Home";
 import SettingEdit from "./pages/Setting/SettingEdit";
 import SettingChangePwd from "./pages/Setting/SettingChangePwd";
 import SettingLeave from "./pages/Setting/SettingLeave";

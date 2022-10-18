@@ -81,6 +81,7 @@ const UnselectedList = styled(List)`
 `;
 const CurrentList = styled(List)`
   & > a {
+    ${(props) => props.theme.typography.descriptionBold};
     color: ${(props) => props.theme.color.black};
   }
 `;
