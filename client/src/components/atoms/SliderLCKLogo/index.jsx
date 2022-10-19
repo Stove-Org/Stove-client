@@ -3,6 +3,17 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
+import gengLogo from "../../../assets/img/LCKTeamLogo/geng.png";
+import t1Logo from "../../../assets/img/LCKTeamLogo/t1.png";
+import sandboxLogo from "../../../assets/img/LCKTeamLogo/sandbox.png";
+import dkLogo from "../../../assets/img/LCKTeamLogo/dk.png";
+import ktLogo from "../../../assets/img/LCKTeamLogo/kt.png";
+import drxLogo from "../../../assets/img/LCKTeamLogo/drx.png";
+import kwangdongLogo from "../../../assets/img/LCKTeamLogo/kwangdong.png";
+import nongShimLogo from "../../../assets/img/LCKTeamLogo/nongShim.png";
+import freditLogo from "../../../assets/img/LCKTeamLogo/fredit.png";
+import hanwhaLogo from "../../../assets/img/LCKTeamLogo/hanwha.png";
+
 const SliderLCKLogo = () => {
   const state = {
     responsive: {
@@ -38,86 +49,54 @@ const SliderLCKLogo = () => {
         responsive={state.responsive}
       >
         <a href="https://geng.gg/" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/geng.png"}
-            alt="LCK ProTeam GEN.G logo"
-          />
+          <img src={gengLogo} alt="LCK ProTeam GEN.G logo" />
         </a>
         <a href="https://t1.gg/" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/t1.png"}
-            alt="LCK ProTeam T1 logo"
-          />
+          <img src={t1Logo} alt="LCK ProTeam T1 logo" />
         </a>
         <a
           href="https://www.sandbox.co.kr/esports"
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/sandbox.png"}
-            alt="LCK ProTeam Liiv SANDBOX logo"
-          />
+          <img src={sandboxLogo} alt="LCK ProTeam Liiv SANDBOX logo" />
         </a>
         <a
           href="https://dwgkia.gg/"
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/dk.png"}
-            alt="LCK ProTeam DWG KIA logo"
-          />
+          <img src={dkLogo} alt="LCK ProTeam DWG KIA logo" />
         </a>
         <a
           href="http://kt-sports.co.kr/sports/site/main.do"
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/kt.png"}
-            alt="LCK ProTeam kt Rolster logo"
-          />
+          <img src={ktLogo} alt="LCK ProTeam kt Rolster logo" />
         </a>
         <a href="https://drx.gg/" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/drx.png"}
-            alt="LCK ProTeam DRX logo"
-          />
+          <img src={drxLogo} alt="LCK ProTeam DRX logo" />
         </a>
         <a href="http://freecs.gg/" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={
-              process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/kwangdong.png"
-            }
-            alt="LCK ProTeam KWANGDONG FREECS logo"
-          />
+          <img src={kwangdongLogo} alt="LCK ProTeam KWANGDONG FREECS logo" />
         </a>
         <a
           href="https://www.ns-esports.com/"
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/nongShim.png"}
-            alt="LCK ProTeam NongShim REDFORCE logo"
-          />
+          <img src={nongShimLogo} alt="LCK ProTeam NongShim REDFORCE logo" />
         </a>
         <a
           href="https://brionesports.gg/"
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/fredit.png"}
-            alt="LCK ProTeam Fredit BRION logo"
-          />
+          <img src={freditLogo} alt="LCK ProTeam Fredit BRION logo" />
         </a>
         <a href="https://hle.kr/" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={process.env.PUBLIC_URL + "assets/img/LCKTeamLogo/hanwha.png"}
-            alt="LCK ProTeam Hanwha Life Esports logo"
-          />
+          <img src={hanwhaLogo} alt="LCK ProTeam Hanwha Life Esports logo" />
         </a>
       </OwlCarousel>
     </div>

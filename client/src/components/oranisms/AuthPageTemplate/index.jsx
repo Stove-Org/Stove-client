@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import stoveLogo from "../../../assets/svg/stovelogo.svg";
 
 const AuthPageTemplate = () => {
   const navigate = useNavigate();
@@ -9,10 +10,7 @@ const AuthPageTemplate = () => {
   return (
     <TemplateWrapper>
       <Link to="/">
-        <Logo
-          src={process.env.PUBLIC_URL + `assets/svg/stovelogo.svg`}
-          alt="main logo of Stove"
-        />
+        <Logo src={stoveLogo} alt="main logo of Stove" />
       </Link>
       <TemplateInnerWrapper>
         {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}

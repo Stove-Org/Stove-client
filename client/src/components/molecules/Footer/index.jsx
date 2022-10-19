@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import facebookIcon from "../../../assets/svg/sns_logo/icon-logo-facebook.svg";
+import twitterIcon from "../../../assets/svg/sns_logo/icon-logo-twitter.svg";
+import instagramIcon from "../../../assets/svg/sns_logo/icon-logo-instagram.svg";
 
 const Footer = () => {
   const styles = {
@@ -15,31 +18,13 @@ const Footer = () => {
       </FooterInnerWrapper>
       <FooterInnerWrapper>
         <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "assets/svg/sns_logo/icon-logo-facebook.svg"
-            }
-            alt="facebook logo"
-          />
+          <img src={facebookIcon} alt="facebook logo" />
         </SNSLogo>
         <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "assets/svg/sns_logo/icon-logo-twitter.svg"
-            }
-            alt="twitter logo"
-          />
+          <img src={twitterIcon} alt="twitter logo" />
         </SNSLogo>
         <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "assets/svg/sns_logo/icon-logo-instagram.svg"
-            }
-            alt="instagram logo"
-          />
+          <img src={instagramIcon} alt="instagram logo" />
         </SNSLogo>
       </FooterInnerWrapper>
       <FooterInnerWrapper className="copyright">

@@ -1,25 +1,39 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import SearchBar from "../SearchBar";
 import Button from "../../atoms/Button";
+import stoveLogo from "../../../assets/svg/stovelogo.svg";
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathName = location.pathname.slice(1);
 
   return (
     <HeaderWrapper>
       <HeaderLeft>
         <Link to="/">
-          <Logo
-            src={process.env.PUBLIC_URL + "assets/svg/stovelogo.svg"}
-            alt="main logo of Stove"
-          />
+          <Logo src={stoveLogo} alt="main logo of Stove" />
         </Link>
         <SearchBar />
         <Nav>
-          <Link to="/nextlck">Next LCK</Link>
-          <Link to="/news">News</Link>
+          {pathName === "nextlck" ? (
+            <>
+              <CurrentLink to="/nextlck">Next LCK</CurrentLink>
+              <Link to="/news">News</Link>
+            </>
+          ) : pathName === "news" ? (
+            <>
+              <Link to="/nextlck">Next LCK</Link>
+              <CurrentLink to="/news">News</CurrentLink>
+            </>
+          ) : (
+            <>
+              <Link to="/nextlck">Next LCK</Link>
+              <Link to="/news">News</Link>
+            </>
+          )}
         </Nav>
       </HeaderLeft>
       <HeaderRight>
@@ -70,6 +84,10 @@ const Nav = styled.nav`
   & > a:hover {
     color: ${(props) => props.theme.color.main100};
   }
+`;
+
+const CurrentLink = styled.a`
+  color: ${(props) => props.theme.color.main100};
 `;
 
 export default Header;
