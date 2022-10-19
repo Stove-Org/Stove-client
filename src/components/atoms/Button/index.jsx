@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const Button = ({ text, styleType, onClick, type }) => {
+const Button = ({ text, styleType, onClick, type, icon }) => {
+  const isIcon = !!icon;
   const btnStyle = [
     "primary",
     "reverse",
@@ -11,14 +12,38 @@ const Button = ({ text, styleType, onClick, type }) => {
     ? styleType
     : "default";
   return (
-    <ButtonStyle onClick={onClick} type={type} btnStyle={btnStyle}>
-      {text}
+    <ButtonStyle
+      onClick={onClick}
+      type={type}
+      btnStyle={btnStyle}
+      isIcon={isIcon}
+    >
+      {text ? text : icon}
     </ButtonStyle>
   );
 };
 
 const ButtonStyle = styled.button`
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
   ${(props) => props.theme.typography.bodyRg};
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  /* isIcon === true */
+  padding: ${(props) => (props.isIcon ? "10px" : "8px 15px")};
+  border-radius: ${(props) => (props.isIcon ? "20px" : "3px")};
+
+  display: ${(props) => props.isIcon && "flex"};
+  justify-content: ${(props) => props.isIcon && "center"};
+  align-items: ${(props) => props.isIcon && "center"};
+  width: ${(props) => props.isIcon && "40px"};
+  height: ${(props) => props.isIcon && "40px"};
+
   ${({ btnStyle }) => {
     switch (btnStyle) {
       case "primary":
@@ -47,9 +72,9 @@ const ButtonStyle = styled.button`
             `;
       case "kakaoShare":
         return `
-            background-color: #FEE500;
+            background-color: #FFE812;
             color: #000000;
-            border-color: #FEE500;
+            border-color: #FFE812;
             `;
       default:
         return `
@@ -59,13 +84,6 @@ const ButtonStyle = styled.button`
             `;
     }
   }}
-
-  cursor: pointer;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 3px;
-  padding: 8px 15px;
-  white-space: nowrap;
 `;
 
 Button.defaultProps = {

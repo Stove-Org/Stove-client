@@ -2,60 +2,51 @@ import styled from "styled-components";
 
 import Button from "../../atoms/Button";
 import RosterDnD from "../../molecules/RosterDnD";
+import shareIcon from "../../../assets/svg/share.svg";
+import kakaoIcon from "../../../assets/svg/sns_logo/icon-logo-kakao.svg";
 
 const EditRoster = ({ players, roster, setRoster }) => {
   return (
     <ContainerWrapper>
-      <RosterDnD players={players} roster={roster} setRoster={setRoster} />
-      <SideWrapper>
+      <ButtonsWrapper>
         <Button text={"초기화"} onClick={() => {}} />
         <Button text={"저장하기"} styleType={"primary"} onClick={() => {}} />
-        <Button text={"공유하기"} styleType={"light"} onClick={() => {}} />
         <Button
-          text={"카카오톡 공유하기"}
+          icon={
+            <>
+              <StyleIcon src={shareIcon} alt="링크 공유하기" />
+            </>
+          }
+          styleType={"light"}
+          onClick={() => {}}
+        />
+        <Button
+          icon={
+            <>
+              <StyleIcon src={kakaoIcon} alt="카카오톡 공유하기" />
+            </>
+          }
           styleType={"kakaoShare"}
           onClick={() => {}}
         />
-      </SideWrapper>
+      </ButtonsWrapper>
+      <RosterDnD players={players} roster={roster} setRoster={setRoster} />
     </ContainerWrapper>
   );
 };
 
 const ContainerWrapper = styled.div`
-  height: auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
-
-  & > div + div {
-    margin: 10px 0 0;
-  }
-
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1080px) {
-    flex-direction: row;
-
-    & > div + div {
-      margin: 0 0 0 10px;
-    }
-  }
 `;
-const SideWrapper = styled.div`
+const ButtonsWrapper = styled.div`
+  align-self: flex-end;
   display: flex;
-  flex-direction: column;
-  border-radius: 3px;
-  padding: 20px 0 0;
-
-  & > button + button {
-    margin-top: 10px;
-  }
-
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1080px) {
-    padding: 0;
-  }
+  flex-direction: row;
+`;
+const StyleIcon = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 export default EditRoster;
