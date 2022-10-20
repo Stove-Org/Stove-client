@@ -38,6 +38,7 @@ const EditRoster = ({ players, roster, setRoster }) => {
 const ContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 80px;
 `;
 const ButtonsWrapper = styled.div`
   align-self: flex-end;

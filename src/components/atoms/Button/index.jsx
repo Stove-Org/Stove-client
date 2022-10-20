@@ -36,7 +36,7 @@ const ButtonStyle = styled.button`
 
   /* isIcon === true */
   padding: ${(props) => (props.isIcon ? "10px" : "8px 15px")};
-  border-radius: ${(props) => (props.isIcon ? "20px" : "3px")};
+  border-radius: ${(props) => (props.isIcon ? "50%" : "3px")};
 
   display: ${(props) => props.isIcon && "flex"};
   justify-content: ${(props) => props.isIcon && "center"};

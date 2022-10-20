@@ -22,7 +22,7 @@ const NextLCKRoster = ({ players, roster, setRoster }) => {
 const Description = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 0 20px;
+  margin: 0 0 40px;
   p {
     ${(props) => props.theme.typography.description};
   }
