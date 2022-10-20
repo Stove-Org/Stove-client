@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Checkbox from "../../atoms/Checkbox";
 
-const PlayerSearchBar = () => {
+const PlayerSearchBar = ({ players, setPlayers, setRoster }) => {
   const [search, setSearch] = useState();
 
   return (
@@ -11,7 +11,7 @@ const PlayerSearchBar = () => {
       <input
         type="search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={() => {}}
         placeholder="선수 검색"
       />
       <StyleCheckbox>

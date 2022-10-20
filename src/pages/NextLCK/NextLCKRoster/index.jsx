@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
 
-const NextLCKRoster = ({ players, roster, setRoster }) => {
+const NextLCKRoster = ({ players, setPlayers, roster, setRoster }) => {
   return (
     <>
       <PageTitle title={"Next LCK"} />
@@ -14,7 +14,12 @@ const NextLCKRoster = ({ players, roster, setRoster }) => {
           <SubDescription>100,000,000명이 참여 중입니다 🔥</SubDescription>
         </div>
       </Description>
-      <EditRoster players={players} roster={roster} setRoster={setRoster} />
+      <EditRoster
+        players={players}
+        setPlayers={setPlayers}
+        roster={roster}
+        setRoster={setRoster}
+      />
     </>
   );
 };

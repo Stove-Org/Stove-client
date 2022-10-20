@@ -49,6 +49,7 @@ function App() {
               element={
                 <NextLCKRoster
                   players={players}
+                  setPlayers={setPlayers}
                   roster={roster}
                   setRoster={setRoster}
                 />

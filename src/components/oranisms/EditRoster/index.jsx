@@ -5,7 +5,7 @@ import RosterDnD from "../../molecules/RosterDnD";
 import shareIcon from "../../../assets/svg/share.svg";
 import kakaoIcon from "../../../assets/svg/sns_logo/icon-logo-kakao.svg";
 
-const EditRoster = ({ players, roster, setRoster }) => {
+const EditRoster = ({ players, setPlayers, roster, setRoster }) => {
   return (
     <ContainerWrapper>
       <ButtonsWrapper>
@@ -30,7 +30,12 @@ const EditRoster = ({ players, roster, setRoster }) => {
           onClick={() => {}}
         />
       </ButtonsWrapper>
-      <RosterDnD players={players} roster={roster} setRoster={setRoster} />
+      <RosterDnD
+        players={players}
+        setPlayers={setPlayers}
+        roster={roster}
+        setRoster={setRoster}
+      />
     </ContainerWrapper>
   );
 };
