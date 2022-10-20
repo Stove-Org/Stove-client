@@ -3,7 +3,6 @@ import { DragDropContext } from "react-dnd";
 import styled from "styled-components";
 
 import LCKTeamLabel from "../../atoms/LCKTeamLabel";
-// import PlayerSearchBar from "../PlayerSearchBar";
 import Checkbox from "../../atoms/Checkbox";
 
 import TOP from "../../../assets/svg/positions/TOP";
@@ -36,6 +35,42 @@ const positionIcon = (position) => {
 const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
   const [search, setSearch] = useState("");
 
+  const newRoster = roster.map((team) => {
+    const arr = [];
+    if (team.TOP !== "") arr.push(team.TOP);
+    if (team.JGL !== "") arr.push(team.JGL);
+    if (team.MID !== "") arr.push(team.MID);
+    if (team.BOT !== "") arr.push(team.BOT);
+    if (team.SPT !== "") arr.push(team.SPT);
+    return arr;
+  });
+
+  // const [checked, setChecked] = useState(new Set());
+
+  // const CheckedHandler = (e) => {
+  //   const isChecked = e.target.checked;
+  //   const id = e.target.id;
+
+  //   if (isChecked) {
+  //     checked.add(id);
+  //     setChecked(checked);
+  //   } else if (!isChecked && checked.has(id)) {
+  //     checked.delete(id);
+  //     setChecked(checked);
+  //   }
+  // };
+
+  // const getProcessPlayerList = () => {
+  //   if (checked.size === 0) {
+  //     return players;
+  //   } else {
+  //     const newPlayers = players.filter((player) =>
+  //       checked.has(player.position.toLowerCase())
+  //     );
+  //     return newPlayers;
+  //   }
+  // };
+
   return (
     <RosterDnDWrapper>
       <PlayerListWrapper>
@@ -46,20 +81,90 @@ const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="선수 검색"
           />
+          {/* <StyleCheckbox>
+            <Checkbox
+              text={"탑"}
+              id={"top"}
+              onClick={CheckedHandler}
+              value={"TOP"}
+              width={"16px"}
+              height={"16px"}
+              styleType={"primary"}
+            />
+          </StyleCheckbox>
+          <StyleCheckbox>
+            <Checkbox
+              text={"정글"}
+              id={"jgl"}
+              onClick={CheckedHandler}
+              value={"JGL"}
+              styleType={"primary"}
+              width={"16px"}
+              height={"16px"}
+            />
+          </StyleCheckbox>
+          <StyleCheckbox>
+            <Checkbox
+              text={"미드"}
+              id={"mid"}
+              onClick={CheckedHandler}
+              value={"MID"}
+              styleType={"primary"}
+              width={"16px"}
+              height={"16px"}
+            />
+          </StyleCheckbox>
+          <StyleCheckbox>
+            <Checkbox
+              text={"원딜"}
+              id={"bot"}
+              onClick={CheckedHandler}
+              value={"BOT"}
+              styleType={"primary"}
+              width={"16px"}
+              height={"16px"}
+            />
+          </StyleCheckbox>
+          <StyleCheckbox>
+            <Checkbox
+              text={"서폿"}
+              id={"spt"}
+              onClick={CheckedHandler}
+              value={"SPT"}
+              styleType={"primary"}
+              width={"16px"}
+              height={"16px"}
+            />
+          </StyleCheckbox> */}
         </PlayerSearchBarWrapper>
         <PlayerCard>
           {players
-            .filter((val) => {
+            .filter((player) => {
               if (search === "") {
-                return val.name;
+                return player.name;
               } else if (
-                val.name.toLowerCase().includes(search.toLowerCase())
+                player.name.toLowerCase().includes(search.toLowerCase())
               ) {
-                return val.name;
+                return player.name;
               } else if (
-                val.nickName.toLowerCase().includes(search.toLowerCase())
+                player.nickName.toLowerCase().includes(search.toLowerCase())
               ) {
-                return val.nickName;
+                return player.nickName;
+              }
+            })
+            .filter((player) => {
+              if (newRoster.length === 0) {
+                return player;
+              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+                return player;
+              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+                return player;
+              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+                return player;
+              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+                return player;
+              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+                return player;
               }
             })
             .map((player) => {
@@ -180,7 +285,7 @@ const EditRosterWrapper = styled(RosterDnDInnerWrapper)``;
 
 const PlayerCard = styled.div`
   flex-grow: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
 `;
