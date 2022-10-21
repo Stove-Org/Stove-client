@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import LCKTeamLabel from "../../atoms/LCKTeamLabel";
 import Checkbox from "../../atoms/Checkbox";
+import ToggleButton from "../../atoms/ToggleButton";
 
 import TOP from "../../../assets/svg/positions/TOP";
 import JGL from "../../../assets/svg/positions/JGL";
@@ -34,6 +35,8 @@ const positionIcon = (position) => {
 
 const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
   const [search, setSearch] = useState("");
+  const [imgToggle, setImgToggle] = useState(true);
+  const [descriptionToggle, setDescriptionToggle] = useState(true);
 
   const newRoster = roster.map((team) => {
     const arr = [];
@@ -170,54 +173,80 @@ const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
             .map((player) => {
               return (
                 <div key={player.id}>
-                  <PlayerImgBlock>
-                    <PlayerPosition>
-                      {positionIcon(player.position)}
-                    </PlayerPosition>
-                    <PlayerImg src={player.img} alt={player.nickName} />
-                  </PlayerImgBlock>
+                  {imgToggle && (
+                    <PlayerImgBlock>
+                      <PlayerPosition>
+                        {positionIcon(player.position)}
+                      </PlayerPosition>
+                      <PlayerImg src={player.img} alt={player.nickName} />
+                    </PlayerImgBlock>
+                  )}
                   <PlayerDescriptionBlock>
-                    <PlayerNickname>{player.nickName}</PlayerNickname>
-                    <PlayerDescription>
-                      <div>
+                    <PlayerNickname imgToggle={imgToggle}>
+                      {player.nickName}
+                    </PlayerNickname>
+                    {descriptionToggle && (
+                      <PlayerDescription>
                         <div>
-                          {player.name} ({player.birthday})
-                        </div>
-                      </div>
-                      <div>
-                        <div>
-                          {[...Array(player.career.worlds)].map((el, idx) => {
-                            return (
-                              <img
-                                key={idx}
-                                src={worldsTrophy}
-                                alt="Worlds Trophy"
-                              />
-                            );
-                          })}
+                          <div>
+                            {player.name} ({player.birthday})
+                          </div>
                         </div>
                         <div>
-                          {[...Array(player.career.msi)].map((el, idx) => {
-                            return (
-                              <img key={idx} src={msiTrophy} alt="MSI Trophy" />
-                            );
-                          })}
+                          <div>
+                            {[...Array(player.career.worlds)].map((el, idx) => {
+                              return (
+                                <img
+                                  key={idx}
+                                  src={worldsTrophy}
+                                  alt="Worlds Trophy"
+                                />
+                              );
+                            })}
+                          </div>
+                          <div>
+                            {[...Array(player.career.msi)].map((el, idx) => {
+                              return (
+                                <img
+                                  key={idx}
+                                  src={msiTrophy}
+                                  alt="MSI Trophy"
+                                />
+                              );
+                            })}
+                          </div>
+                          <div>
+                            {[...Array(player.career.lck)].map((el, idx) => {
+                              return (
+                                <img
+                                  key={idx}
+                                  src={lckTrophy}
+                                  alt="LCK Trophy"
+                                />
+                              );
+                            })}
+                          </div>
                         </div>
-                        <div>
-                          {[...Array(player.career.lck)].map((el, idx) => {
-                            return (
-                              <img key={idx} src={lckTrophy} alt="LCK Trophy" />
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </PlayerDescription>
+                      </PlayerDescription>
+                    )}
                   </PlayerDescriptionBlock>
                 </div>
               );
             })}
         </PlayerCard>
       </PlayerListWrapper>
+      <ToggleWrapper>
+        <ToggleButton
+          onClick={() => setImgToggle(!imgToggle)}
+          toggle={imgToggle}
+          text="선수 이미지"
+        />
+        <ToggleButton
+          onClick={() => setDescriptionToggle(!descriptionToggle)}
+          toggle={descriptionToggle}
+          text="소개"
+        />
+      </ToggleWrapper>
       <EditRosterWrapper>
         {roster.map((team) => (
           <RosterWrapper key={team.id}>
@@ -282,7 +311,17 @@ const PlayerListWrapper = styled(RosterDnDInnerWrapper)`
   display: flex;
 `;
 const EditRosterWrapper = styled(RosterDnDInnerWrapper)``;
+const ToggleWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
 
+  & > div + div {
+    margin-left: 16px;
+  }
+`;
 const PlayerCard = styled.div`
   flex-grow: 1;
   overflow-y: auto;
@@ -309,8 +348,8 @@ const PlayerImgBlock = styled(PlayerBlock)`
 `;
 const PlayerDescriptionBlock = styled(PlayerBlock)`
   padding: 0 10px 10px;
-  border-radius: 0 0 3px 3px;
   margin-bottom: 10px;
+  border-radius: ${(props) => (props.imgToggle ? "0 0 3px 3px" : "3px")};
 `;
 const PlayerPosition = styled.div`
   position: absolute;
@@ -324,7 +363,7 @@ const PlayerNickname = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.color.white};
   color: ${(props) => props.theme.color.black};
-  padding: 5px 0 0;
+  padding: ${(props) => (props.imgToggle ? "5px 0 0" : "10px 0 0")};
   text-align: center;
   ${(props) => props.theme.typography.bodySmBold};
 `;
