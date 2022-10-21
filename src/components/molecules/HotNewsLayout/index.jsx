@@ -5,16 +5,16 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
     <HotNewsWrapper>
       <HotNewsInnerWrapper>
         <FirstHotNewsWrapper
-          href={firstHotNews.newsUrl}
+          href={firstHotNews.linkUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <FirstHotNewsImgWrapper
-            style={{ backgroundImage: `url(${firstHotNews.newsImg})` }}
+          <FirstHotImgUrlWrapper
+            style={{ backgroundImage: `url(${firstHotNews.imgUrl})` }}
           />
           <FirstHotNewsHeadline>
             <FirstHeadline>{firstHotNews.headline}</FirstHeadline>
-            <HeadlineDate>{firstHotNews.newsDate}</HeadlineDate>
+            <HeadlineDate>{firstHotNews.uploadedAt}</HeadlineDate>
           </FirstHotNewsHeadline>
         </FirstHotNewsWrapper>
       </HotNewsInnerWrapper>
@@ -23,16 +23,16 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
         {hotNews.map((el) => (
           <RestHotNewsInnerWrapper
             key={el.id}
-            href={el.newsUrl}
+            href={el.linkUrl}
             target={"_blank"}
             rel="noopener noreferrer"
           >
             <RestHotNewsHeadline>
               <Headline>{el.headline}</Headline>
-              <HeadlineDate>{el.newsDate}</HeadlineDate>
+              <HeadlineDate>{el.uploadedAt}</HeadlineDate>
             </RestHotNewsHeadline>
-            <RestHotNewsImgWrapper
-              style={{ backgroundImage: `url(${el.newsImg})` }}
+            <RestHotImgUrlWrapper
+              style={{ backgroundImage: `url(${el.imgUrl})` }}
             />
           </RestHotNewsInnerWrapper>
         ))}
@@ -89,7 +89,7 @@ const FirstHotNewsWrapper = styled.a`
     text-decoration: underline;
   }
 `;
-const FirstHotNewsImgWrapper = styled(ImageWrapper)`
+const FirstHotImgUrlWrapper = styled(ImageWrapper)`
   width: 100%;
   height: 100%;
 `;
@@ -130,7 +130,7 @@ const RestHotNewsHeadline = styled.div`
   word-break: keep-all;
   overflow-wrap: break-word;
 `;
-const RestHotNewsImgWrapper = styled(ImageWrapper)`
+const RestHotImgUrlWrapper = styled(ImageWrapper)`
   min-width: 140px;
   height: 100px;
 `;

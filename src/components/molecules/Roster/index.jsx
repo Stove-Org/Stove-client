@@ -44,7 +44,7 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
                   <PlayerPosition>
                     {PositionIcon(team.TOP.position)}
                   </PlayerPosition>
-                  <img src={team.TOP.img} alt={team.TOP.nickName} />
+                  <img src={team.TOP.imgUrl} alt={team.TOP.nickName} />
                 </PlayerImgBlock>
               )}
               <PlayerDescriptionBlock>
@@ -104,7 +104,7 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
                   <PlayerPosition>
                     {PositionIcon(team.JGL.position)}
                   </PlayerPosition>
-                  <img src={team.JGL.img} alt={team.JGL.nickName} />
+                  <img src={team.JGL.imgUrl} alt={team.JGL.nickName} />
                 </PlayerImgBlock>
               )}
               <PlayerDescriptionBlock>
@@ -164,7 +164,7 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
                   <PlayerPosition>
                     {PositionIcon(team.MID.position)}
                   </PlayerPosition>
-                  <img src={team.MID.img} alt={team.MID.nickName} />
+                  <img src={team.MID.imgUrl} alt={team.MID.nickName} />
                 </PlayerImgBlock>
               )}
               <PlayerDescriptionBlock>
@@ -224,7 +224,7 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
                   <PlayerPosition>
                     {PositionIcon(team.BOT.position)}
                   </PlayerPosition>
-                  <img src={team.BOT.img} alt={team.BOT.nickName} />
+                  <img src={team.BOT.imgUrl} alt={team.BOT.nickName} />
                 </PlayerImgBlock>
               )}
               <PlayerDescriptionBlock>
@@ -284,7 +284,7 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
                   <PlayerPosition>
                     {PositionIcon(team.SPT.position)}
                   </PlayerPosition>
-                  <img src={team.SPT.img} alt={team.SPT.nickName} />
+                  <img src={team.SPT.imgUrl} alt={team.SPT.nickName} />
                 </PlayerImgBlock>
               )}
               <PlayerDescriptionBlock>

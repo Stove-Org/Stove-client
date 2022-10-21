@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NewsList = ({ newsUrl, newsImg, headline, newsDate }) => {
+const NewsList = ({ linkUrl, imgUrl, headline, uploadedAt }) => {
   return (
     <NewsListWrapper>
       <NewsListInnerWrapper
@@ -8,12 +8,12 @@ const NewsList = ({ newsUrl, newsImg, headline, newsDate }) => {
         target={"_blank"}
         rel="noopener noreferrer"
       >
-        <NewsImgWrapper>
-          <NewsImg style={{ backgroundImage: `url(${newsImg})` }} />
-        </NewsImgWrapper>
+        <ImgUrlWrapper>
+          <ImgUrl style={{ backgroundImage: `url(${imgUrl})` }} />
+        </ImgUrlWrapper>
         <NewsHeadline>
           <Headline>{headline}</Headline>
-          <NewsDate>{newsDate}</NewsDate>
+          <UploadedAtWapper>{uploadedAt}</UploadedAtWapper>
         </NewsHeadline>
       </NewsListInnerWrapper>
     </NewsListWrapper>
@@ -40,11 +40,11 @@ const NewsListInnerWrapper = styled.a`
     text-decoration: underline;
   }
 `;
-const NewsImgWrapper = styled.div`
+const ImgUrlWrapper = styled.div`
   min-width: 160px;
   height: 100px;
 `;
-const NewsImg = styled.div`
+const ImgUrl = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -59,7 +59,7 @@ const Headline = styled.h4`
   ${(props) => props.theme.typography.headRgBold};
   padding-bottom: 4px;
 `;
-const NewsDate = styled.div`
+const UploadedAtWapper = styled.div`
   ${(props) => props.theme.typography.bodyRg};
   color: ${(props) => props.theme.color.grayScale.gray60};
 `;

@@ -11,7 +11,7 @@ const NextLCKRoster = ({ players, setPlayers, roster, setRoster }) => {
         <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
         <div>
           <p>10.01 - 11.30 진행 중</p>
-          <SubDescription>100,000,000명이 참여 중입니다 🔥</SubDescription>
+          <SubDescription>현재 100,000,000명 참여 중 🔥</SubDescription>
         </div>
       </Description>
       <EditRoster
