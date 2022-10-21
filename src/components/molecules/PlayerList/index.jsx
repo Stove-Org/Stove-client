@@ -43,11 +43,11 @@ const PlayerList = ({
 
   const newRoster = roster.map((team) => {
     const arr = [];
-    if (team.TOP !== "") arr.push(team.TOP);
-    if (team.JGL !== "") arr.push(team.JGL);
-    if (team.MID !== "") arr.push(team.MID);
-    if (team.BOT !== "") arr.push(team.BOT);
-    if (team.SPT !== "") arr.push(team.SPT);
+    if (team.TOP.nickName !== "") arr.push(team.TOP.nickName);
+    if (team.JGL.nickName !== "") arr.push(team.JGL.nickName);
+    if (team.MID.nickName !== "") arr.push(team.MID.nickName);
+    if (team.BOT.nickName !== "") arr.push(team.BOT.nickName);
+    if (team.SPT.nickName !== "") arr.push(team.SPT.nickName);
     return arr;
   });
 
