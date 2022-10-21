@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
-import { DragDropContext } from "react-dnd";
+import { useState } from "react";
+// import { DragDropContext } from "react-dnd";
 import styled from "styled-components";
 
-import LCKTeamLabel from "../../atoms/LCKTeamLabel";
-import Checkbox from "../../atoms/Checkbox";
-import ToggleButton from "../../atoms/ToggleButton";
+// import Checkbox from "../../atoms/Checkbox";
 
 import TOP from "../../../assets/svg/positions/TOP";
 import JGL from "../../../assets/svg/positions/JGL";
@@ -33,10 +31,15 @@ const positionIcon = (position) => {
   }
 };
 
-const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
+const PlayerList = ({
+  players,
+  setPlayers,
+  roster,
+  setRoster,
+  imgToggle,
+  descriptionToggle,
+}) => {
   const [search, setSearch] = useState("");
-  const [imgToggle, setImgToggle] = useState(true);
-  const [descriptionToggle, setDescriptionToggle] = useState(true);
 
   const newRoster = roster.map((team) => {
     const arr = [];
@@ -75,7 +78,7 @@ const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
   // };
 
   return (
-    <RosterDnDWrapper>
+    <>
       <PlayerListWrapper>
         <PlayerSearchBarWrapper>
           <input
@@ -235,93 +238,20 @@ const RosterDnD = ({ players, setPlayers, roster, setRoster }) => {
             })}
         </PlayerCard>
       </PlayerListWrapper>
-      <ToggleWrapper>
-        <ToggleButton
-          onClick={() => setImgToggle(!imgToggle)}
-          toggle={imgToggle}
-          text="선수 이미지"
-        />
-        <ToggleButton
-          onClick={() => setDescriptionToggle(!descriptionToggle)}
-          toggle={descriptionToggle}
-          text="소개"
-        />
-      </ToggleWrapper>
-      <EditRosterWrapper>
-        {roster.map((team) => (
-          <RosterWrapper key={team.id}>
-            <LCKTeamLabel teamName={team.name} />
-            <RosterPositionWrapper>
-              <RosterPosition>
-                {team.TOP ? (
-                  <TruePositionLabel>{team.TOP}</TruePositionLabel>
-                ) : (
-                  <FalsePositionLabel>TOP</FalsePositionLabel>
-                )}
-              </RosterPosition>
-              <RosterPosition>
-                {team.JGL ? (
-                  <TruePositionLabel>{team.JGL}</TruePositionLabel>
-                ) : (
-                  <FalsePositionLabel>JGL</FalsePositionLabel>
-                )}
-              </RosterPosition>
-              <RosterPosition>
-                {team.MID ? (
-                  <TruePositionLabel>{team.MID}</TruePositionLabel>
-                ) : (
-                  <FalsePositionLabel>MID</FalsePositionLabel>
-                )}
-              </RosterPosition>
-              <RosterPosition>
-                {team.BOT ? (
-                  <TruePositionLabel>{team.BOT}</TruePositionLabel>
-                ) : (
-                  <FalsePositionLabel>BOT</FalsePositionLabel>
-                )}
-              </RosterPosition>
-              <RosterPosition>
-                {team.SPT ? (
-                  <TruePositionLabel>{team.SPT}</TruePositionLabel>
-                ) : (
-                  <FalsePositionLabel>SPT</FalsePositionLabel>
-                )}
-              </RosterPosition>
-            </RosterPositionWrapper>
-          </RosterWrapper>
-        ))}
-      </EditRosterWrapper>
-    </RosterDnDWrapper>
+    </>
   );
 };
-const RosterDnDWrapper = styled.div`
+
+const PlayerListWrapper = styled.div`
   width: 100%;
-  height: 100%;
-`;
-const RosterDnDInnerWrapper = styled.div`
-  width: 100%;
-  height: 100%;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
   border-radius: 3px;
   margin-top: 20px;
   padding: 20px;
-`;
-const PlayerListWrapper = styled(RosterDnDInnerWrapper)`
   height: 350px;
   display: flex;
 `;
-const EditRosterWrapper = styled(RosterDnDInnerWrapper)``;
-const ToggleWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  margin-top: 10px;
-  display: flex;
-  justify-content: end;
 
-  & > div + div {
-    margin-left: 16px;
-  }
-`;
 const PlayerCard = styled.div`
   flex-grow: 1;
   overflow-y: auto;
@@ -380,14 +310,6 @@ const PlayerDescription = styled.div`
   }
 `;
 
-const RosterWrapper = styled.div``;
-
-const RosterPositionWrapper = styled.div``;
-const RosterPosition = styled.div``;
-const PositionLabel = styled.div``;
-const TruePositionLabel = styled(PositionLabel)``;
-const FalsePositionLabel = styled(PositionLabel)``;
-
 // PlayerSearchBar
 const PlayerSearchBarWrapper = styled.div`
   min-width: 180px;
@@ -418,4 +340,4 @@ const StyleCheckbox = styled.div`
   }
 `;
 
-export default RosterDnD;
+export default PlayerList;
