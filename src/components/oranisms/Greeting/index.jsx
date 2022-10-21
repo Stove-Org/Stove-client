@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
-import SliderLCKLogo from "../../atoms/SliderLCKLogo";
+import SliderLCKLogo from "../../molecules/SliderLCKLogo";
 import bannerImg from "../../../assets/img/banner_2022LCKFinal.jpg";
 
 const Greeting = () => {

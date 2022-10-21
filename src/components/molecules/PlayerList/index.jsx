@@ -3,33 +3,11 @@ import { useState } from "react";
 import styled from "styled-components";
 
 // import Checkbox from "../../atoms/Checkbox";
-
-import TOP from "../../../assets/svg/positions/TOP";
-import JGL from "../../../assets/svg/positions/JGL";
-import MID from "../../../assets/svg/positions/MID";
-import BOT from "../../../assets/svg/positions/BOT";
-import SPT from "../../../assets/svg/positions/SPT";
+import PositionIcon from "../../atoms/PositionIcon";
 
 import worldsTrophy from "../../../assets/svg/trophys/worlds.svg";
 import msiTrophy from "../../../assets/svg/trophys/msi.svg";
 import lckTrophy from "../../../assets/svg/trophys/lck.svg";
-
-const positionIcon = (position) => {
-  switch (position) {
-    case "TOP":
-      return <TOP width={24} height={24} />;
-    case "JGL":
-      return <JGL width={24} height={24} />;
-    case "MID":
-      return <MID width={24} height={24} />;
-    case "BOT":
-      return <BOT width={24} height={24} />;
-    case "SPT":
-      return <SPT width={24} height={24} />;
-    default:
-      return;
-  }
-};
 
 const PlayerList = ({
   players,
@@ -179,7 +157,7 @@ const PlayerList = ({
                   {imgToggle && (
                     <PlayerImgBlock>
                       <PlayerPosition>
-                        {positionIcon(player.position)}
+                        {PositionIcon(player.position)}
                       </PlayerPosition>
                       <PlayerImg src={player.img} alt={player.nickName} />
                     </PlayerImgBlock>

@@ -26,7 +26,12 @@ const EditRoster = ({ players, setPlayers, roster, setRoster }) => {
           imgToggle={imgToggle}
           descriptionToggle={descriptionToggle}
         />
-        <Roster roster={roster} setRoster={setRoster} />
+        <Roster
+          roster={roster}
+          setRoster={setRoster}
+          imgToggle={imgToggle}
+          descriptionToggle={descriptionToggle}
+        />
       </EditRosterWrapper>
     </ContainerWrapper>
   );
