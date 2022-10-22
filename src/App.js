@@ -26,7 +26,6 @@ import NEWS_DATA from "./data/NEWS_DATA";
 
 function App() {
   const [roster, setRoster] = useState(ROSTER_DATA);
-  const [players, setPlayers] = useState(DUMMY_DATA);
   const [news, setNews] = useState(NEWS_DATA);
 
   return (
@@ -46,14 +45,7 @@ function App() {
             </Route>
             <Route
               path="/nextlck"
-              element={
-                <NextLCKRoster
-                  players={players}
-                  setPlayers={setPlayers}
-                  roster={roster}
-                  setRoster={setRoster}
-                />
-              }
+              element={<NextLCKRoster roster={roster} />}
             />
             <Route
               path="/nextlck/:id"

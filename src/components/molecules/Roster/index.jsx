@@ -10,14 +10,7 @@ import MID from "../../../assets/svg/positions/MID";
 import BOT from "../../../assets/svg/positions/BOT";
 import SPT from "../../../assets/svg/positions/SPT";
 
-const Roster = ({
-  roster,
-  editRoster,
-  setEditRoster,
-  players,
-  imgToggle,
-  descriptionToggle,
-}) => {
+const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
   return (
     <PlayerListInnerWrapper>
       <InnerWrapper>
@@ -40,10 +33,12 @@ const Roster = ({
       </InnerWrapper>
       {editRoster.map((team) => (
         <InnerWrapper key={team.id}>
-          <TeamLogoWrapper teamName={team.name} imgToggle={imgToggle}>
-            <StyleTeamName imgToggle={imgToggle}>{team.name}</StyleTeamName>
+          <TeamLogoWrapper teamName={team.team.name} imgToggle={imgToggle}>
+            <StyleTeamName imgToggle={imgToggle}>
+              {team.team.name}
+            </StyleTeamName>
             <StyleTeamLogo imgToggle={imgToggle}>
-              {TeamLogo(team.name)}
+              {TeamLogo(team.team.name)}
             </StyleTeamLogo>
           </TeamLogoWrapper>
           {team.TOP ? (
@@ -64,7 +59,6 @@ const Roster = ({
             <PlayerDrop
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
-              players={players}
               position="TOP"
               teamName={team.name}
             />
@@ -87,7 +81,6 @@ const Roster = ({
             <PlayerDrop
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
-              players={players}
               position="JUNGLE"
               teamName={team.name}
             />
@@ -110,7 +103,6 @@ const Roster = ({
             <PlayerDrop
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
-              players={players}
               position="MID"
               teamName={team.name}
             />
@@ -133,7 +125,6 @@ const Roster = ({
             <PlayerDrop
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
-              players={players}
               position="BOT"
               teamName={team.name}
             />
@@ -156,7 +147,6 @@ const Roster = ({
             <PlayerDrop
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
-              players={players}
               position="SUPPORT"
               teamName={team.name}
             />

@@ -5,10 +5,11 @@ import NextLCKButtons from "../../molecules/NextLCKButtons";
 import PlayerList from "../../molecules/PlayerList";
 import Roster from "../../molecules/Roster";
 
-const EditRoster = ({ players, setPlayers, roster, setRoster }) => {
+const EditRoster = ({ roster }) => {
   const [imgToggle, setImgToggle] = useState(true);
   const [descriptionToggle, setDescriptionToggle] = useState(false);
-  const [editRoster, setEditRoster] = useState(roster);
+  const [players, setPlayers] = useState(roster.candidate_progamers);
+  const [editRoster, setEditRoster] = useState(roster.rosters);
 
   return (
     <ContainerWrapper>
@@ -21,17 +22,11 @@ const EditRoster = ({ players, setPlayers, roster, setRoster }) => {
       <EditRosterWrapper>
         <PlayerList
           players={players}
-          setPlayers={setPlayers}
-          roster={roster}
-          setRoster={setRoster}
           imgToggle={imgToggle}
           descriptionToggle={descriptionToggle}
         />
         <Roster
-          roster={roster}
           editRoster={editRoster}
-          setEditRoster={setEditRoster}
-          players={players}
           imgToggle={imgToggle}
           descriptionToggle={descriptionToggle}
         />

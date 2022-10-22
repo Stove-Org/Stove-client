@@ -22,16 +22,12 @@ const PlayerItem = ({
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.PLAYER,
     item: { nickName },
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult();
-      // 드래그가 끝났을 때 작동하는 부분
-      if (item && dropResult) {
-        alert(`${dropResult.name}에 ${item.nickName} 떨어짐!`);
-      }
+    isDragging(monitor) {
+      const item = monitor.getItem();
+      return nickName === item.nickName;
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(), //isDragging 변수가 현재 드래깅중인지 아닌지를 리턴해주는 부분
-      handlerId: monitor.getHandlerId(),
     }),
   }));
 

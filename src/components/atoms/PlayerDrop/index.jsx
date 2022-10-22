@@ -3,13 +3,7 @@ import { useDrop } from "react-dnd";
 
 import { ItemTypes } from "../../../utils/ItemTypes";
 
-const PlayerDrop = ({
-  imgToggle,
-  descriptionToggle,
-  position,
-  teamName,
-  players,
-}) => {
+const PlayerDrop = ({ imgToggle, descriptionToggle, position, teamName }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.PLAYER,
     drop: () => ({ name: `${teamName}_${position}` }),
