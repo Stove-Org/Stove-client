@@ -57,15 +57,14 @@ const PlayerList = ({
 
   return (
     <>
-      <PlayerListWrapper>
-        <PlayerSearchBarWrapper>
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="선수 검색"
-          />
-          {/* <StyleCheckbox>
+      <PlayerSearchBarWrapper>
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="선수 검색"
+        />
+        {/* <StyleCheckbox>
             <Checkbox
               text={"탑"}
               id={"top"}
@@ -120,128 +119,113 @@ const PlayerList = ({
               height={"16px"}
             />
           </StyleCheckbox> */}
-        </PlayerSearchBarWrapper>
-        <PlayerCard>
-          {players
-            .filter((player) => {
-              if (search === "") {
-                return player.name;
-              } else if (
-                player.name.toLowerCase().includes(search.toLowerCase())
-              ) {
-                return player.name;
-              } else if (
-                player.nickName.toLowerCase().includes(search.toLowerCase())
-              ) {
-                return player.nickName;
-              }
-            })
-            .filter((player) => {
-              if (newRoster.length === 0) {
-                return player;
-              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
-                return player;
-              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
-                return player;
-              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
-                return player;
-              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
-                return player;
-              } else if (newRoster.flat(1).includes(player.nickName) !== true) {
-                return player;
-              }
-            })
-            .map((player) => {
-              return (
-                <div key={player.id}>
-                  {imgToggle && (
-                    <PlayerImgBlock>
-                      <PlayerPosition>
-                        {PositionIcon(player.position)}
-                      </PlayerPosition>
-                      <PlayerImg src={player.imgUrl} alt={player.nickName} />
-                    </PlayerImgBlock>
+      </PlayerSearchBarWrapper>
+      <PlayerCard>
+        {players
+          .filter((player) => {
+            if (search === "") {
+              return player.name;
+            } else if (
+              player.name.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return player.name;
+            } else if (
+              player.nickName.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return player.nickName;
+            }
+          })
+          .filter((player) => {
+            if (newRoster.length === 0) {
+              return player;
+            } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+              return player;
+            } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+              return player;
+            } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+              return player;
+            } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+              return player;
+            } else if (newRoster.flat(1).includes(player.nickName) !== true) {
+              return player;
+            }
+          })
+          .map((player) => {
+            return (
+              <div key={player.id}>
+                {imgToggle && (
+                  <PlayerImgBlock>
+                    <PlayerPosition>
+                      {PositionIcon(player.position)}
+                    </PlayerPosition>
+                    <PlayerImg src={player.imgUrl} alt={player.nickName} />
+                  </PlayerImgBlock>
+                )}
+                <PlayerDescriptionBlock>
+                  <PlayerNickname imgToggle={imgToggle}>
+                    {player.nickName}
+                  </PlayerNickname>
+                  {descriptionToggle && (
+                    <PlayerDescription>
+                      <div>
+                        <div>
+                          {player.name} ({player.birthday})
+                        </div>
+                      </div>
+                      <div>
+                        <div>
+                          {[...Array(player.career.worlds)].map((el, idx) => {
+                            return (
+                              <img
+                                key={idx}
+                                src={worldsTrophy}
+                                alt="Worlds Trophy"
+                              />
+                            );
+                          })}
+                        </div>
+                        <div>
+                          {[...Array(player.career.msi)].map((el, idx) => {
+                            return (
+                              <img key={idx} src={msiTrophy} alt="MSI Trophy" />
+                            );
+                          })}
+                        </div>
+                        <div>
+                          {[...Array(player.career.lck)].map((el, idx) => {
+                            return (
+                              <img key={idx} src={lckTrophy} alt="LCK Trophy" />
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </PlayerDescription>
                   )}
-                  <PlayerDescriptionBlock>
-                    <PlayerNickname imgToggle={imgToggle}>
-                      {player.nickName}
-                    </PlayerNickname>
-                    {descriptionToggle && (
-                      <PlayerDescription>
-                        <div>
-                          <div>
-                            {player.name} ({player.birthday})
-                          </div>
-                        </div>
-                        <div>
-                          <div>
-                            {[...Array(player.career.worlds)].map((el, idx) => {
-                              return (
-                                <img
-                                  key={idx}
-                                  src={worldsTrophy}
-                                  alt="Worlds Trophy"
-                                />
-                              );
-                            })}
-                          </div>
-                          <div>
-                            {[...Array(player.career.msi)].map((el, idx) => {
-                              return (
-                                <img
-                                  key={idx}
-                                  src={msiTrophy}
-                                  alt="MSI Trophy"
-                                />
-                              );
-                            })}
-                          </div>
-                          <div>
-                            {[...Array(player.career.lck)].map((el, idx) => {
-                              return (
-                                <img
-                                  key={idx}
-                                  src={lckTrophy}
-                                  alt="LCK Trophy"
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </PlayerDescription>
-                    )}
-                  </PlayerDescriptionBlock>
-                </div>
-              );
-            })}
-        </PlayerCard>
-      </PlayerListWrapper>
+                </PlayerDescriptionBlock>
+              </div>
+            );
+          })}
+      </PlayerCard>
+      <Footer />
     </>
   );
 };
 
-const PlayerListWrapper = styled.div`
+const PlayerCard = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
-  border-radius: 3px;
-  margin-top: 20px;
-  padding: 20px;
-  height: 350px;
-  display: flex;
-`;
-
-const PlayerCard = styled.div`
-  flex-grow: 1;
+  padding: 0 20px 0;
+  height: 340px;
   overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
 `;
 const PlayerBlock = styled.div`
   width: 159px;
   background-color: ${(props) => props.theme.color.white};
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
 `;
 const PlayerImgBlock = styled(PlayerBlock)`
   padding: 20px 0 0;
@@ -290,12 +274,15 @@ const PlayerDescription = styled.div`
 
 // PlayerSearchBar
 const PlayerSearchBarWrapper = styled.div`
-  min-width: 180px;
-  padding-right: 20px;
+  width: 100%s;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
+  padding: 20px 20px 0;
+  margin-top: 20px;
+  border-radius: 3px 3px 0 0;
   ${(props) => props.theme.typography.bodyRg};
 
   & > input[type="search"] {
-    width: 100%;
+    width: 200px;
     outline: none;
     border: none;
     border-radius: 3px;
@@ -312,6 +299,12 @@ const PlayerSearchBarWrapper = styled.div`
   }
 `;
 
+const Footer = styled.div`
+  width: 100%;
+  height: 20px;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
+  border-radius: 0 0 3px 3px;
+`;
 const StyleCheckbox = styled.div`
   & + & {
     margin-top: 10px;

@@ -19,24 +19,29 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
       <InnerWrapper>
         <PositionWrapper></PositionWrapper>
         <PositionWrapper>
-          <TOP width={40} height={40} fill={"#777777"} />
+          <TOP width={36} height={36} fill={"#777777"} />
         </PositionWrapper>
         <PositionWrapper>
-          <JGL width={40} height={40} fill={"#777777"} />
+          <JGL width={36} height={36} fill={"#777777"} />
         </PositionWrapper>
         <PositionWrapper>
-          <MID width={40} height={40} fill={"#777777"} />
+          <MID width={36} height={36} fill={"#777777"} />
         </PositionWrapper>
         <PositionWrapper>
-          <BOT width={40} height={40} fill={"#777777"} />
+          <BOT width={36} height={36} fill={"#777777"} />
         </PositionWrapper>
         <PositionWrapper>
-          <SPT width={40} height={40} fill={"#777777"} />
+          <SPT width={36} height={36} fill={"#777777"} />
         </PositionWrapper>
       </InnerWrapper>
       {roster.map((team) => (
         <InnerWrapper key={team.id}>
-          <TeamLogoWrapper>{TeamLogo(team.name)}</TeamLogoWrapper>
+          <TeamLogoWrapper teamName={team.name} imgToggle={imgToggle}>
+            <StyleTeamName imgToggle={imgToggle}>{team.name}</StyleTeamName>
+            <StyleTeamLogo imgToggle={imgToggle}>
+              {TeamLogo(team.name)}
+            </StyleTeamLogo>
+          </TeamLogoWrapper>
           {team.TOP ? (
             <TruePositionBlock>
               {imgToggle && (
@@ -339,6 +344,24 @@ const Roster = ({ roster, setRoster, imgToggle, descriptionToggle }) => {
           )}
         </InnerWrapper>
       ))}
+      <InnerWrapper>
+        <PositionWrapper></PositionWrapper>
+        <PositionWrapper>
+          <TOP width={36} height={36} fill={"#777777"} />
+        </PositionWrapper>
+        <PositionWrapper>
+          <JGL width={36} height={36} fill={"#777777"} />
+        </PositionWrapper>
+        <PositionWrapper>
+          <MID width={36} height={36} fill={"#777777"} />
+        </PositionWrapper>
+        <PositionWrapper>
+          <BOT width={36} height={36} fill={"#777777"} />
+        </PositionWrapper>
+        <PositionWrapper>
+          <SPT width={36} height={36} fill={"#777777"} />
+        </PositionWrapper>
+      </InnerWrapper>
     </PlayerListInnerWrapper>
   );
 };
@@ -348,21 +371,15 @@ const PlayerListInnerWrapper = styled.div`
   background-color: ${(props) => props.theme.color.grayScale.gray20};
   border-radius: 3px;
   margin-top: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+  padding: 10px 20px 10px;
 `;
 const InnerWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto 159px 159px 159px 159px 159px;
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
 
   & + & {
     margin-top: 10px;
-  }
-
-  &:last-child {
-    border-bottom: none;
   }
 
   & > div {
@@ -372,19 +389,99 @@ const InnerWrapper = styled.div`
   }
 `;
 const PositionWrapper = styled.div`
-  padding: 0 0 10px;
+  /* padding: 0 0 10px; */
 `;
+// imgToggle
 const TeamLogoWrapper = styled.div`
-  width: 60px;
+  width: 100%
+  justify-self: center;
+  border-radius: 3px;
+
+  ${({ teamName }) => {
+    switch (teamName) {
+      case "GEN":
+        return `
+          border: 1px solid #AA8B30;
+          background: rgb(170,139,48);
+          background: linear-gradient(99deg, rgba(170,139,48,0) 0%, rgba(170,139,48,0.20214023109243695) 100%);
+        `;
+      case "T1":
+        return `
+          border: 1px solid #E2012D;
+          background: rgb(226,1,45);
+          background: linear-gradient(99deg, rgba(226,1,45,0) 0%, rgba(226,1,45,0.20214023109243695) 100%);
+        `;
+      case "LSB":
+        return `
+          border: 1px solid #FFC900;
+          background: rgb(255,201,0);
+          background: linear-gradient(99deg, rgba(255,201,0,0) 0%, rgba(255,201,0,0.2049413515406162) 100%);
+        `;
+      case "DK":
+        return `
+          border: 1px solid #0ec7b5;
+          background: rgb(14,199,181);
+          background: linear-gradient(99deg, rgba(14,199,181,0) 0%, rgba(14,199,181,0.1993391106442577) 100%);
+        `;
+      case "KT":
+        return `
+          border: 1px solid #ff0a07;
+          background: rgb(255,10,7);
+          background: linear-gradient(99deg, rgba(255,10,7,0) 0%, rgba(255,10,7,0.2049413515406162) 100%);
+        `;
+      case "DRX":
+        return `
+          border: 1px solid #5a8dff;
+          background: rgb(90,141,255);
+          background: linear-gradient(99deg, rgba(90,141,255,0) 0%, rgba(90,141,255,0.1993391106442577) 100%);
+        `;
+      case "KDF":
+        return `
+          border: 1px solid #e73312;
+          background: rgb(231,51,18);
+          background: linear-gradient(99deg, rgba(231,51,18,0) 0%, rgba(231,51,18,0.2049413515406162) 100%);
+        `;
+      case "NS":
+        return `
+          border: 1px solid #de2027;
+          background: rgb(222,32,39);
+          background: linear-gradient(99deg, rgba(222,32,39,0) 0%, rgba(222,32,39,0.2049413515406162) 100%);
+        `;
+      case "BRO":
+        return `
+          border: 1px solid #00492b;
+          background: rgb(0,73,43);
+          background: linear-gradient(99deg, rgba(0,73,43,0) 0%, rgba(0,73,43,0.1993391106442577) 100%);
+        `;
+      case "HLE":
+        return `
+          border: 1px solid #ff6b01;
+          background: rgb(255,107,1);
+          background: linear-gradient(99deg, rgba(255,107,1,0) 0%, rgba(255,107,1,0.19653799019607843) 100%);
+        `;
+      default:
+        return;
+    }
+  }}
+`;
+const StyleTeamName = styled.div`
+  ${(props) => props.theme.typography.bodySmBold};
+  flex-grow: 1;
+  margin-left: 16px;
+  display: ${(props) => props.imgToggle && "none"};
+`;
+const StyleTeamLogo = styled.div`
+  width: ${(props) => (props.imgToggle ? "100%" : "30px")};
+  padding: ${(props) => props.imgToggle && "20%"};
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 10px 0 0;
 `;
 const FalsePositionBlock = styled.div`
   height: ${(props) =>
     props.imgToggle ? "100%" : props.descriptionToggle ? "100%" : "36.5px"};
   align-self: center;
-  background-color: #fff;
   border-radius: 3px;
   ${(props) => props.theme.typography.bodySmBold};
   color: ${(props) => props.theme.color.grayScale.gray60};
