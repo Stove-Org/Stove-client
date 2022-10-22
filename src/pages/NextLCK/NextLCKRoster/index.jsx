@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
 
@@ -14,12 +17,14 @@ const NextLCKRoster = ({ players, setPlayers, roster, setRoster }) => {
           <SubDescription>현재 100,000,000명 참여 중 🔥</SubDescription>
         </div>
       </Description>
-      <EditRoster
-        players={players}
-        setPlayers={setPlayers}
-        roster={roster}
-        setRoster={setRoster}
-      />
+      <DndProvider backend={HTML5Backend}>
+        <EditRoster
+          players={players}
+          setPlayers={setPlayers}
+          roster={roster}
+          setRoster={setRoster}
+        />
+      </DndProvider>
     </>
   );
 };

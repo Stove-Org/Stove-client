@@ -8,6 +8,7 @@ import Roster from "../../molecules/Roster";
 const EditRoster = ({ players, setPlayers, roster, setRoster }) => {
   const [imgToggle, setImgToggle] = useState(true);
   const [descriptionToggle, setDescriptionToggle] = useState(false);
+  const [editRoster, setEditRoster] = useState(roster);
 
   return (
     <ContainerWrapper>
@@ -28,7 +29,9 @@ const EditRoster = ({ players, setPlayers, roster, setRoster }) => {
         />
         <Roster
           roster={roster}
-          setRoster={setRoster}
+          editRoster={editRoster}
+          setEditRoster={setEditRoster}
+          players={players}
           imgToggle={imgToggle}
           descriptionToggle={descriptionToggle}
         />

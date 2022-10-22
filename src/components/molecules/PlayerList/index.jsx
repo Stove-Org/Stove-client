@@ -1,13 +1,8 @@
 import { useState } from "react";
-// import { DragDropContext } from "react-dnd";
 import styled from "styled-components";
 
 // import Checkbox from "../../atoms/Checkbox";
-import PositionIcon from "../../atoms/PositionIcon";
-
-import worldsTrophy from "../../../assets/svg/trophys/worlds.svg";
-import msiTrophy from "../../../assets/svg/trophys/msi.svg";
-import lckTrophy from "../../../assets/svg/trophys/lck.svg";
+import PlayerItem from "../../atoms/PlayerItem";
 
 const PlayerList = ({
   players,
@@ -153,55 +148,17 @@ const PlayerList = ({
           .map((player) => {
             return (
               <div key={player.id}>
-                {imgToggle && (
-                  <PlayerImgBlock>
-                    <PlayerPosition>
-                      {PositionIcon(player.position)}
-                    </PlayerPosition>
-                    <PlayerImg src={player.imgUrl} alt={player.nickName} />
-                  </PlayerImgBlock>
-                )}
-                <PlayerDescriptionBlock>
-                  <PlayerNickname imgToggle={imgToggle}>
-                    {player.nickName}
-                  </PlayerNickname>
-                  {descriptionToggle && (
-                    <PlayerDescription>
-                      <div>
-                        <div>
-                          {player.name} ({player.birthday})
-                        </div>
-                      </div>
-                      <div>
-                        <div>
-                          {[...Array(player.career.worlds)].map((el, idx) => {
-                            return (
-                              <img
-                                key={idx}
-                                src={worldsTrophy}
-                                alt="Worlds Trophy"
-                              />
-                            );
-                          })}
-                        </div>
-                        <div>
-                          {[...Array(player.career.msi)].map((el, idx) => {
-                            return (
-                              <img key={idx} src={msiTrophy} alt="MSI Trophy" />
-                            );
-                          })}
-                        </div>
-                        <div>
-                          {[...Array(player.career.lck)].map((el, idx) => {
-                            return (
-                              <img key={idx} src={lckTrophy} alt="LCK Trophy" />
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </PlayerDescription>
-                  )}
-                </PlayerDescriptionBlock>
+                <PlayerItem
+                  imgToggle={imgToggle}
+                  descriptionToggle={descriptionToggle}
+                  id={player.id}
+                  position={player.position}
+                  imgUrl={player.imgUrl}
+                  nickName={player.nickName}
+                  name={player.name}
+                  birthday={player.birthday}
+                  career={player.career}
+                />
               </div>
             );
           })}
@@ -215,61 +172,11 @@ const PlayerCard = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
   padding: 0 20px 0;
-  height: 340px;
+  height: 280px;
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
-`;
-const PlayerBlock = styled.div`
-  width: 159px;
-  background-color: ${(props) => props.theme.color.white};
-  display: flex;
-  flex-direction: column;
-`;
-const PlayerImgBlock = styled(PlayerBlock)`
-  padding: 20px 0 0;
-  border-radius: 3px 3px 0 0;
-  position: relative;
-  background: rgb(255, 190, 190);
-  background: linear-gradient(
-    225deg,
-    rgba(255, 190, 190, 1) 0%,
-    rgba(245, 66, 66, 1) 100%
-  );
-`;
-const PlayerDescriptionBlock = styled(PlayerBlock)`
-  padding: 0 10px 10px;
-  margin-bottom: 10px;
-  border-radius: ${(props) => (props.imgToggle ? "0 0 3px 3px" : "3px")};
-`;
-const PlayerPosition = styled.div`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-`;
-const PlayerImg = styled.img`
-  width: 100%;
-`;
-const PlayerNickname = styled.div`
-  width: 100%;
-  background-color: ${(props) => props.theme.color.white};
-  color: ${(props) => props.theme.color.black};
-  padding: ${(props) => (props.imgToggle ? "5px 0 0" : "10px 0 0")};
-  text-align: center;
-  ${(props) => props.theme.typography.bodySmBold};
-`;
-const PlayerDescription = styled.div`
-  ${(props) => props.theme.typography.bodySmRegular};
-  border-width: 1px 0 0;
-  border-style: solid;
-  border-color: ${(props) => props.theme.color.main60};
-  padding-top: 8px;
-  margin-top: 5px;
-
-  & > div + div {
-    margin-top: 8px;
-  }
 `;
 
 // PlayerSearchBar
@@ -305,10 +212,11 @@ const Footer = styled.div`
   background-color: ${(props) => props.theme.color.grayScale.gray20};
   border-radius: 0 0 3px 3px;
 `;
-const StyleCheckbox = styled.div`
-  & + & {
-    margin-top: 10px;
-  }
-`;
+
+// const StyleCheckbox = styled.div`
+//   & + & {
+//     margin-top: 10px;
+//   }
+// `;
 
 export default PlayerList;
