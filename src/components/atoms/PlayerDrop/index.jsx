@@ -3,15 +3,25 @@ import { useDrop } from "react-dnd";
 
 import { ItemTypes } from "../../../utils/ItemTypes";
 
-const PlayerDrop = ({ imgToggle, descriptionToggle, position, teamName }) => {
+const PlayerDrop = ({
+  imgToggle,
+  descriptionToggle,
+  position,
+  teamName,
+  onDrop,
+}) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.PLAYER,
-    drop: () => ({ name: `${teamName}_${position}` }),
+    // drop: () => ({ name: `${teamName}_${position}` }),
+    drop: onDrop,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
   }));
+
+  //isOver는 Drop가능한곳에 올려놨을때
+  //canDrop은 마우스로 잡고있을때
 
   return (
     <FalsePositionBlock

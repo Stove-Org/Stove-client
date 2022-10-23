@@ -10,7 +10,7 @@ import MID from "../../../assets/svg/positions/MID";
 import BOT from "../../../assets/svg/positions/BOT";
 import SPT from "../../../assets/svg/positions/SPT";
 
-const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
+const Roster = ({ editRoster, imgToggle, descriptionToggle, onDrop }) => {
   return (
     <PlayerListInnerWrapper>
       <InnerWrapper>
@@ -31,28 +31,29 @@ const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
           <SPT width={36} height={36} fill={"#777777"} />
         </PositionWrapper>
       </InnerWrapper>
-      {editRoster.map((team) => (
-        <InnerWrapper key={team.id}>
-          <TeamLogoWrapper teamName={team.team.name} imgToggle={imgToggle}>
+      {editRoster.map((item, index) => (
+        <InnerWrapper key={item.id}>
+          <TeamLogoWrapper teamName={item.team.name} imgToggle={imgToggle}>
             <StyleTeamName imgToggle={imgToggle}>
-              {team.team.name}
+              {item.team.name}
             </StyleTeamName>
             <StyleTeamLogo imgToggle={imgToggle}>
-              {TeamLogo(team.team.name)}
+              {TeamLogo(item.team.name)}
             </StyleTeamLogo>
           </TeamLogoWrapper>
-          {team.TOP ? (
+          {item.TOP ? (
             <div>
               <PlayerItem
                 imgToggle={imgToggle}
                 descriptionToggle={descriptionToggle}
-                id={team.TOP.id}
-                position={team.TOP.position}
-                imgUrl={team.TOP.imgUrl}
-                nickName={team.TOP.nickName}
-                name={team.TOP.name}
-                birthday={team.TOP.birthday}
-                career={team.TOP.career}
+                id={item.TOP.id}
+                position={item.TOP.position}
+                imgUrl={item.TOP.imgUrl}
+                nickName={item.TOP.nickName}
+                name={item.TOP.name}
+                birthday={item.TOP.birthday}
+                career={item.TOP.career}
+                onDrop={onDrop(item.TOP)}
               />
             </div>
           ) : (
@@ -60,21 +61,23 @@ const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
               position="TOP"
-              teamName={team.name}
+              teamName={item.team.name}
+              onDrop={onDrop(`${item.team.name}_TOP`)}
             />
           )}
-          {team.JGL ? (
+          {item.JGL ? (
             <div>
               <PlayerItem
                 imgToggle={imgToggle}
                 descriptionToggle={descriptionToggle}
-                id={team.JGL.id}
-                position={team.JGL.position}
-                imgUrl={team.JGL.imgUrl}
-                nickName={team.JGL.nickName}
-                name={team.JGL.name}
-                birthday={team.JGL.birthday}
-                career={team.JGL.career}
+                id={item.JGL.id}
+                position={item.JGL.position}
+                imgUrl={item.JGL.imgUrl}
+                nickName={item.JGL.nickName}
+                name={item.JGL.name}
+                birthday={item.JGL.birthday}
+                career={item.JGL.career}
+                onDrop={onDrop(item.JGL)}
               />
             </div>
           ) : (
@@ -82,21 +85,23 @@ const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
               position="JUNGLE"
-              teamName={team.name}
+              teamName={item.team.name}
+              onDrop={onDrop(`${item.team.name}_JGL`)}
             />
           )}
-          {team.MID ? (
+          {item.MID ? (
             <div>
               <PlayerItem
                 imgToggle={imgToggle}
                 descriptionToggle={descriptionToggle}
-                id={team.MID.id}
-                position={team.MID.position}
-                imgUrl={team.MID.imgUrl}
-                nickName={team.MID.nickName}
-                name={team.MID.name}
-                birthday={team.MID.birthday}
-                career={team.MID.career}
+                id={item.MID.id}
+                position={item.MID.position}
+                imgUrl={item.MID.imgUrl}
+                nickName={item.MID.nickName}
+                name={item.MID.name}
+                birthday={item.MID.birthday}
+                career={item.MID.career}
+                onDrop={onDrop(item.MID)}
               />
             </div>
           ) : (
@@ -104,21 +109,23 @@ const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
               position="MID"
-              teamName={team.name}
+              teamName={item.team.name}
+              onDrop={onDrop(`${item.team.name}_MID`)}
             />
           )}
-          {team.BOT ? (
+          {item.BOT ? (
             <div>
               <PlayerItem
                 imgToggle={imgToggle}
                 descriptionToggle={descriptionToggle}
-                id={team.BOT.id}
-                position={team.BOT.position}
-                imgUrl={team.BOT.imgUrl}
-                nickName={team.BOT.nickName}
-                name={team.BOT.name}
-                birthday={team.BOT.birthday}
-                career={team.BOT.career}
+                id={item.BOT.id}
+                position={item.BOT.position}
+                imgUrl={item.BOT.imgUrl}
+                nickName={item.BOT.nickName}
+                name={item.BOT.name}
+                birthday={item.BOT.birthday}
+                career={item.BOT.career}
+                onDrop={onDrop(item.BOT)}
               />
             </div>
           ) : (
@@ -126,21 +133,23 @@ const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
               position="BOT"
-              teamName={team.name}
+              teamName={item.team.name}
+              onDrop={onDrop(`${item.team.name}_BOT`)}
             />
           )}
-          {team.SPT ? (
+          {item.SPT ? (
             <div>
               <PlayerItem
                 imgToggle={imgToggle}
                 descriptionToggle={descriptionToggle}
-                id={team.SPT.id}
-                position={team.SPT.position}
-                imgUrl={team.SPT.imgUrl}
-                nickName={team.SPT.nickName}
-                name={team.SPT.name}
-                birthday={team.SPT.birthday}
-                career={team.SPT.career}
+                id={item.SPT.id}
+                position={item.SPT.position}
+                imgUrl={item.SPT.imgUrl}
+                nickName={item.SPT.nickName}
+                name={item.SPT.name}
+                birthday={item.SPT.birthday}
+                career={item.SPT.career}
+                onDrop={onDrop(item.SPT)}
               />
             </div>
           ) : (
@@ -148,7 +157,8 @@ const Roster = ({ editRoster, imgToggle, descriptionToggle }) => {
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
               position="SUPPORT"
-              teamName={team.name}
+              teamName={item.team.name}
+              onDrop={onDrop(`${item.team.name}_SPT`)}
             />
           )}
         </InnerWrapper>

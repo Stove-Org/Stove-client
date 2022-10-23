@@ -26,6 +26,12 @@ const PlayerItem = ({
       const item = monitor.getItem();
       return nickName === item.nickName;
     },
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult();
+      if (item && dropResult) {
+        console.log(dropResult, item.nickName);
+      }
+    },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(), //isDragging 변수가 현재 드래깅중인지 아닌지를 리턴해주는 부분
     }),

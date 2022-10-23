@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import PlayerItem from "../../atoms/PlayerItem";
 
-const PlayerList = ({ players, imgToggle, descriptionToggle }) => {
+const PlayerList = ({ players, imgToggle, descriptionToggle, isDropped }) => {
   const [search, setSearch] = useState("");
 
   return (
