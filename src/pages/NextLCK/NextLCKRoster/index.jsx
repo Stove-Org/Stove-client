@@ -6,7 +6,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
 
-const NextLCKRoster = ({ roster, setRoster }) => {
+const NextLCKRoster = () => {
   return (
     <>
       <PageTitle title={"Next LCK"} />
@@ -18,7 +18,7 @@ const NextLCKRoster = ({ roster, setRoster }) => {
         </div>
       </Description>
       <DndProvider backend={HTML5Backend}>
-        <EditRoster roster={roster} setRoster={setRoster} />
+        <EditRoster />
       </DndProvider>
     </>
   );

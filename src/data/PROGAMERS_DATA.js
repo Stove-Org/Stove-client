@@ -4,7 +4,7 @@ const DUMMY_DATA = [
     nickName: "Faker",
     name: "이상혁",
     position: "MID",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 3,
       msi: 2,
@@ -18,7 +18,7 @@ const DUMMY_DATA = [
     nickName: "Chovy",
     name: "정지훈",
     position: "MID",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -32,7 +32,7 @@ const DUMMY_DATA = [
     nickName: "Peanut",
     name: "한왕호",
     position: "JGL",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 1,
@@ -46,7 +46,7 @@ const DUMMY_DATA = [
     nickName: "Doran",
     name: "최현준",
     position: "TOP",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -60,7 +60,7 @@ const DUMMY_DATA = [
     nickName: "Ruler",
     name: "박재혁",
     position: "BOT",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 1,
       msi: 0,
@@ -74,7 +74,7 @@ const DUMMY_DATA = [
     nickName: "Fate",
     name: "유수혁",
     position: "MID",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -88,7 +88,7 @@ const DUMMY_DATA = [
     nickName: "Kiin",
     name: "김기인",
     position: "TOP",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -102,7 +102,7 @@ const DUMMY_DATA = [
     nickName: "Pyosik",
     name: "홍창현",
     position: "JGL",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -116,7 +116,7 @@ const DUMMY_DATA = [
     nickName: "Breyl",
     name: "조건희",
     position: "SPT",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 1,
       msi: 0,
@@ -130,7 +130,7 @@ const DUMMY_DATA = [
     nickName: "Zeka",
     name: "김건우",
     position: "MID",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -144,7 +144,7 @@ const DUMMY_DATA = [
     nickName: "Nuguri",
     name: "장하권",
     position: "TOP",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 1,
       msi: 0,
@@ -158,7 +158,7 @@ const DUMMY_DATA = [
     nickName: "Canyon",
     name: "김건부",
     position: "JGL",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 1,
       msi: 0,
@@ -172,7 +172,7 @@ const DUMMY_DATA = [
     nickName: "Deokdam",
     name: "서대길",
     position: "BOT",
-    birthday: "1996.05.07",
+    birthday: "1996-05-07",
     career: {
       worlds: 0,
       msi: 0,
@@ -186,7 +186,7 @@ const DUMMY_DATA = [
     nickName: "Keria",
     name: "류민석",
     position: "SPT",
-    birthday: "2002.10.14",
+    birthday: "2002-10-14",
     career: {
       worlds: 0,
       msi: 0,
@@ -200,7 +200,7 @@ const DUMMY_DATA = [
     nickName: "Gumayusi",
     name: "이민형",
     position: "BOT",
-    birthday: "2002.02.06",
+    birthday: "2002-02-06",
     career: {
       worlds: 0,
       msi: 0,
@@ -214,7 +214,7 @@ const DUMMY_DATA = [
     nickName: "Oner",
     name: "문현준",
     position: "JGL",
-    birthday: "2002.12.24",
+    birthday: "2002-12-24",
     career: {
       worlds: 0,
       msi: 0,
@@ -228,7 +228,7 @@ const DUMMY_DATA = [
     nickName: "Zeus",
     name: "최우제",
     position: "TOP",
-    birthday: "2004.01.31",
+    birthday: "2004-01-31",
     career: {
       worlds: 0,
       msi: 0,

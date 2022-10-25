@@ -20,12 +20,9 @@ import NextLCKResult from "./pages/NextLCK/NextLCKResult";
 import News from "./pages/News";
 import Search from "./pages/Search";
 
-import ROSTER_DATA from "./data/ROSTER_DATA";
-import DUMMY_DATA from "./data/DUMMY_DATA";
 import NEWS_DATA from "./data/NEWS_DATA";
 
 function App() {
-  const [roster, setRoster] = useState(ROSTER_DATA);
   const [news, setNews] = useState(NEWS_DATA);
 
   return (
@@ -43,14 +40,8 @@ function App() {
               />
               <Route path="/setting/leave" element={<SettingLeave />} />
             </Route>
-            <Route
-              path="/nextlck"
-              element={<NextLCKRoster roster={roster} />}
-            />
-            <Route
-              path="/nextlck/:id"
-              element={<NextLCKResult roster={roster} />}
-            />
+            <Route path="/nextlck" element={<NextLCKRoster />} />
+            <Route path="/nextlck/:id" element={<NextLCKResult />} />
             <Route path="/news" element={<News news={news} />} />
             <Route path="/search/:id" element={<Search />} />
           </Route>
