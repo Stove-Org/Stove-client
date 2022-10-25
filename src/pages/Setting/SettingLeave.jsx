@@ -18,6 +18,7 @@ const SettingLeave = () => {
       </Content>
       <Checkbox
         text={"동의합니다"}
+        id={"acceptCheck"}
         onClick={() => setChecked((prev) => !prev)}
       />
       <SettingFooter>

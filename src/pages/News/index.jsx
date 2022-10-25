@@ -10,7 +10,6 @@ const News = ({ news }) => {
   for (let i = 1; i < 4; i++) {
     hotNews.push(news[i]);
   }
-  console.log(firstHotNews);
 
   return (
     <>
@@ -24,10 +23,10 @@ const News = ({ news }) => {
         {news.map((el) => (
           <NewsList
             key={el.id}
-            newsUrl={el.newsUrl}
-            newsImg={el.newsImg}
+            linkUrl={el.linkUrl}
+            imgUrl={el.imgUrl}
             headline={el.headline}
-            newsDate={el.newsDate}
+            uploadedAt={el.uploadedAt}
           />
         ))}
       </NewsWrapper>

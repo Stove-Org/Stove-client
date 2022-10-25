@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
 
-const NextLCKRoster = ({ players, roster, setRoster }) => {
+const NextLCKRoster = () => {
   return (
     <>
       <PageTitle title={"Next LCK"} />
@@ -11,10 +14,12 @@ const NextLCKRoster = ({ players, roster, setRoster }) => {
         <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
         <div>
           <p>10.01 - 11.30 진행 중</p>
-          <SubDescription>100,000,000명이 참여 중입니다 🔥</SubDescription>
+          <SubDescription>현재 100,000,000명 참여 중 🔥</SubDescription>
         </div>
       </Description>
-      <EditRoster players={players} roster={roster} setRoster={setRoster} />
+      <DndProvider backend={HTML5Backend}>
+        <EditRoster />
+      </DndProvider>
     </>
   );
 };
@@ -22,7 +27,7 @@ const NextLCKRoster = ({ players, roster, setRoster }) => {
 const Description = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 0 20px;
+  margin: 0 0 40px;
   p {
     ${(props) => props.theme.typography.description};
   }
