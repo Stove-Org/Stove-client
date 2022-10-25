@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import update from "immutability-helper";
 
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../../../utils/ItemTypes";
+
 import ROSTER_DATA from "../../../data/ROSTER_DATA";
 import PROGAMERS_DATA from "../../../data/PROGAMERS_DATA";
 
@@ -11,7 +14,7 @@ const EditRoster = () => {
   const [rosters, setRosters] = useState(ROSTER_DATA);
   const [progamers, setProgamers] = useState(PROGAMERS_DATA);
 
-  const handleDrop = (index, item, lastDropppedProgamer) => {
+  const handleRosterDrop = (index, item, lastDropppedProgamer) => {
     const { nickName } = item;
 
     // 📌 현재 Drag 중인 progamer drop하는 roster에 [UPDATE] 📌
@@ -69,6 +72,36 @@ const EditRoster = () => {
     setProgamers(sortedProgamers);
   };
 
+  const handleProgamerListDrop = (item) => {
+    const { nickName } = item;
+
+    // 1. rosters에서 item.nickName과 같은 lastDropppedProgamer.nickName = null 로 변경
+    const removeProgamer = rosters.filter((item) => {
+      if (item.lastDropppedProgamer) {
+        return item.lastDropppedProgamer.nickName === nickName;
+      }
+    });
+    const index = removeProgamer[0].id - 1;
+    setRosters(
+      update(rosters, {
+        [index]: {
+          lastDropppedProgamer: {
+            $set: null,
+          },
+        },
+      })
+    );
+
+    // 2. progamers에 객체 push 후 sort로 배열정렬
+    const newProgamersArr = [...progamers, item].sort((a, b) => {
+      if (a.nickName > b.nickName) return 1;
+      if (a.nickName < b.nickName) return -1;
+      return 0;
+    });
+
+    setProgamers(newProgamersArr);
+  };
+
   useEffect(() => {
     // Mount 될 때 이미 로스터에 올라와있는 선수들은 progamers 배열에서 [REMOVE]
     const droppedProgamers = rosters
@@ -86,6 +119,24 @@ const EditRoster = () => {
     setProgamers(unDroppedProgamer);
   }, []);
 
+  const [{ isOver, canDrop }, drop] = useDrop({
+    accept: ItemTypes.PLAYER,
+    drop: handleProgamerListDrop,
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  });
+
+  const isActive = isOver && canDrop;
+
+  let backgroundColor = "#222";
+  if (isActive) {
+    backgroundColor = "darkgreen";
+  } else if (canDrop) {
+    backgroundColor = "darkkhaki";
+  }
+
   return (
     <div>
       <div style={{ overflow: "hidden", clear: "both" }}>
@@ -94,13 +145,18 @@ const EditRoster = () => {
             lastDropppedProgamer={lastDropppedProgamer}
             teamName={team}
             position={position}
-            onDrop={(item) => handleDrop(index, item, lastDropppedProgamer)}
+            onDrop={(item) =>
+              handleRosterDrop(index, item, lastDropppedProgamer)
+            }
             key={index}
           />
         ))}
       </div>
 
-      <div style={{ overflow: "hidden", clear: "both" }}>
+      <div
+        ref={drop}
+        style={{ overflow: "hidden", clear: "both", backgroundColor }}
+      >
         {progamers.map(({ nickName, birthday }, index) => (
           <Progamer nickName={nickName} birthday={birthday} key={index} />
         ))}

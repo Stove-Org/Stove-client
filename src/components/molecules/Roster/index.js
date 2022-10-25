@@ -26,8 +26,6 @@ const Roster = ({ lastDropppedProgamer, teamName, position, onDrop }) => {
     }),
   });
 
-  // console.log(lastDropppedProgamer.nickName);
-
   const isActive = isOver && canDrop;
   //isOver는 Drop가능한곳에 올려놨을때
   //canDrop은 마우스로 잡고있을때
