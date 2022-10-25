@@ -3,7 +3,7 @@ const ROSTER_DATA = [
     id: 1,
     team: "GEN",
     position: "TOP",
-    lastDropppedlastDropppedProgamer: null,
+    lastDropppedProgamer: null,
   },
   {
     id: 2,
