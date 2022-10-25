@@ -11,7 +11,7 @@ const EditRoster = () => {
   const [rosters, setRosters] = useState(ROSTER_DATA);
   const [progamers, setProgamers] = useState(PROGAMERS_DATA);
 
-  const handleDrop = (index, item, lastDropppedProgamer, id) => {
+  const handleDrop = (index, item, lastDropppedProgamer) => {
     const { nickName } = item;
 
     // 📌 현재 Drag 중인 progamer drop하는 roster에 [UPDATE] 📌
@@ -89,12 +89,12 @@ const EditRoster = () => {
   return (
     <div>
       <div style={{ overflow: "hidden", clear: "both" }}>
-        {rosters.map(({ lastDropppedProgamer, team, position, id }, index) => (
+        {rosters.map(({ lastDropppedProgamer, team, position }, index) => (
           <Roster
             lastDropppedProgamer={lastDropppedProgamer}
             teamName={team}
             position={position}
-            onDrop={(item) => handleDrop(index, item, lastDropppedProgamer, id)}
+            onDrop={(item) => handleDrop(index, item, lastDropppedProgamer)}
             key={index}
           />
         ))}
