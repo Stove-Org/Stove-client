@@ -1,32 +1,49 @@
+import React from "react";
 import styled from "styled-components";
 
-const FormInput = ({ type, name, onChange, value, placeholder, labelText }) => {
-  const termsNecessary = labelText.includes("*")
-    ? labelText.split(" ")
-    : labelText;
+const FormInput = React.forwardRef(
+  (
+    {
+      type,
+      name,
+      onChange,
+      value,
+      placeholder,
+      labelText,
+      validate,
+      errMessage,
+    },
+    ref
+  ) => {
+    const termsNecessary = labelText.includes("*")
+      ? labelText.split(" ")
+      : labelText;
 
-  return (
-    <FormInputWrapper>
-      <LabelStyle htmlFor={name}>
-        {typeof termsNecessary === "string" ? (
-          `${termsNecessary}`
-        ) : (
-          <>
-            <span>{termsNecessary[0]}</span> {termsNecessary[1]}
-          </>
-        )}
-      </LabelStyle>
-      <InputStyle
-        id={name}
-        type={type}
-        name={name}
-        onChange={onChange}
-        value={value}
-        placeholder={placeholder}
-      />
-    </FormInputWrapper>
-  );
-};
+    return (
+      <FormInputWrapper>
+        <LabelStyle htmlFor={name}>
+          {typeof termsNecessary === "string" ? (
+            `${termsNecessary}`
+          ) : (
+            <>
+              <span>{termsNecessary[0]}</span> {termsNecessary[1]}
+            </>
+          )}
+        </LabelStyle>
+        <InputStyle
+          id={name}
+          type={type}
+          name={name}
+          onChange={onChange}
+          value={value}
+          placeholder={placeholder}
+          ref={ref}
+        />
+        {validate && errMessage}
+      </FormInputWrapper>
+    );
+  }
+);
 
 const FormInputWrapper = styled.div`
   min-width: 450px;
