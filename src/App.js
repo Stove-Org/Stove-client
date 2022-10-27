@@ -24,6 +24,11 @@ import NEWS_DATA from "./data/NEWS_DATA";
 
 function App() {
   const [news, setNews] = useState(NEWS_DATA);
+  const [userProfile, setUserProfile] = useState({
+    email: "",
+    nickname: null,
+    signUpDate: null,
+  });
 
   return (
     <ThemeProvider theme={theme}>
@@ -47,7 +52,15 @@ function App() {
           </Route>
 
           <Route element={<AuthPageTemplate />}>
-            <Route path="/signIn" element={<SignIn />} />
+            <Route
+              path="/signIn"
+              element={
+                <SignIn
+                  userProfile={userProfile}
+                  setUserProfile={setUserProfile}
+                />
+              }
+            />
             <Route path="/signUp" element={<SignUp />} />
           </Route>
         </Routes>

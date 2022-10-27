@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as API from "../../../api";
-import styled from "styled-components";
+import { signup } from "../../../api/auth";
 import { validateEmail, validatePassword } from "../../../functions";
+import styled from "styled-components";
 
 import Button from "../../../components/atoms/Button";
 import FormInput from "../../../components/atoms/FormInput";
@@ -100,13 +100,13 @@ const SingUp = () => {
     }
 
     try {
-      const data = {
+      const signupObj = {
         email: initUser.email,
         password: initUser.pwd,
         nickname: initUser.nickname,
       };
 
-      await API.post("/api/v1/users/signup", "", data);
+      await signup(signupObj);
       navigate("/signin", { replace: true });
     } catch (err) {
       console.log(`error: ${err}`);

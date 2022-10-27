@@ -1,17 +1,29 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Cookies } from "react-cookie";
+import customAxios from "../../../lib/axios/customAxios";
+import { signin, userGet } from "../../../api/auth";
 
 import Button from "../../../components/atoms/Button";
 import FormInput from "../../../components/atoms/FormInput";
 
-const SignIn = () => {
-  const inputEmail = useRef();
-  const inputPwd = useRef();
+const SignIn = ({ userProfile, setUserProfile }) => {
+  const cookies = new Cookies();
+  const navigate = useNavigate();
+  const isLogin = userProfile.nickname !== null;
 
   const [user, setUser] = useState({
     email: "",
     pwd: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
+
+  const navigateHome = () => {
+    navigate("/", { replace: true });
+  };
 
   const onChange = (e) => {
     const target = e.target;
@@ -20,37 +32,72 @@ const SignIn = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("로그인 성공");
+    setError(false);
+    try {
+      const loginObj = {
+        email: user.email,
+        password: user.pwd,
+      };
+
+      const res = await signin(loginObj);
+      const { data, status } = res;
+
+      if (status === 201 || status === 200) {
+        cookies.set("accessToken", data, {
+          secure: true,
+        });
+        customAxios.defaults.headers = {
+          Authorization: `Bearer ${data}`,
+        };
+
+        userGet().then((res) => {
+          const { email, nickname, registAt: signUpDate } = res.data;
+          setUserProfile({ email, nickname, signUpDate });
+        });
+
+        navigate("/", { replace: true });
+        console.log("로그인 성공");
+      }
+    } catch (err) {
+      console.log(`error: ${err}`);
+      setErrorMessage(err.message);
+      setError(true);
+    }
   };
 
   return (
-    <FormWrapper onSubmit={onSubmit}>
-      <InputWrapper>
-        <FormInput
-          type="email"
-          name="email"
-          onChange={onChange}
-          value={user.email}
-          placeholder="이메일을 입력해 주세요"
-          labelText="이메일 주소"
-          ref={inputEmail}
-        />
-        <FormInput
-          type="password"
-          name="pwd"
-          onChange={onChange}
-          value={user.pwd}
-          placeholder="비밀번호를 입력해 주세요"
-          labelText="비밀번호"
-          ref={inputPwd}
-        />
-      </InputWrapper>
-      error && errMessage="STOVE ID가 존재하지 않거나 비밀번호가 일치하지
-      않습니다. 다시 시도해주세요."
-      <Button type="submit" styleType={"primary"} text={"로그인"} />
-    </FormWrapper>
+    <>
+      {isLogin ? (
+        <FormWrapper onSubmit={onSubmit}>
+          <InputWrapper error={error}>
+            <FormInput
+              type="email"
+              name="email"
+              onChange={onChange}
+              value={user.email}
+              placeholder="이메일을 입력해 주세요"
+              labelText="이메일 주소"
+              error={error}
+            />
+            <FormInput
+              type="password"
+              name="pwd"
+              onChange={onChange}
+              value={user.pwd}
+              placeholder="비밀번호를 입력해 주세요"
+              labelText="비밀번호"
+              error={error}
+            />
+          </InputWrapper>
+          {error && errorMessage}
+          <Button type="submit" styleType={"primary"} text={"로그인"} />
+        </FormWrapper>
+      ) : (
+        navigateHome()
+      )}
+    </>
   );
 };
 

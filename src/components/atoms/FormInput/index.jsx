@@ -12,6 +12,7 @@ const FormInput = React.forwardRef(
       labelText,
       validate,
       errMessage,
+      error,
     },
     ref
   ) => {
@@ -38,6 +39,7 @@ const FormInput = React.forwardRef(
           value={value}
           placeholder={placeholder}
           ref={ref}
+          error={error}
         />
         {validate && errMessage}
       </FormInputWrapper>
@@ -70,7 +72,7 @@ const InputStyle = styled.input`
   ${(props) => props.theme.typography.bodyRg};
   background-color: ${(props) => props.theme.color.white};
   border: none;
-  border-color: ${(props) => props.theme.color.grayScale.gray30};
+  border-color: ${(props) => (props.error ? "#F54242" : "#DBDBDB")};
   border-style: solid;
   border-width: 0 0 1px;
   border-radius: 0;
