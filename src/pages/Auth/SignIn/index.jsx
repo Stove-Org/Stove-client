@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Cookies } from "react-cookie";
 import customAxios from "../../../lib/axios/customAxios";
-import { signin, userGet } from "../../../api/auth";
+import { signin } from "../../../api/auth";
 
 import Button from "../../../components/atoms/Button";
 import FormInput from "../../../components/atoms/FormInput";
@@ -11,7 +11,6 @@ import FormInput from "../../../components/atoms/FormInput";
 const SignIn = ({ userProfile, setUserProfile }) => {
   const cookies = new Cookies();
   const navigate = useNavigate();
-  const isLogin = userProfile.nickname !== null;
 
   const [user, setUser] = useState({
     email: "",
@@ -20,10 +19,6 @@ const SignIn = ({ userProfile, setUserProfile }) => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [error, setError] = useState(false);
-
-  const navigateHome = () => {
-    navigate("/", { replace: true });
-  };
 
   const onChange = (e) => {
     const target = e.target;
@@ -52,11 +47,6 @@ const SignIn = ({ userProfile, setUserProfile }) => {
           Authorization: `Bearer ${data}`,
         };
 
-        userGet().then((res) => {
-          const { email, nickname, registAt: signUpDate } = res.data;
-          setUserProfile({ email, nickname, signUpDate });
-        });
-
         navigate("/", { replace: true });
         console.log("로그인 성공");
       }
@@ -68,36 +58,30 @@ const SignIn = ({ userProfile, setUserProfile }) => {
   };
 
   return (
-    <>
-      {isLogin ? (
-        <FormWrapper onSubmit={onSubmit}>
-          <InputWrapper error={error}>
-            <FormInput
-              type="email"
-              name="email"
-              onChange={onChange}
-              value={user.email}
-              placeholder="이메일을 입력해 주세요"
-              labelText="이메일 주소"
-              error={error}
-            />
-            <FormInput
-              type="password"
-              name="pwd"
-              onChange={onChange}
-              value={user.pwd}
-              placeholder="비밀번호를 입력해 주세요"
-              labelText="비밀번호"
-              error={error}
-            />
-          </InputWrapper>
-          {error && errorMessage}
-          <Button type="submit" styleType={"primary"} text={"로그인"} />
-        </FormWrapper>
-      ) : (
-        navigateHome()
-      )}
-    </>
+    <FormWrapper onSubmit={onSubmit}>
+      <InputWrapper error={error}>
+        <FormInput
+          type="email"
+          name="email"
+          onChange={onChange}
+          value={user.email}
+          placeholder="이메일을 입력해 주세요"
+          labelText="이메일 주소"
+          error={error}
+        />
+        <FormInput
+          type="password"
+          name="pwd"
+          onChange={onChange}
+          value={user.pwd}
+          placeholder="비밀번호를 입력해 주세요"
+          labelText="비밀번호"
+          error={error}
+        />
+      </InputWrapper>
+      {error && errorMessage}
+      <Button type="submit" styleType={"primary"} text={"로그인"} />
+    </FormWrapper>
   );
 };
 
