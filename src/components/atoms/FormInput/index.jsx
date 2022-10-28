@@ -17,44 +17,45 @@ const FormInput = React.forwardRef(
     ref
   ) => {
     const termsNecessary = labelText.includes("*")
-      ? labelText.split(" ")
+      ? labelText.split(",")
       : labelText;
 
     return (
       <FormInputWrapper>
-        <LabelStyle htmlFor={name}>
-          {typeof termsNecessary === "string" ? (
-            `${termsNecessary}`
-          ) : (
-            <>
-              <span>{termsNecessary[0]}</span> {termsNecessary[1]}
-            </>
-          )}
-        </LabelStyle>
-        <InputStyle
-          id={name}
-          type={type}
-          name={name}
-          onChange={onChange}
-          value={value}
-          placeholder={placeholder}
-          ref={ref}
-          error={error}
-        />
-        {validate && errMessage}
+        <FormInputInnerWrapper>
+          <LabelStyle htmlFor={name}>
+            {typeof termsNecessary === "string" ? (
+              `${termsNecessary}`
+            ) : (
+              <>
+                <span>{termsNecessary[0]}</span> {termsNecessary[1]}
+              </>
+            )}
+          </LabelStyle>
+          <InputStyle
+            id={name}
+            type={type}
+            name={name}
+            onChange={onChange}
+            value={value}
+            placeholder={placeholder}
+            ref={ref}
+            error={error}
+          />
+        </FormInputInnerWrapper>
+        {validate ? <ErrorText>{errMessage}</ErrorText> : null}
       </FormInputWrapper>
     );
   }
 );
 
 const FormInputWrapper = styled.div`
-  min-width: 450px;
+  width: 100%;
+`;
+const FormInputInnerWrapper = styled.div`
+  width: 450px;
   display: flex;
   align-items: center;
-
-  & + & {
-    margin-top: 40px;
-  }
 `;
 const LabelStyle = styled.label`
   ${(props) => props.theme.typography.description};
@@ -82,6 +83,13 @@ const InputStyle = styled.input`
     border-color: ${(props) => props.theme.color.main100};
     box-shadow: none;
   }
+`;
+
+const ErrorText = styled.div`
+  margin: 4px 0 0 130px;
+  ${(props) => props.theme.typography.bodySmRegular};
+  color: ${(props) => props.theme.color.main100};
+  word-break: keep-all;
 `;
 
 export default FormInput;

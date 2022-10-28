@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Cookies } from "react-cookie";
@@ -16,6 +16,9 @@ const SignIn = ({ userProfile, setUserProfile }) => {
 
   const cookies = new Cookies();
   const navigate = useNavigate();
+
+  const inputEmail = useRef();
+  const inputPwd = useRef();
 
   const [userInput, setUserInput] = useState({
     email: "",
@@ -35,6 +38,16 @@ const SignIn = ({ userProfile, setUserProfile }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setError(false);
+
+    if (userInput.email.length === 0) {
+      inputEmail.current.focus();
+      return;
+    }
+    if (userInput.pwd.length === 0) {
+      inputPwd.current.focus();
+      return;
+    }
+
     try {
       const loginObj = {
         email: userInput.email,
@@ -63,23 +76,23 @@ const SignIn = ({ userProfile, setUserProfile }) => {
         console.log("로그인 성공");
       }
     } catch (err) {
-      console.log(`error: ${err}`);
-      setErrorMessage(err.message);
+      setErrorMessage(err.response.data.errorMessage);
       setError(true);
     }
   };
 
   return (
     <FormWrapper onSubmit={onSubmit}>
-      <InputWrapper error={error}>
+      <InputWrapper>
         <FormInput
-          type="email"
+          type="text"
           name="email"
           onChange={onChange}
           value={userInput.email}
           placeholder="이메일을 입력해 주세요"
           labelText="이메일 주소"
           error={error}
+          ref={inputEmail}
         />
         <FormInput
           type="password"
@@ -89,9 +102,10 @@ const SignIn = ({ userProfile, setUserProfile }) => {
           placeholder="비밀번호를 입력해 주세요"
           labelText="비밀번호"
           error={error}
+          ref={inputPwd}
         />
       </InputWrapper>
-      {error && errorMessage}
+      {error && <ErrorText>{errorMessage}</ErrorText>}
       <Button type="submit" styleType={"primary"} text={"로그인"} />
     </FormWrapper>
   );
@@ -106,6 +120,21 @@ const FormWrapper = styled.form`
 
 const InputWrapper = styled.div`
   margin: 40px 0;
+
+  & > div + div {
+    margin-top: 30px;
+  }
+`;
+
+const ErrorText = styled.div`
+  ${(props) => props.theme.typography.bodyRg};
+  background-color: ${(props) => props.theme.color.grayScale.gray10};
+  color: ${(props) => props.theme.color.main100};
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 3px;
 `;
 
 export default SignIn;
