@@ -26,7 +26,7 @@ import Search from "./pages/Search";
 
 import NEWS_DATA from "./data/NEWS_DATA";
 
-let persistor = persistStore(store);
+export let persistor = persistStore(store);
 
 function App() {
   const [news, setNews] = useState(NEWS_DATA);

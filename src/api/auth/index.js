@@ -1,5 +1,8 @@
 import customAxios from "../../lib/axios/customAxios";
 import { Cookies } from "react-cookie";
+import { persistor } from "../../App";
+
+const cookies = new Cookies();
 
 export const signin = async (dto) => {
   const data = await customAxios.post("/api/v1/users/login", dto);
@@ -14,8 +17,6 @@ export const signup = async (dto) => {
 };
 
 export const userGet = async () => {
-  const cookies = new Cookies();
-
   const token = cookies.get("accessToken");
   const data = await customAxios.get("/api/v1/users", {
     headers: {
@@ -24,4 +25,10 @@ export const userGet = async () => {
   });
 
   return data;
+};
+
+export const signout = async () => {
+  cookies.remove("accessToken");
+  window.location.reload();
+  await persistor.purge();
 };

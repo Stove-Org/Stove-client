@@ -4,10 +4,10 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
-import signinCheckSlice from "./signinCheckSlice";
+import userSlice from "./userSlice";
 
 const reducers = combineReducers({
-  signinCheck: signinCheckSlice.reducer,
+  user: userSlice.reducer,
 });
 
 const persistConfig = {

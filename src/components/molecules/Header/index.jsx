@@ -1,14 +1,31 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+import { useSelector } from "react-redux";
+import { signout } from "../../../api/auth";
+import { setSigninState, setUser } from "../../../reducers/userSlice";
+
 import SearchBar from "../SearchBar";
 import Button from "../../atoms/Button";
 import stoveLogo from "../../../assets/svg/stovelogo.svg";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathName = location.pathname.slice(1);
+
+  const [openSetting, setOpenSetting] = useState(false);
+
+  const singinState = useSelector((state) => {
+    return state.user;
+  });
+  const isLogin = singinState.signinState;
+  const userNickname = singinState.userData && singinState.userData.nickname;
+
+  const handleSignOut = () => {
+    signout();
+  };
 
   return (
     <HeaderWrapper>
@@ -37,16 +54,40 @@ const Header = () => {
         </Nav>
       </HeaderLeft>
       <HeaderRight>
-        <Button
-          text={"로그인"}
-          styleType={"primary"}
-          onClick={() => navigate("/signin")}
-        />
-        <Button
-          text={"회원가입"}
-          styleType={"reverse"}
-          onClick={() => navigate("/signup")}
-        />
+        {isLogin ? (
+          <>
+            <UserNicknameToggle>
+              <UserNickname onClick={() => setOpenSetting(!openSetting)}>
+                {userNickname} 님 ▾
+              </UserNickname>
+              {openSetting ? (
+                <ul>
+                  <li>
+                    <Link to="/setting/edit">설정</Link>
+                  </li>
+                  <li>
+                    <button onClick={handleSignOut}>로그아웃</button>
+                  </li>
+                </ul>
+              ) : (
+                <></>
+              )}
+            </UserNicknameToggle>
+          </>
+        ) : (
+          <>
+            <Button
+              text={"로그인"}
+              styleType={"primary"}
+              onClick={() => navigate("/signin")}
+            />
+            <Button
+              text={"회원가입"}
+              styleType={"reverse"}
+              onClick={() => navigate("/signup")}
+            />
+          </>
+        )}
       </HeaderRight>
     </HeaderWrapper>
   );
@@ -89,5 +130,8 @@ const Nav = styled.nav`
 const CurrentLink = styled.a`
   color: ${(props) => props.theme.color.main100};
 `;
+
+const UserNicknameToggle = styled.div``;
+const UserNickname = styled.button``;
 
 export default Header;
