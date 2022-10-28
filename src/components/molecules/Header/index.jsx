@@ -1,21 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import { useSelector } from "react-redux";
 import { signout } from "../../../api/auth";
-import { setSigninState, setUser } from "../../../reducers/userSlice";
 
 import SearchBar from "../SearchBar";
 import Button from "../../atoms/Button";
 import stoveLogo from "../../../assets/svg/stovelogo.svg";
-import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathName = location.pathname.slice(1);
 
-  const [openSetting, setOpenSetting] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const singinState = useSelector((state) => {
     return state.user;
@@ -23,7 +22,24 @@ const Header = () => {
   const isLogin = singinState.signinState;
   const userNickname = singinState.userData && singinState.userData.nickname;
 
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (e.path[0].tagName !== "BUTTON") {
+        setIsOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", closeDropdown);
+
+    return () => document.body.removeEventListener("click", closeDropdown);
+  }, []);
+  const handleSetting = () => {
+    setIsOpen(false);
+    navigate("/setting/edit");
+  };
+
   const handleSignOut = () => {
+    setIsOpen(false);
     signout();
   };
 
@@ -57,18 +73,18 @@ const Header = () => {
         {isLogin ? (
           <>
             <UserNicknameToggle>
-              <UserNickname onClick={() => setOpenSetting(!openSetting)}>
-                {userNickname} 님 ▾
+              <UserNickname onClick={() => setIsOpen((prev) => !prev)}>
+                {userNickname} 님 <span>▾</span>
               </UserNickname>
-              {openSetting ? (
-                <ul>
+              {isOpen ? (
+                <SettingList>
                   <li>
-                    <Link to="/setting/edit">설정</Link>
+                    <button onClick={handleSetting}>설정</button>
                   </li>
                   <li>
                     <button onClick={handleSignOut}>로그아웃</button>
                   </li>
-                </ul>
+                </SettingList>
               ) : (
                 <></>
               )}
@@ -131,7 +147,61 @@ const CurrentLink = styled.a`
   color: ${(props) => props.theme.color.main100};
 `;
 
-const UserNicknameToggle = styled.div``;
-const UserNickname = styled.button``;
+const UserNicknameToggle = styled.div`
+  position: relative;
+  z-index: 9;
+`;
+const UserNickname = styled.button`
+  ${(props) => props.theme.typography.bodyRg};
+  background-color: ${(props) => props.theme.color.white};
+  border: none;
+  cursor: pointer;
+
+  & > span {
+    color: ${(props) => props.theme.color.grayScale.gray60};
+  }
+
+  &:hover > span {
+    color: ${(props) => props.theme.color.main100};
+  }
+`;
+const SettingList = styled.ul`
+  position: absolute;
+  top: 23px;
+  right: 0;
+  list-style: none;
+  width: 120px;
+  border-radius: 3px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: hidden;
+
+  & > li {
+    background-color: ${(props) => props.theme.color.white};
+    ${(props) => props.theme.typography.bodyRg};
+  }
+  & > li:hover {
+    background-color: ${(props) => props.theme.color.grayScale.gray10};
+  }
+  & > li + li {
+    border-width: 1px 0 0;
+    border-style: solid;
+    border-color: ${(props) => props.theme.color.grayScale.gray30};
+  }
+
+  & > li > button {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    background-color: ${(props) => props.theme.color.white};
+    border: none;
+    cursor: pointer;
+    ${(props) => props.theme.typography.bodyRg};
+    padding: 10px 16px;
+  }
+  & > li:hover > button {
+    background-color: ${(props) => props.theme.color.grayScale.gray10};
+  }
+`;
 
 export default Header;

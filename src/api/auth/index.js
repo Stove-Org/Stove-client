@@ -29,6 +29,6 @@ export const userGet = async () => {
 
 export const signout = async () => {
   cookies.remove("accessToken");
-  window.location.reload();
   await persistor.purge();
+  window.location.reload();
 };
