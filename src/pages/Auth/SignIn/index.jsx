@@ -76,7 +76,11 @@ const SignIn = ({ userProfile, setUserProfile }) => {
         console.log("로그인 성공");
       }
     } catch (err) {
-      setErrorMessage(err.response.data.errorMessage);
+      setErrorMessage(
+        (prev) =>
+          (prev =
+            "가입된 이메일이 존재하지 않거나 비밀번호가 일치하지 않습니다.\n다시 시도해주세요.")
+      );
       setError(true);
     }
   };
@@ -133,8 +137,9 @@ const ErrorText = styled.div`
   text-align: center;
   margin-bottom: 40px;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px;
   border-radius: 3px;
+  white-space: pre-wrap;
 `;
 
 export default SignIn;
