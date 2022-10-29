@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getParticipants } from "../../../api/next-lck";
+import { addCommas } from "../../../functions";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -7,6 +10,13 @@ import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
 
 const NextLCKRoster = () => {
+  const [participants, setParticipants] = useState("0");
+  useEffect(() => {
+    getParticipants().then((res) =>
+      setParticipants((prev) => (prev = addCommas(res.data.count)))
+    );
+  }, []);
+
   return (
     <>
       <PageTitle title={"Next LCK"} />
@@ -14,7 +24,7 @@ const NextLCKRoster = () => {
         <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
         <div>
           <p>10.01 - 11.30 진행 중</p>
-          <SubDescription>현재 100,000,000명 참여 중 🔥</SubDescription>
+          <SubDescription>현재 {participants}명 참여 중 🔥</SubDescription>
         </div>
       </Description>
       <DndProvider backend={HTML5Backend}>
