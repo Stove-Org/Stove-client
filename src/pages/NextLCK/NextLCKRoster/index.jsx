@@ -8,6 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
+import Countdown from "../../../components/atoms/Countdown";
 
 const NextLCKRoster = () => {
   const [participants, setParticipants] = useState("0");
@@ -23,7 +24,10 @@ const NextLCKRoster = () => {
       <Description>
         <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
         <div>
-          <p>10.01 - 11.30 진행 중</p>
+          <p>
+            스토브리그 종료까지{" "}
+            <span>{Countdown("2022-11-31T00:00:00+0900")}</span>
+          </p>
           <SubDescription>현재 {participants}명 참여 중 🔥</SubDescription>
         </div>
       </Description>
@@ -41,6 +45,10 @@ const Description = styled.div`
   p {
     ${(props) => props.theme.typography.description};
   }
+  p > span {
+    ${(props) => props.theme.typography.descriptionBold};
+  }
+
   & > div {
     text-align: end;
   }
