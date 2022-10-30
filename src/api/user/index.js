@@ -1,5 +1,6 @@
 import customAxios from "../../lib/axios/customAxios";
 import { Cookies } from "react-cookie";
+import { persistor } from "../../App";
 
 const cookies = new Cookies();
 
