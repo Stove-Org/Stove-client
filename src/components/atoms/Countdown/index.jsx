@@ -42,24 +42,15 @@ const Countdown = (date) => {
           setSeconds(59);
         }
       }
-
-      // 두 자릿수로 변환
-      if (parseInt(hour) < 10 && parseInt(seconds) > 0) {
-        setHour((prev) => "0" + parseInt(prev));
-      }
-      if (parseInt(minutes) < 11 && parseInt(seconds) > 0) {
-        setMinutes((prev) => "0" + parseInt(prev));
-      }
-      if (parseInt(seconds) < 11 && parseInt(seconds) > 0) {
-        setSeconds((prev) => "0" + parseInt(prev));
-      }
     }, 1000);
     return () => clearInterval(countdown);
   }, [day, hour, minutes, seconds]);
 
   return (
     <>
-      {day}일 {hour}:{minutes}:{seconds}
+      {day}일 {hour < 10 ? `0${hour}` : hour}:
+      {minutes < 10 ? `0${minutes}` : minutes}:
+      {seconds < 10 ? `0${seconds}` : seconds}
     </>
   );
 };

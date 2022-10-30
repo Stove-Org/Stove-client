@@ -47,6 +47,7 @@ const Description = styled.div`
   }
   p > span {
     ${(props) => props.theme.typography.descriptionBold};
+    color: ${(props) => props.theme.color.main100};
   }
 
   & > div {
