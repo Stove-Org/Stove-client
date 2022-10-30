@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { resetPassword } from "../../api/user";
+import { Cookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { setUserNickname } from "../../reducers/userSlice";
+
 import Button from "../../components/atoms/Button";
 import SettingInput from "../../components/atoms/SettingInput";
 import SettingFooter from "../../components/atoms/SettingFooter";
 
 const SettingChangePwd = () => {
+  const cookies = new Cookies();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [pwd, setPwd] = useState({
-    currentPwd: "",
-    newPwd: "",
-    newPwdCofirm: "",
+    currentPassword: "",
+    newPassword: "",
+    newPasswordConfirm: "",
   });
+
+  useEffect(() => {
+    if (cookies.get("accessToken")) {
+      return;
+    } else {
+      alert("Stove 회원만 이용 가능한 페이지입니다.");
+      navigate("/signin", { replace: true });
+    }
+  }, []);
 
   const onChange = (e) => {
     const target = e.target;
@@ -17,14 +36,20 @@ const SettingChangePwd = () => {
     setPwd({ ...pwd, [name]: value });
   };
 
+  const handleSubmit = async () => {
+    const { currentPassword, newPassword } = pwd;
+    await resetPassword({ currentPassword, newPassword });
+    alert("비밀번호가 정상적으로 변경되었습니다. 다시 로그인해주세요.");
+  };
+
   return (
     <>
       <SettingInput>
         <aside>현재 비밀번호 입력</aside>
         <input
           type="password"
-          name="currentPwd"
-          value={pwd.currentPwd}
+          name="currentPassword"
+          value={pwd.currentPassword}
           onChange={onChange}
         />
       </SettingInput>
@@ -32,8 +57,8 @@ const SettingChangePwd = () => {
         <aside>신규 비밀번호 입력</aside>
         <input
           type="password"
-          name="newPwd"
-          value={pwd.newPwd}
+          name="newPassword"
+          value={pwd.newPassword}
           onChange={onChange}
         />
       </SettingInput>
@@ -41,13 +66,17 @@ const SettingChangePwd = () => {
         <aside>신규 비밀번호 재입력</aside>
         <input
           type="password"
-          name="newPwdCofirm"
-          value={pwd.newPwdCofirm}
+          name="newPasswordConfirm"
+          value={pwd.newPasswordConfirm}
           onChange={onChange}
         />
       </SettingInput>
       <SettingFooter>
-        <Button styleType={"primary"} text={"비밀번호 변경"} />
+        <Button
+          styleType={"primary"}
+          text={"비밀번호 변경"}
+          onClick={handleSubmit}
+        />
       </SettingFooter>
     </>
   );

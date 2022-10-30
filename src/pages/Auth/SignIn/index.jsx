@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Cookies } from "react-cookie";
 import customAxios from "../../../lib/axios/customAxios";
-import { signin, userGet } from "../../../api/auth";
+import { signin } from "../../../api/auth";
+import { userGet } from "../../../api/user";
 
 import { useDispatch } from "react-redux";
 import { setSigninState, setUser } from "../../../reducers/userSlice";
