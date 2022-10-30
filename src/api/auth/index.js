@@ -16,17 +16,6 @@ export const signup = async (dto) => {
   return data;
 };
 
-export const userGet = async () => {
-  const token = cookies.get("accessToken");
-  const data = await customAxios.get("/api/v1/users", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return data;
-};
-
 export const signout = async () => {
   cookies.remove("accessToken");
   await persistor.purge();

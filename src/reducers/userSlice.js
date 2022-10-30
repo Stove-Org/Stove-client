@@ -26,11 +26,15 @@ const userSlice = createSlice({
       state.userData.nickname = initialState.userData.nickname;
       state.userData.registAt = initialState.userData.registAt;
     },
+    setUserNickname: (state, action) => {
+      state.userData.nickname = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(PURGE, () => initialState);
   },
 });
 
-export const { setSigninState, setUser, initUser } = userSlice.actions;
+export const { setSigninState, setUser, initUser, setUserNickname } =
+  userSlice.actions;
 export default userSlice;
