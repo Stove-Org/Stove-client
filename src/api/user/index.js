@@ -36,7 +36,7 @@ export const resetPassword = async (dto) => {
   return data;
 };
 
-export const validatePassword = async (dto) => {
+export const validatePasswordGet = async (dto) => {
   const token = cookies.get("accessToken");
   const data = await customAxios.post("/api/v1/users/validate-password", dto, {
     headers: {

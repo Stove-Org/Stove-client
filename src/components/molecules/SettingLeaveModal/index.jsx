@@ -10,7 +10,7 @@ import Button from "../../atoms/Button";
 import closeBtn from "../../../assets/svg/close.svg";
 
 import { setCloseModal } from "../../../reducers/modalSlice";
-import { userRemove, validatePassword } from "../../../api/user";
+import { userRemove, validatePasswordGet } from "../../../api/user";
 
 const SettingLeaveModal = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const SettingLeaveModal = () => {
 
     try {
       const data = { password: pwd };
-      await validatePassword(data);
+      await validatePasswordGet(data);
 
       try {
         await userRemove();
