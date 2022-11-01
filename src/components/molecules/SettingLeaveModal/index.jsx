@@ -38,7 +38,6 @@ const SettingLeaveModal = () => {
 
     try {
       const data = { password: pwd };
-      console.log(data);
       await validatePassword(data);
 
       try {
