@@ -1,6 +1,5 @@
 import customAxios from "../../lib/axios/customAxios";
 import { Cookies } from "react-cookie";
-import { persistor } from "../../App";
 
 const cookies = new Cookies();
 
@@ -29,6 +28,28 @@ export const resetNickname = async (dto) => {
 export const resetPassword = async (dto) => {
   const token = cookies.get("accessToken");
   const data = await customAxios.post("/api/v1/users/reset-password", dto, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};
+
+export const validatePassword = async (dto) => {
+  const token = cookies.get("accessToken");
+  const data = await customAxios.post("/api/v1/users/validate-password", dto, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};
+
+export const userRemove = async (dto) => {
+  const token = cookies.get("accessToken");
+  const data = await customAxios.delete("/api/v1/users/withdrawl", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

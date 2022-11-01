@@ -5,7 +5,6 @@ const SettingTemplate = () => {
   const location = useLocation();
   const pathName = location.pathname;
   const settingPath = pathName.slice(9);
-  console.log({ settingPath });
 
   return (
     <TemplateWrapper>
