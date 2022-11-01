@@ -4,6 +4,7 @@ import { PURGE } from "redux-persist";
 const name = "UserSlice";
 const initialState = {
   signinState: false,
+  isAdmin: false,
   userData: {
     email: "",
     nickname: "",
@@ -29,12 +30,15 @@ const userSlice = createSlice({
     setUserNickname: (state, action) => {
       state.userData.nickname = action.payload;
     },
+    setAdmin: (state, action) => {
+      state.isAdmin = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(PURGE, () => initialState);
   },
 });
 
-export const { setSigninState, setUser, initUser, setUserNickname } =
+export const { setSigninState, setUser, initUser, setUserNickname, setAdmin } =
   userSlice.actions;
 export default userSlice;

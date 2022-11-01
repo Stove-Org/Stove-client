@@ -54,7 +54,7 @@ function App() {
                 </Route>
                 <Route element={<AdminTemplate />}>
                   <Route
-                    path="/admin/progamer"
+                    path="/admin/progamers"
                     element={<SettingProgamers />}
                   />
                   <Route path="/admin/roster" element={<SettingRoster />} />

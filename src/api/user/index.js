@@ -57,3 +57,14 @@ export const userRemove = async (dto) => {
 
   return data;
 };
+
+export const adminCheck = async () => {
+  const token = cookies.get("accessToken");
+  const data = await customAxios.get("/api/v1/users/admin-check", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};

@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { Cookies } from "react-cookie";
 import customAxios from "../../../lib/axios/customAxios";
 import { signin } from "../../../api/auth";
-import { userGet } from "../../../api/user";
+import { userGet, adminCheck } from "../../../api/user";
 
 import { useDispatch } from "react-redux";
-import { setSigninState, setUser } from "../../../reducers/userSlice";
+import { setSigninState, setUser, setAdmin } from "../../../reducers/userSlice";
 
 import Button from "../../../components/atoms/Button";
 import FormInput from "../../../components/atoms/FormInput";
@@ -73,8 +73,21 @@ const SignIn = ({ userProfile, setUserProfile }) => {
           dispatch(setUser(data));
         });
 
-        navigate("/", { replace: true });
-        console.log("로그인 성공");
+        await adminCheck()
+          .then((res) => {
+            const { status } = res;
+            if (status === 201 || status === 200) {
+              dispatch(setAdmin(true));
+              navigate("/", { replace: true });
+              return;
+            }
+          })
+          .catch(() => {
+            // 서버 주소가 뜨길래 에러 콘솔을 지워버림
+            // 브라우저 스펙이라 이렇게 지울수밖에..
+            console.clear();
+            navigate("/", { replace: true });
+          });
       }
     } catch (err) {
       setErrorMessage(
