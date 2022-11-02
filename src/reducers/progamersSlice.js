@@ -18,8 +18,15 @@ const progamersSlice = createSlice({
       );
       state.progamers[currentIndex] = action.payload;
     },
+    deleteProgamer: (state, action) => {
+      const newProgamers = state.progamers.filter(
+        (el) => el.id !== action.payload
+      );
+      state.progamers = newProgamers;
+    },
   },
 });
 
-export const { setInitProgamers, setUpdateProgamer } = progamersSlice.actions;
+export const { setInitProgamers, setUpdateProgamer, deleteProgamer } =
+  progamersSlice.actions;
 export default progamersSlice;

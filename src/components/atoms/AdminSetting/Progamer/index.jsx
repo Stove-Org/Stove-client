@@ -1,9 +1,12 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { setUpdateProgamer } from "../../../../reducers/progamersSlice";
+import {
+  setUpdateProgamer,
+  deleteProgamer,
+} from "../../../../reducers/progamersSlice";
 import Alias from "./Alias";
-import { progamerUpdate } from "../../../../api/admin";
+import { progamerUpdate, progamerDelete } from "../../../../api/admin";
 
 const Progamer = ({ item }) => {
   const dispatch = useDispatch();
@@ -141,6 +144,23 @@ const Progamer = ({ item }) => {
       dispatch(setUpdateProgamer(progamer));
       progamerUpdate(progamer, item.id);
       setIsEdit(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleRemove = async () => {
+    try {
+      if (
+        window.confirm(
+          `[id: ${item.id}, nickname: ${item.nickname}] 정말 삭제하시겠습니까?`
+        )
+      ) {
+        await progamerDelete(item.id);
+        dispatch(deleteProgamer(item.id));
+      } else {
+        return;
+      }
     } catch (err) {
       console.log(err);
     }
@@ -290,7 +310,7 @@ const Progamer = ({ item }) => {
           <button onClick={handleEdit}>수정</button>
         )}
         <button onClick={handleSubmit}>저장</button>
-        <button>삭제</button>
+        <button onClick={handleRemove}>삭제</button>
       </StyleTd>
     </>
   );
