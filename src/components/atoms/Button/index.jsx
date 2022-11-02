@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = ({ text, styleType, onClick, type, icon }) => {
+const Button = ({ text, styleType, onClick, type, icon, isActive }) => {
   const isIcon = !!icon;
   const btnStyle = [
     "primary",
@@ -17,6 +17,7 @@ const Button = ({ text, styleType, onClick, type, icon }) => {
       type={type}
       btnStyle={btnStyle}
       isIcon={isIcon}
+      isActive={isActive}
     >
       {text ? text : icon}
     </ButtonStyle>
@@ -43,6 +44,7 @@ const ButtonStyle = styled.button`
   align-items: ${(props) => props.isIcon && "center"};
   width: ${(props) => props.isIcon && "40px"};
   height: ${(props) => props.isIcon && "40px"};
+  cursor: ${(props) => (props.isActive ? "pointer" : "default")};
 
   ${({ btnStyle }) => {
     switch (btnStyle) {
@@ -88,6 +90,7 @@ const ButtonStyle = styled.button`
 
 Button.defaultProps = {
   styleType: "default",
+  isActive: true,
 };
 
 export default Button;

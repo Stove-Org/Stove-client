@@ -1,40 +1,55 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const SettingTemplate = () => {
+const AdminTemplate = () => {
   const location = useLocation();
   const pathName = location.pathname;
-  const settingPath = pathName.slice(9);
+  const settingPath = pathName.slice(7);
+  const navigate = useNavigate();
+
+  const isAdmin = useSelector((state) => {
+    return state.user.isAdmin;
+  });
+
+  useEffect(() => {
+    if (!isAdmin) {
+      alert("잘못된 접근입니다.");
+      navigate("/", { replace: true });
+    }
+  }, [isAdmin]);
 
   return (
     <TemplateWrapper>
       <SideMenu>
         <ul>
-          {settingPath === "edit" ? (
+          {settingPath === "progamers" ? (
             <CurrentList>
-              <Link to="/setting/edit">정보 관리</Link>
+              <Link to="/admin/progamers">프로게이머 관리</Link>
             </CurrentList>
           ) : (
             <UnselectedList>
-              <Link to="/setting/edit">정보 관리</Link>
+              <Link to="/admin/progamers">프로게이머 관리</Link>
             </UnselectedList>
           )}
-          {settingPath === "change-password" ? (
+          {settingPath === "roster" ? (
             <CurrentList>
-              <Link to="/setting/change-password">비밀번호 변경</Link>
+              <Link to="/admin/roster">로스터 관리</Link>
             </CurrentList>
           ) : (
             <UnselectedList>
-              <Link to="/setting/change-password">비밀번호 변경</Link>
+              <Link to="/admin/roster">로스터 관리</Link>
             </UnselectedList>
           )}
-          {settingPath === "leave" ? (
+          {settingPath === "news" ? (
             <CurrentList>
-              <Link to="/setting/leave">회원탈퇴</Link>
+              <Link to="/admin/news">뉴스 관리</Link>
             </CurrentList>
           ) : (
             <UnselectedList>
-              <Link to="/setting/leave">회원탈퇴</Link>
+              <Link to="/admin/news">뉴스 관리</Link>
             </UnselectedList>
           )}
         </ul>
@@ -87,8 +102,8 @@ const CurrentList = styled(List)`
 `;
 
 const OutletWrapper = styled.div`
-  flex-grow: 1;
+  width: 100%;
   padding: 40px;
 `;
 
-export default SettingTemplate;
+export default AdminTemplate;

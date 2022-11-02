@@ -1,10 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { resetPassword } from "../../api/user";
+import { validatePasswordGet, resetPassword } from "../../api/user";
 import { Cookies } from "react-cookie";
 import { validatePassword } from "../../functions";
 import styled from "styled-components";
 import { signout } from "../../api/auth";
+import { persistor } from "../../App";
 
 import Button from "../../components/atoms/Button";
 import SettingInput from "../../components/atoms/SettingInput";
@@ -110,10 +111,10 @@ const SettingChangePwd = () => {
   };
 
   const handleSubmit = async () => {
-    const { currentPassword, newPassword } = pwd;
+    const { currentPassword, newPassword, newPasswordConfirm } = pwd;
 
     // 현재 비밀번호 length 0일 경우 return
-    if (pwd.currentPassword.length < 1) {
+    if (currentPassword.length < 1) {
       currentPw.current.focus();
       setErrorMessage({
         ...erroMessage,
@@ -124,7 +125,7 @@ const SettingChangePwd = () => {
       return;
     }
     // 신규 비밀번호 유효성 검사 return
-    if (validatePassword(pwd.newPassword) || validate.newPassword) {
+    if (validatePassword(newPassword) || validate.newPassword) {
       newPw.current.focus();
       setErrorMessage({
         ...erroMessage,
@@ -135,16 +136,13 @@ const SettingChangePwd = () => {
       return;
     }
     // 신규 비밀번호와 신규 비밀번호 확인이 다르면 return
-    if (
-      pwd.newPasswordConfirm !== pwd.newPassword ||
-      validate.newPasswordConfirm
-    ) {
+    if (newPasswordConfirm !== newPassword || validate.newPasswordConfirm) {
       newpwConfirm.current.focus();
       setValidate({ ...validate, newPasswordConfirm: true });
       return;
     }
     // 현재 비밀번호와 신규 비밀번호가 같을경우 return
-    if (pwd.currentPassword === pwd.newPassword) {
+    if (currentPassword === newPassword) {
       newPw.current.focus();
       setErrorMessage({
         ...erroMessage,
@@ -157,11 +155,22 @@ const SettingChangePwd = () => {
     }
 
     try {
-      await resetPassword({ currentPassword, newPassword });
-      setValidate({ ...validate, currentPassword: true });
-      alert("비밀번호가 정상적으로 변경되었습니다. 다시 로그인해 주세요.");
-      signout();
-      navigate("/signin");
+      const data = { password: currentPassword };
+      await validatePasswordGet(data);
+
+      try {
+        const data = { newPassword };
+
+        await resetPassword(data);
+        setValidate({ ...validate, currentPassword: true });
+        cookies.remove("accessToken");
+        await persistor.purge();
+        alert("비밀번호가 정상적으로 변경되었습니다. 다시 로그인해 주세요.");
+        signout();
+        navigate("/signin");
+      } catch (err) {
+        console.log(err);
+      }
     } catch (err) {
       currentPw.current.focus();
       setErrorMessage({

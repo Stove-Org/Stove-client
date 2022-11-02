@@ -16,6 +16,10 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const isAdmin = useSelector((state) => {
+    return state.user.isAdmin;
+  });
+
   const singinState = useSelector((state) => {
     return state.user;
   });
@@ -41,6 +45,11 @@ const Header = () => {
   const handleSignOut = () => {
     setIsOpen(false);
     signout();
+  };
+
+  const handleAdmin = () => {
+    setIsOpen(false);
+    navigate("/admin/progamers");
   };
 
   return (
@@ -81,6 +90,11 @@ const Header = () => {
                   <li>
                     <button onClick={handleSetting}>설정</button>
                   </li>
+                  {isAdmin ? (
+                    <li>
+                      <button onClick={handleAdmin}>관리자 설정</button>
+                    </li>
+                  ) : null}
                   <li>
                     <button onClick={handleSignOut}>로그아웃</button>
                   </li>
