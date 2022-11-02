@@ -42,7 +42,7 @@
         <rect id="b2ytszaigf" width="16.078" height="15.984" x="0" y="0" rx="4.266"/>
         <path id="urzi343ksb" d="M18.281 0C21.75 0 24 2.25 24 5.719V18.28C24 21.75 21.75 24 18.281 24H5.72C2.25 24 0 21.75 0 18.281V5.72C0 2.25 2.25 0 5.719 0H18.28z"/>
     </defs>
-    <g fill="none" fill-rule="evenodd">
+    <g fill="none" fillRule="evenodd">
         <path fill="url(#jux83d4y5a)" d="M18.281 0C21.75 0 24 2.25 24 5.719V18.28C24 21.75 21.75 24 18.281 24H5.72C2.25 24 0 21.75 0 18.281V5.72C0 2.25 2.25 0 5.719 0H18.28z"/>
         <mask id="0tnwxpa0nd" fill="#fff">
             <use xlink:href="#urzi343ksb"/>

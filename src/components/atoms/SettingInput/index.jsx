@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-const SettingInput = ({ children }) => {
-  return <SettingWrapper>{children}</SettingWrapper>;
+const SettingInput = ({ children, inputWidth }) => {
+  return <SettingWrapper inputWidth={inputWidth}>{children}</SettingWrapper>;
 };
 
 const SettingWrapper = styled.div`
   ${(props) => props.theme.typography.bodyRg};
-  display: flex;
-  align-items: center;
   padding: 0 0 20px;
 
   & + & {
@@ -17,16 +15,17 @@ const SettingWrapper = styled.div`
     border-style: solid;
   }
 
-  & > aside {
+  & > div > aside {
     min-width: 140px;
     padding-right: 20px;
   }
 
   & > div {
-    color: ${(props) => props.theme.color.grayScale.gray60};
+    display: flex;
+    align-items: center;
   }
 
-  & > input {
+  & > div > input {
     ${(props) => props.theme.typography.bodyRg};
     outline: none;
     border-color: ${(props) => props.theme.color.grayScale.gray30};
@@ -39,7 +38,8 @@ const SettingWrapper = styled.div`
     box-shadow: none;
 
     padding: 20px 12px;
-    width: 200px;
+    /* width: 200px; */
+    width: ${(props) => (props.inputWidth === "100%" ? "100%" : "200px")};
     height: 34px;
 
     &:focus {
@@ -49,5 +49,9 @@ const SettingWrapper = styled.div`
     }
   }
 `;
+
+SettingInput.defaultProps = {
+  inputWidth: "auto",
+};
 
 export default SettingInput;

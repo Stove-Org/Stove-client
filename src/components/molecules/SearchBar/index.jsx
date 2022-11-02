@@ -16,7 +16,7 @@ const SearchBar = () => {
   return (
     <>
       <SearchInput
-        type="search"
+        type="text"
         value={searchTxt}
         onChange={(e) => setSearchTxt(e.target.value)}
         onKeyPress={onKeyPress}

@@ -11,10 +11,10 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <FooterInnerWrapper>
-        <MailToLink href="mailto:stove1101@gmail.com" style={styles}>
+        <MailToLink href="mailto:stovegg@gmail.com" style={styles}>
           문의
         </MailToLink>
-        <MailToLink href="mailto:stove1101@gmail.com">제휴</MailToLink>
+        <MailToLink href="mailto:stovegg@gmail.com">제휴</MailToLink>
       </FooterInnerWrapper>
       <FooterInnerWrapper>
         <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
