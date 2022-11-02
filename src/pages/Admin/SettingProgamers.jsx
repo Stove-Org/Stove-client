@@ -4,6 +4,7 @@ import { progamerGet } from "../../api/admin";
 import EditProgamer from "../../components/molecules/Admin/EditProgamer";
 import { useDispatch } from "react-redux";
 import { setInitProgamers } from "../../reducers/progamersSlice";
+import Addprogamer from "../../components/molecules/Admin/Addprogamer";
 
 const SettingProgamers = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const SettingProgamers = () => {
 
   return (
     <SettingWrapper>
-      <button>프로게이머 추가하기</button>
+      <Addprogamer />
       <StyleTable>
         <thead>
           <tr>

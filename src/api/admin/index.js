@@ -10,9 +10,19 @@ export const progamerGet = async () => {
 };
 
 export const progamerUpdate = async (dto, progamerId) => {
-  console.log({ dto, progamerId });
   const token = cookies.get("accessToken");
   const data = await customAxios.put(`/api/v1/progamers/${progamerId}`, dto, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};
+
+export const progamerPost = async (dto) => {
+  const token = cookies.get("accessToken");
+  const data = await customAxios.post("/api/v1/progamers", dto, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
