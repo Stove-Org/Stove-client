@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { progamerGet } from "../../api/admin";
-import AdminEditProgamer from "../../components/molecules/AdminEditProgamer";
+import EditProgamer from "../../components/molecules/Admin/EditProgamer";
 import { useDispatch } from "react-redux";
 import { setInitProgamers } from "../../reducers/progamersSlice";
 
@@ -30,8 +30,7 @@ const SettingProgamers = () => {
           </tr>
         </thead>
         <tbody>
-          {/* <AdminEditProgamer progamers={progamers} /> */}
-          <AdminEditProgamer />
+          <EditProgamer />
         </tbody>
       </StyleTable>
     </SettingWrapper>

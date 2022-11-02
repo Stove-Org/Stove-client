@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import Progamer from "../../atoms/AdminSetting/Progamer";
+import Progamer from "../../../atoms/AdminSetting/Progamer";
 
-const AdminEditProgamer = () => {
+const EditProgamer = () => {
   const progamers = useSelector((state) => {
     return state.progamers.progamers;
   });
@@ -23,4 +23,4 @@ const AdminEditProgamer = () => {
   );
 };
 
-export default AdminEditProgamer;
+export default EditProgamer;
