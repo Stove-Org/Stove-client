@@ -6,10 +6,12 @@ import thunk from "redux-thunk";
 
 import userSlice from "./userSlice";
 import modalSlice from "./modalSlice";
+import progamersSlice from "./progamersSlice";
 
 const reducers = combineReducers({
   user: userSlice.reducer,
   modal: modalSlice.reducer,
+  progamers: progamersSlice.reducer,
 });
 
 const persistConfig = {

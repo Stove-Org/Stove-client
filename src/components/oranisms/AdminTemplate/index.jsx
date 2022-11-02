@@ -102,7 +102,7 @@ const CurrentList = styled(List)`
 `;
 
 const OutletWrapper = styled.div`
-  flex-grow: 1;
+  width: 100%;
   padding: 40px;
 `;
 
