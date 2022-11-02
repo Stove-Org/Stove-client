@@ -130,7 +130,11 @@ const Addprogamer = () => {
   };
   return (
     <AddprogamerWrapper>
-      <button onClick={() => setIsOpen(true)}>프로게이머 추가하기</button>
+      {isOpen ? (
+        <button onClick={() => setIsOpen(false)}>닫기</button>
+      ) : (
+        <button onClick={() => setIsOpen(true)}>프로게이머 추가하기</button>
+      )}
       {isOpen ? (
         <div>
           <div>
@@ -203,8 +207,7 @@ const Addprogamer = () => {
             <button onClick={onDecreaseWorlds}>-</button>
           </div>
           <div>*alias 는 등록 후 수정</div>
-          <button onClick={() => setIsOpen(false)}>취소</button>
-          <button onClick={handleSubmit}>추가</button>
+          <button onClick={handleSubmit}>선수 추가하기</button>
         </div>
       ) : (
         <></>
