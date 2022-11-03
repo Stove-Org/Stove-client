@@ -60,7 +60,8 @@ const SignIn = ({ userProfile, setUserProfile }) => {
       console.log(2);
 
       if (status === 201 || status === 200) {
-        console.log(3);
+        console.log(status);
+        console.log(data);
         cookies.set("accessToken", data, {
           secure: true,
         });
