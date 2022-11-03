@@ -3,16 +3,16 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-import gengLogo from "../../../assets/img/LCKTeamLogo/GEN.png";
-import t1Logo from "../../../assets/img/LCKTeamLogo/T1.png";
-import sandboxLogo from "../../../assets/img/LCKTeamLogo/LSB.png";
-import dkLogo from "../../../assets/img/LCKTeamLogo/DK.png";
-import ktLogo from "../../../assets/img/LCKTeamLogo/KT.png";
-import drxLogo from "../../../assets/img/LCKTeamLogo/DRX.png";
-import kwangdongLogo from "../../../assets/img/LCKTeamLogo/KDF.png";
-import nongShimLogo from "../../../assets/img/LCKTeamLogo/NS.png";
-import freditLogo from "../../../assets/img/LCKTeamLogo/BRO.png";
-import hanwhaLogo from "../../../assets/img/LCKTeamLogo/HLE.png";
+import gengLogo from "../../../assets/img/LCKTeamLogo/GEN-logo.png";
+import t1Logo from "../../../assets/img/LCKTeamLogo/T1-logo.png";
+import sandboxLogo from "../../../assets/img/LCKTeamLogo/LSB-logo.png";
+import dkLogo from "../../../assets/img/LCKTeamLogo/DK-logo.png";
+import ktLogo from "../../../assets/img/LCKTeamLogo/KT-logo.png";
+import drxLogo from "../../../assets/img/LCKTeamLogo/DRX-logo.png";
+import kwangdongLogo from "../../../assets/img/LCKTeamLogo/KDF-logo.png";
+import nongShimLogo from "../../../assets/img/LCKTeamLogo/NS-logo.png";
+import freditLogo from "../../../assets/img/LCKTeamLogo/BRO-logo.png";
+import hanwhaLogo from "../../../assets/img/LCKTeamLogo/HLE-logo.png";
 
 const SliderLCKLogo = () => {
   const state = {
