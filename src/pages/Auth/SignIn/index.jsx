@@ -48,7 +48,7 @@ const SignIn = ({ userProfile, setUserProfile }) => {
       inputPwd.current.focus();
       return;
     }
-
+    console.log(1);
     try {
       const loginObj = {
         email: userInput.email,
@@ -57,8 +57,10 @@ const SignIn = ({ userProfile, setUserProfile }) => {
 
       const res = await signin(loginObj);
       const { data, status } = res;
+      console.log(2);
 
       if (status === 201 || status === 200) {
+        console.log(3);
         cookies.set("accessToken", data, {
           secure: true,
         });
@@ -66,13 +68,18 @@ const SignIn = ({ userProfile, setUserProfile }) => {
           Authorization: `Bearer ${data}`,
         };
 
+        console.log(4);
         dispatch(setSigninState(true));
+        console.log(5);
 
         await userGet().then((res) => {
+          console.log(6);
           const data = res.data;
           dispatch(setUser(data));
+          console.log(7);
         });
 
+        console.log(8);
         await adminCheck()
           .then((res) => {
             const { status } = res;
