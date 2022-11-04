@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getParticipants } from "../../../api/next-lck";
+import {
+  getParticipants,
+  getDefaultRosters,
+  getMyRosters,
+} from "../../../api/next-lck";
 import { addCommas } from "../../../functions";
 
 import { DndProvider } from "react-dnd";
@@ -8,14 +12,17 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
-import Countdown from "../../../components/atoms/Countdown";
+// import Countdown from "../../../components/atoms/Countdown";
 
 const NextLCKRoster = () => {
   const [participants, setParticipants] = useState("0");
+
   useEffect(() => {
     getParticipants().then((res) =>
       setParticipants((prev) => (prev = addCommas(res.data.count)))
     );
+    getDefaultRosters().then(console.log);
+    getMyRosters().then(console.log);
   }, []);
 
   return (
@@ -24,10 +31,10 @@ const NextLCKRoster = () => {
       <Description>
         <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
         <div>
-          <p>
+          {/* <p>
             스토브리그 종료까지{" "}
             <span>{Countdown("2022-11-31T00:00:00+0900")}</span>
-          </p>
+          </p> */}
           <SubDescription>현재 {participants}명 참여 중 🔥</SubDescription>
         </div>
       </Description>
