@@ -1,15 +1,22 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 import PageTitle from "../../components/atoms/PageTitle";
 import HotNewsLayout from "../../components/molecules/HotNewsLayout";
 import NewsList from "../../components/atoms/NewsList";
 
-const News = ({ news }) => {
-  const firstHotNews = news[0];
-  const hotNews = [];
-  for (let i = 1; i < 4; i++) {
-    hotNews.push(news[i]);
-  }
+const News = () => {
+  const firstHotNews = useSelector((state) => {
+    if (state.news.hotNews !== null) {
+      return state.news.hotNews[0];
+    }
+  });
+
+  const hotNews = useSelector((state) => {
+    if (state.news.hotNews !== null) {
+      return state.news.hotNews.slice(1, 4);
+    }
+  });
 
   return (
     <>

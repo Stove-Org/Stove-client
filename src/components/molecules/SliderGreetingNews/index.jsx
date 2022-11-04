@@ -9,7 +9,9 @@ import GreetingNews from "./GreetingNews";
 
 const SliderGreetingNews = () => {
   const hotNews = useSelector((state) => {
-    return state.news.hotNews;
+    if (state.news.hotNews !== null) {
+      return state.news.hotNews;
+    }
   });
 
   const state = {
