@@ -1,11 +1,17 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { getPublishedNews } from "../../api/news";
 
 import PageTitle from "../../components/atoms/PageTitle";
 import HotNewsLayout from "../../components/molecules/HotNewsLayout";
 import NewsList from "../../components/atoms/NewsList";
 
 const News = () => {
+  useEffect(() => {
+    getPublishedNews(0, 10).then(console.log);
+  }, []);
+
   const firstHotNews = useSelector((state) => {
     if (state.news.hotNews !== null) {
       return state.news.hotNews[0];
@@ -22,12 +28,13 @@ const News = () => {
     <>
       <PageTitle title={"오늘의 HOT 뉴스"} />
       <NewsWrapper>
+        {/* 여기서 지금 에러남 */}
         <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} />
       </NewsWrapper>
 
       <PageTitle title={"최신 뉴스"} />
       <NewsWrapper>
-        {news.map((el) => (
+        {/* {news.map((el) => (
           <NewsList
             key={el.id}
             linkUrl={el.linkUrl}
@@ -35,7 +42,7 @@ const News = () => {
             headline={el.headline}
             uploadedAt={el.uploadedAt}
           />
-        ))}
+        ))} */}
       </NewsWrapper>
     </>
   );
