@@ -15,14 +15,14 @@ const EditRoster = () => {
   const [progamers, setProgamers] = useState(PROGAMERS_DATA);
 
   const handleRosterDrop = (index, item, lastDropppedProgamer) => {
-    const { nickName } = item;
+    const { nickname } = item;
 
     // 📌 현재 Drag 중인 progamer drop하는 roster에 [UPDATE] 📌
     // 📌 이미 roster에 올라와있는 선수가 다른 roster로 이동할 때 기존 Drop roster는 제거하고 Drop 📌
     const prevRosterProgamer = rosters.find(
       (item) =>
         item.lastDropppedProgamer &&
-        item.lastDropppedProgamer.nickName === nickName
+        item.lastDropppedProgamer.nickname === nickname
     );
 
     if (prevRosterProgamer) {
@@ -55,8 +55,8 @@ const EditRoster = () => {
     }
 
     // 📌 Drop할 때 이전 게이머 제거하고 현재 드랍된 게이머 리스트에 추가하기 📌
-    // 1. progamers useState 배열에 드랍하는 nickName을 제외하고 새 배열에 담는다.
-    let newProgamers = progamers.filter((item) => item.nickName !== nickName);
+    // 1. progamers useState 배열에 드랍하는 nickname을 제외하고 새 배열에 담는다.
+    let newProgamers = progamers.filter((item) => item.nickname !== nickname);
     // 2. lastDropppedProgamer가 null이 아닌 경우
     //    Drop하는 로스터 포지션의 이전 lastDropppedProgamer 정보를 새 배열에 push 한다
     if (lastDropppedProgamer !== null) {
@@ -64,8 +64,8 @@ const EditRoster = () => {
     }
 
     const sortedProgamers = newProgamers.sort((a, b) => {
-      if (a.nickName > b.nickName) return 1;
-      if (a.nickName < b.nickName) return -1;
+      if (a.nickname > b.nickname) return 1;
+      if (a.nickname < b.nickname) return -1;
       return 0;
     });
     // 3. set함수로 [UPDATE] 해준다.
@@ -73,12 +73,12 @@ const EditRoster = () => {
   };
 
   const handleProgamerListDrop = (item) => {
-    const { nickName } = item;
+    const { nickname } = item;
 
-    // 1. rosters에서 item.nickName과 같은 lastDropppedProgamer.nickName = null 로 변경
+    // 1. rosters에서 item.nickname과 같은 lastDropppedProgamer.nickname = null 로 변경
     const removeProgamer = rosters.filter((item) => {
       if (item.lastDropppedProgamer) {
-        return item.lastDropppedProgamer.nickName === nickName;
+        return item.lastDropppedProgamer.nickname === nickname;
       }
     });
     const index = removeProgamer[0].id - 1;
@@ -94,8 +94,8 @@ const EditRoster = () => {
 
     // 2. progamers에 객체 push 후 sort로 배열정렬
     const newProgamersArr = [...progamers, item].sort((a, b) => {
-      if (a.nickName > b.nickName) return 1;
-      if (a.nickName < b.nickName) return -1;
+      if (a.nickname > b.nickname) return 1;
+      if (a.nickname < b.nickname) return -1;
       return 0;
     });
 
@@ -106,13 +106,13 @@ const EditRoster = () => {
     // Mount 될 때 이미 로스터에 올라와있는 선수들은 progamers 배열에서 [REMOVE]
     const droppedProgamers = rosters
       .filter((item) => item.lastDropppedProgamer !== null)
-      .map((item) => item.lastDropppedProgamer.nickName);
+      .map((item) => item.lastDropppedProgamer.nickname);
 
     const unDroppedProgamer = progamers
-      .filter((item) => droppedProgamers.includes(item.nickName) !== true)
+      .filter((item) => droppedProgamers.includes(item.nickname) !== true)
       .sort((a, b) => {
-        if (a.nickName > b.nickName) return 1;
-        if (a.nickName < b.nickName) return -1;
+        if (a.nickname > b.nickname) return 1;
+        if (a.nickname < b.nickname) return -1;
         return 0;
       });
 
@@ -157,8 +157,8 @@ const EditRoster = () => {
         ref={drop}
         style={{ overflow: "hidden", clear: "both", backgroundColor }}
       >
-        {progamers.map(({ nickName, birthday }, index) => (
-          <Progamer nickName={nickName} birthday={birthday} key={index} />
+        {progamers.map(({ nickname, birthday }, index) => (
+          <Progamer nickname={nickname} birthday={birthday} key={index} />
         ))}
       </div>
     </div>
