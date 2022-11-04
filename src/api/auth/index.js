@@ -6,7 +6,6 @@ const cookies = new Cookies();
 
 export const signin = async (dto) => {
   const data = await customAxios.post("/api/v1/users/login", dto);
-
   return data;
 };
 

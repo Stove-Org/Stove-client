@@ -41,3 +41,14 @@ export const progamerPost = async (dto) => {
 
   return data;
 };
+
+export const RosterPost = async (dto) => {
+  const token = cookies.get("accessToken");
+  const data = await customAxios.post("/api/v1/next_lck/default", dto, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};

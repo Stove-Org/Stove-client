@@ -4,24 +4,28 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
   return (
     <HotNewsWrapper>
       <HotNewsInnerWrapper>
-        <FirstHotNewsWrapper
-          href={firstHotNews.linkUrl}
+        <FirstHotNews
+          href={hotNews[0].linkUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >
-          <FirstHotImgUrlWrapper
-            style={{ backgroundImage: `url(${firstHotNews.imgUrl})` }}
-          />
+          {firstHotNews.imgUrl ? (
+            <FirstHotImgUrl
+              style={{ backgroundImage: `url(${firstHotNews.imgUrl})` }}
+            />
+          ) : (
+            <DefaultFirstHotImgUrl />
+          )}
           <FirstHotNewsHeadline>
             <FirstHeadline>{firstHotNews.headline}</FirstHeadline>
             <HeadlineDate>{firstHotNews.uploadedAt}</HeadlineDate>
           </FirstHotNewsHeadline>
-        </FirstHotNewsWrapper>
+        </FirstHotNews>
       </HotNewsInnerWrapper>
       <HotNewsInnerWrapper>
         {/* 매일 클릭수 가장 높은 뉴스 4개 */}
         {hotNews.map((el) => (
-          <RestHotNewsInnerWrapper
+          <RestHotNewsInner
             key={el.id}
             href={el.linkUrl}
             target={"_blank"}
@@ -31,10 +35,8 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
               <Headline>{el.headline}</Headline>
               <HeadlineDate>{el.uploadedAt}</HeadlineDate>
             </RestHotNewsHeadline>
-            <RestHotImgUrlWrapper
-              style={{ backgroundImage: `url(${el.imgUrl})` }}
-            />
-          </RestHotNewsInnerWrapper>
+            <RestHotImgUrl style={{ backgroundImage: `url(${el.imgUrl})` }} />
+          </RestHotNewsInner>
         ))}
       </HotNewsInnerWrapper>
     </HotNewsWrapper>
@@ -56,6 +58,7 @@ const ImageWrapper = styled.div`
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
 `;
 const Headline = styled.h4`
   ${(props) => props.theme.typography.headRgBold};
@@ -67,7 +70,7 @@ const HeadlineDate = styled.div`
 `;
 
 // First Hot News
-const FirstHotNewsWrapper = styled.a`
+const FirstHotNews = styled.a`
   position: relative;
 
   &::before {
@@ -77,6 +80,7 @@ const FirstHotNewsWrapper = styled.a`
     bottom: 0px;
     height: 50%;
     width: 100%;
+    border-radius: 0 0 3px 3px;
     background: linear-gradient(
       transparent,
       rgba(0, 0, 0, 0),
@@ -89,9 +93,15 @@ const FirstHotNewsWrapper = styled.a`
     text-decoration: underline;
   }
 `;
-const FirstHotImgUrlWrapper = styled(ImageWrapper)`
+const FirstHotImgUrl = styled(ImageWrapper)`
   width: 100%;
   height: 100%;
+`;
+const DefaultFirstHotImgUrl = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
 `;
 const FirstHotNewsHeadline = styled.div`
   position: absolute;
@@ -105,7 +115,7 @@ const FirstHeadline = styled(Headline)`
 `;
 
 // Rest Hot News
-const RestHotNewsInnerWrapper = styled.a`
+const RestHotNewsInner = styled.a`
   display: flex;
   align-items: center;
   padding: 10px 0;
@@ -130,7 +140,7 @@ const RestHotNewsHeadline = styled.div`
   word-break: keep-all;
   overflow-wrap: break-word;
 `;
-const RestHotImgUrlWrapper = styled(ImageWrapper)`
+const RestHotImgUrl = styled(ImageWrapper)`
   min-width: 140px;
   height: 100px;
 `;

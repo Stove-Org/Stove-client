@@ -1,7 +1,7 @@
 const DUMMY_DATA = [
   {
     id: 1,
-    nickName: "Faker",
+    nickname: "Faker",
     name: "이상혁",
     position: "MID",
     birthday: "1996-05-07",
@@ -15,7 +15,7 @@ const DUMMY_DATA = [
   },
   {
     id: 2,
-    nickName: "Chovy",
+    nickname: "Chovy",
     name: "정지훈",
     position: "MID",
     birthday: "1996-05-07",
@@ -29,7 +29,7 @@ const DUMMY_DATA = [
   },
   {
     id: 3,
-    nickName: "Peanut",
+    nickname: "Peanut",
     name: "한왕호",
     position: "JGL",
     birthday: "1996-05-07",
@@ -43,7 +43,7 @@ const DUMMY_DATA = [
   },
   {
     id: 4,
-    nickName: "Doran",
+    nickname: "Doran",
     name: "최현준",
     position: "TOP",
     birthday: "1996-05-07",
@@ -57,7 +57,7 @@ const DUMMY_DATA = [
   },
   {
     id: 5,
-    nickName: "Ruler",
+    nickname: "Ruler",
     name: "박재혁",
     position: "BOT",
     birthday: "1996-05-07",
@@ -71,7 +71,7 @@ const DUMMY_DATA = [
   },
   {
     id: 6,
-    nickName: "Fate",
+    nickname: "Fate",
     name: "유수혁",
     position: "MID",
     birthday: "1996-05-07",
@@ -85,7 +85,7 @@ const DUMMY_DATA = [
   },
   {
     id: 7,
-    nickName: "Kiin",
+    nickname: "Kiin",
     name: "김기인",
     position: "TOP",
     birthday: "1996-05-07",
@@ -99,7 +99,7 @@ const DUMMY_DATA = [
   },
   {
     id: 8,
-    nickName: "Pyosik",
+    nickname: "Pyosik",
     name: "홍창현",
     position: "JGL",
     birthday: "1996-05-07",
@@ -113,7 +113,7 @@ const DUMMY_DATA = [
   },
   {
     id: 9,
-    nickName: "Breyl",
+    nickname: "Breyl",
     name: "조건희",
     position: "SPT",
     birthday: "1996-05-07",
@@ -127,7 +127,7 @@ const DUMMY_DATA = [
   },
   {
     id: 10,
-    nickName: "Zeka",
+    nickname: "Zeka",
     name: "김건우",
     position: "MID",
     birthday: "1996-05-07",
@@ -141,7 +141,7 @@ const DUMMY_DATA = [
   },
   {
     id: 11,
-    nickName: "Nuguri",
+    nickname: "Nuguri",
     name: "장하권",
     position: "TOP",
     birthday: "1996-05-07",
@@ -155,7 +155,7 @@ const DUMMY_DATA = [
   },
   {
     id: 12,
-    nickName: "Canyon",
+    nickname: "Canyon",
     name: "김건부",
     position: "JGL",
     birthday: "1996-05-07",
@@ -169,7 +169,7 @@ const DUMMY_DATA = [
   },
   {
     id: 13,
-    nickName: "Deokdam",
+    nickname: "Deokdam",
     name: "서대길",
     position: "BOT",
     birthday: "1996-05-07",
@@ -183,7 +183,7 @@ const DUMMY_DATA = [
   },
   {
     id: 14,
-    nickName: "Keria",
+    nickname: "Keria",
     name: "류민석",
     position: "SPT",
     birthday: "2002-10-14",
@@ -197,7 +197,7 @@ const DUMMY_DATA = [
   },
   {
     id: 15,
-    nickName: "Gumayusi",
+    nickname: "Gumayusi",
     name: "이민형",
     position: "BOT",
     birthday: "2002-02-06",
@@ -211,7 +211,7 @@ const DUMMY_DATA = [
   },
   {
     id: 16,
-    nickName: "Oner",
+    nickname: "Oner",
     name: "문현준",
     position: "JGL",
     birthday: "2002-12-24",
@@ -225,7 +225,7 @@ const DUMMY_DATA = [
   },
   {
     id: 17,
-    nickName: "Zeus",
+    nickname: "Zeus",
     name: "최우제",
     position: "TOP",
     birthday: "2004-01-31",
