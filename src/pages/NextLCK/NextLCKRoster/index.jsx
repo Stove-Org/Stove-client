@@ -6,6 +6,9 @@ import {
   getMyRosters,
 } from "../../../api/next-lck";
 import { addCommas } from "../../../functions";
+import { progamerGet } from "../../../api/admin";
+import { useDispatch } from "react-redux";
+import { setInitProgamers } from "../../../reducers/progamersSlice";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -15,6 +18,7 @@ import EditRoster from "../../../components/oranisms/EditRoster";
 // import Countdown from "../../../components/atoms/Countdown";
 
 const NextLCKRoster = () => {
+  const dispatch = useDispatch();
   const [participants, setParticipants] = useState("0");
 
   useEffect(() => {
@@ -23,6 +27,7 @@ const NextLCKRoster = () => {
     );
     getDefaultRosters().then(console.log);
     getMyRosters().then(console.log);
+    progamerGet().then((res) => dispatch(setInitProgamers(res.data)));
   }, []);
 
   return (

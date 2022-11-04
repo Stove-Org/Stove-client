@@ -3,19 +3,19 @@ const ROSTER_DATA = [
     id: 1,
     team: "GEN",
     position: "TOP",
-    lastDropppedProgamer: null,
+    progamer: null,
   },
   {
     id: 2,
     team: "GEN",
     position: "JGL",
-    lastDropppedProgamer: null,
+    progamer: null,
   },
   {
     id: 3,
     team: "GEN",
     position: "MID",
-    lastDropppedProgamer: {
+    progamer: {
       id: 2,
       name: "정지훈",
       nickname: "Chovy",
@@ -34,19 +34,19 @@ const ROSTER_DATA = [
     id: 4,
     team: "GEN",
     position: "BOT",
-    lastDropppedProgamer: null,
+    progamer: null,
   },
   {
     id: 5,
     team: "GEN",
     position: "SPT",
-    lastDropppedProgamer: null,
+    progamer: null,
   },
   {
     id: 6,
     team: "T1",
     position: "TOP",
-    lastDropppedProgamer: {
+    progamer: {
       id: 17,
       name: "최우제",
       nickname: "Zeus",
@@ -65,7 +65,7 @@ const ROSTER_DATA = [
     id: 7,
     team: "T1",
     position: "JGL",
-    lastDropppedProgamer: {
+    progamer: {
       id: 16,
       name: "문현준",
       nickname: "Oner",
@@ -84,13 +84,13 @@ const ROSTER_DATA = [
     id: 8,
     team: "T1",
     position: "MID",
-    lastDropppedProgamer: null,
+    progamer: null,
   },
   {
     id: 9,
     team: "T1",
     position: "BOT",
-    lastDropppedProgamer: {
+    progamer: {
       id: 15,
       name: "이민형",
       imgUrl:
@@ -109,7 +109,7 @@ const ROSTER_DATA = [
     id: 10,
     team: "T1",
     position: "SPT",
-    lastDropppedProgamer: {
+    progamer: {
       id: 14,
       name: "류민석",
       nickname: "Keria",
