@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const HotNewsLayout = ({ firstHotNews, hotNews }) => {
+  console.log(hotNews);
   return (
     <HotNewsWrapper>
       <HotNewsInnerWrapper>

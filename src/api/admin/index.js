@@ -94,3 +94,14 @@ export const naverNewsRefreshGet = async () => {
 
   return data;
 };
+
+export const defaultRosterPost = async (dto) => {
+  const token = cookies.get("accessToken");
+  const data = await customAxios.post("/api/v1/next_lck/default", dto, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};

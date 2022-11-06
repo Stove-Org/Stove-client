@@ -23,13 +23,14 @@ const News = () => {
       return state.news.hotNews.slice(1, 4);
     }
   });
+  console.log({ firstHotNews, hotNews });
 
   return (
     <>
       <PageTitle title={"오늘의 HOT 뉴스"} />
       <NewsWrapper>
         {/* 여기서 지금 에러남 */}
-        <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} />
+        {/* <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} /> */}
       </NewsWrapper>
 
       <PageTitle title={"최신 뉴스"} />
