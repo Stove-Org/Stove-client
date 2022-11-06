@@ -5,11 +5,13 @@ const cookies = new Cookies();
 
 export const userGet = async () => {
   const token = cookies.get("accessToken");
+  console.log(token);
   const data = await customAxios.get("/api/v1/users", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+  console.log(data);
 
   return data;
 };
