@@ -43,7 +43,6 @@ const News = () => {
     <>
       <PageTitle title={"오늘의 HOT 뉴스"} />
       <NewsWrapper>
-        {/* 여기서 지금 에러남 */}
         <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} />
       </NewsWrapper>
 
