@@ -23,15 +23,10 @@ const Progamer = ({ item }) => {
     alias: item.alias,
   };
 
-  const [imgUrlOpen, setImgUrlOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [progamer, setProgamer] = useState(initData);
   // 추가 input에 입력중인 alia 담아두는 데이터
   const [currentAlias, setCurrentAlias] = useState("");
-
-  const openHandler = () => {
-    setImgUrlOpen((prev) => !prev);
-  };
 
   const handleChange = (e) => {
     const target = e.target;
@@ -144,6 +139,7 @@ const Progamer = ({ item }) => {
       dispatch(setUpdateProgamer(progamer));
       progamerUpdate(progamer, item.id);
       setIsEdit(false);
+      alert("정상적으로 저장되었습니다.");
     } catch (err) {
       console.log(err);
     }
@@ -224,12 +220,7 @@ const Progamer = ({ item }) => {
             value={progamer.imgUrl}
           />
         ) : (
-          <>
-            <StyleIngUrl imgUrlOpen={imgUrlOpen}>{progamer.imgUrl}</StyleIngUrl>
-            <button onClick={() => openHandler()}>
-              {imgUrlOpen ? "닫기" : "펼치기"}
-            </button>
-          </>
+          <StyleImg src={progamer.imgUrl} alt="프로게이머 이미지" />
         )}
       </StyleTd>
       <StyleTd>
@@ -326,10 +317,8 @@ const StyleTd = styled.td`
   }
 `;
 
-const StyleIngUrl = styled.div`
-  white-space: ${(props) => (props.imgUrlOpen ? "normal" : "nowrap")};
-  overflow: ${(props) => (props.imgUrlOpen ? "visible" : "hidden")};
-  text-overflow: ${(props) => (props.imgUrlOpen ? "clip" : "ellipsis")};
+const StyleImg = styled.img`
+  width: 100%;
 `;
 
 export default Progamer;

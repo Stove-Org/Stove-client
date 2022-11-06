@@ -16,7 +16,7 @@ const style = {
   float: "left",
 };
 
-const Roster = ({ lastDropppedProgamer, teamName, position, onDrop }) => {
+const Roster = ({ progamer, teamName, position, onDrop }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes.PLAYER,
     drop: onDrop,
@@ -40,10 +40,7 @@ const Roster = ({ lastDropppedProgamer, teamName, position, onDrop }) => {
     <div ref={drop} style={{ ...style, backgroundColor }} data-testid="dustbin">
       {isActive ? "여기에 마우스 올렸어" : `${teamName}-${position}`}
 
-      {lastDropppedProgamer && (
-        // <p>Last dropped: {JSON.stringify(lastDropppedProgamer)}</p>
-        <Progamer nickName={lastDropppedProgamer.nickName} />
-      )}
+      {progamer && <Progamer nickname={progamer.nickname} />}
     </div>
   );
 };

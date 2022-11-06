@@ -28,13 +28,9 @@ import NextLCKResult from "./pages/NextLCK/NextLCKResult";
 import News from "./pages/News";
 import Search from "./pages/Search";
 
-import NEWS_DATA from "./data/NEWS_DATA";
-
 export let persistor = persistStore(store);
 
 function App() {
-  const [news, setNews] = useState(NEWS_DATA);
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -62,7 +58,7 @@ function App() {
                 </Route>
                 <Route path="/nextlck" element={<NextLCKRoster />} />
                 <Route path="/nextlck/:id" element={<NextLCKResult />} />
-                <Route path="/news" element={<News news={news} />} />
+                <Route path="/news" element={<News />} />
                 <Route path="/search/:id" element={<Search />} />
               </Route>
 

@@ -1,11 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import SliderLCKLogo from "../../molecules/SliderLCKLogo";
 import bannerImg from "../../../assets/img/banner_2022LCKFinal.jpg";
+import { useEffect } from "react";
+import { getHotNews } from "../../../api/news";
+import { useDispatch } from "react-redux";
+import { setHotNews } from "../../../reducers/newsSlice";
+import SliderGreetingNews from "../../molecules/SliderGreetingNews";
 
 const Greeting = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getHotNews().then((res) => dispatch(setHotNews(res.data)));
+  }, []);
 
   return (
     <GreetingWrapper>
@@ -24,8 +34,11 @@ const Greeting = () => {
       </Banner>
       <ContentsWrapper>
         <Content>
-          <h4>2023 LCK 이적시장 살펴보기</h4>
-          <div>들어갈곳입니다</div>
+          <NewsContentHead>
+            <h4>2023 LCK 이적시장 살펴보기</h4>
+            <Link to="/news">뉴스 더보기 ></Link>
+          </NewsContentHead>
+          <SliderGreetingNews />
         </Content>
         <Content>
           <h4>Next LCK 실시간 순위</h4>
@@ -118,7 +131,8 @@ const ContentsWrapper = styled.article`
 const Content = styled.section`
   margin: 0 20px 40px;
 
-  & > h4 {
+  & > h4,
+  & > div > h4 {
     ${(props) => props.theme.typography.headRgBold};
     padding: 0 0 20px;
     span {
@@ -129,7 +143,8 @@ const Content = styled.section`
   @media screen and (min-width: 768px) {
     margin: 0 0 40px;
 
-    & > h4 {
+    & > h4,
+    & > div > h4 {
       ${(props) => props.theme.typography.headMd};
     }
   }
@@ -216,6 +231,18 @@ const BannerTextWrapper = styled.div`
       ${(props) => props.theme.typography.headBold};
       padding-bottom: 14px;
     }
+  }
+`;
+
+const NewsContentHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  & > a {
+    padding-bottom: 20px;
+    ${(props) => props.theme.typography.bodySmRegular};
+    color: ${(props) => props.theme.color.grayScale.gray60};
   }
 `;
 
