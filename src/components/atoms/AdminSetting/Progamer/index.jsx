@@ -23,15 +23,10 @@ const Progamer = ({ item }) => {
     alias: item.alias,
   };
 
-  const [imgUrlOpen, setImgUrlOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [progamer, setProgamer] = useState(initData);
   // 추가 input에 입력중인 alia 담아두는 데이터
   const [currentAlias, setCurrentAlias] = useState("");
-
-  const openHandler = () => {
-    setImgUrlOpen((prev) => !prev);
-  };
 
   const handleChange = (e) => {
     const target = e.target;
