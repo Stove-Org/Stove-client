@@ -144,6 +144,7 @@ const Progamer = ({ item }) => {
       dispatch(setUpdateProgamer(progamer));
       progamerUpdate(progamer, item.id);
       setIsEdit(false);
+      alert("정상적으로 저장되었습니다.");
     } catch (err) {
       console.log(err);
     }
@@ -224,12 +225,7 @@ const Progamer = ({ item }) => {
             value={progamer.imgUrl}
           />
         ) : (
-          <>
-            <StyleIngUrl imgUrlOpen={imgUrlOpen}>{progamer.imgUrl}</StyleIngUrl>
-            <button onClick={() => openHandler()}>
-              {imgUrlOpen ? "닫기" : "펼치기"}
-            </button>
-          </>
+          <StyleImg src={progamer.imgUrl} alt="프로게이머 이미지" />
         )}
       </StyleTd>
       <StyleTd>
@@ -326,10 +322,8 @@ const StyleTd = styled.td`
   }
 `;
 
-const StyleIngUrl = styled.div`
-  white-space: ${(props) => (props.imgUrlOpen ? "normal" : "nowrap")};
-  overflow: ${(props) => (props.imgUrlOpen ? "visible" : "hidden")};
-  text-overflow: ${(props) => (props.imgUrlOpen ? "clip" : "ellipsis")};
+const StyleImg = styled.img`
+  width: 100%;
 `;
 
 export default Progamer;
