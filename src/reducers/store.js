@@ -8,12 +8,14 @@ import userSlice from "./userSlice";
 import modalSlice from "./modalSlice";
 import progamersSlice from "./progamersSlice";
 import newsSlice from "./newsSlice";
+import rostersSlice from "./rostersSlice";
 
 const reducers = combineReducers({
   user: userSlice.reducer,
   modal: modalSlice.reducer,
   progamers: progamersSlice.reducer,
   news: newsSlice.reducer,
+  rosters: rostersSlice.reducer,
 });
 
 const persistConfig = {
