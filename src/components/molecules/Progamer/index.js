@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDrag } from "react-dnd";
 
 import { ItemTypes } from "../../../utils/ItemTypes";
@@ -14,21 +13,21 @@ const style = {
   color: "#000000",
 };
 
-const Progamer = ({ nickName, birthday }) => {
+const Progamer = ({ nickname, birthday }) => {
   const [{ opacity }, drag] = useDrag(
     () => ({
       type: ItemTypes.PLAYER,
-      item: { nickName, birthday },
+      item: { nickname, birthday },
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.4 : 1,
       }),
     }),
-    [nickName]
+    [nickname]
   );
 
   return (
     <div ref={drag} style={{ ...style, opacity }} data-testid="box">
-      {nickName}
+      {nickname}
     </div>
   );
 };
