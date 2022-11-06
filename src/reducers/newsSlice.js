@@ -27,9 +27,17 @@ const newsSlice = createSlice({
       const newAllNews = state.allNews.filter((el) => el.id !== action.payload);
       state.allNews = newAllNews;
     },
+    setPublishedNews: (state, action) => {
+      state.publishedNews = action.payload;
+    },
   },
 });
 
-export const { setHotNews, setAllNews, setUpdateAllNews, deleteAllNews } =
-  newsSlice.actions;
+export const {
+  setHotNews,
+  setAllNews,
+  setUpdateAllNews,
+  deleteAllNews,
+  setPublishedNews,
+} = newsSlice.actions;
 export default newsSlice;

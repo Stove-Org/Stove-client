@@ -14,7 +14,9 @@ const Greeting = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getHotNews().then((res) => dispatch(setHotNews(res.data)));
+    getHotNews().then((res) => {
+      dispatch(setHotNews(res.data));
+    });
   }, []);
 
   return (

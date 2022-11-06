@@ -1,22 +1,37 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-const NewsList = ({ linkUrl, imgUrl, headline, uploadedAt }) => {
-  return (
-    <NewsListWrapper>
-      <NewsListInnerWrapper
-        href="https://www.sandbox.co.kr/esports"
-        target={"_blank"}
-        rel="noopener noreferrer"
-      >
-        <ImgUrlWrapper>
-          <ImgUrl style={{ backgroundImage: `url(${imgUrl})` }} />
-        </ImgUrlWrapper>
-        <NewsHeadline>
-          <Headline>{headline}</Headline>
-          <UploadedAtWapper>{uploadedAt}</UploadedAtWapper>
-        </NewsHeadline>
-      </NewsListInnerWrapper>
-    </NewsListWrapper>
+const NewsList = () => {
+  const news = useSelector((state) => {
+    return state.news.publishedNews;
+  });
+
+  return news ? (
+    news.map((item) => {
+      return (
+        <NewsListWrapper key={item.id}>
+          <NewsListInnerWrapper
+            href={item.linkUrl}
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            <ImgUrlWrapper>
+              {item.imgUrl ? (
+                <ImgUrl style={{ backgroundImage: `url(${item.imgUrl})` }} />
+              ) : (
+                <StyleImg />
+              )}
+            </ImgUrlWrapper>
+            <NewsHeadline>
+              <Headline>{item.headline}</Headline>
+              <UploadedAtWapper>{item.uploadedAt}</UploadedAtWapper>
+            </NewsHeadline>
+          </NewsListInnerWrapper>
+        </NewsListWrapper>
+      );
+    })
+  ) : (
+    <></>
   );
 };
 
@@ -44,13 +59,16 @@ const ImgUrlWrapper = styled.div`
   min-width: 160px;
   height: 100px;
 `;
-const ImgUrl = styled.div`
+const StyleImg = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
+`;
+const ImgUrl = styled(StyleImg)`
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  border-radius: 3px;
 `;
 const NewsHeadline = styled.div`
   margin-left: 20px;
