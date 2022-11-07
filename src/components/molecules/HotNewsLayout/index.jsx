@@ -1,7 +1,16 @@
 import styled from "styled-components";
+import { postCountView } from "../../../api/news";
+import RestHotNews from "./RestHotNews";
 
 const HotNewsLayout = ({ firstHotNews, hotNews }) => {
-  console.log(hotNews);
+  const handleAddCountView = async () => {
+    try {
+      await postCountView(firstHotNews.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <HotNewsWrapper>
       <HotNewsInnerWrapper>
@@ -9,6 +18,7 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
           href={hotNews[0].linkUrl}
           target={"_blank"}
           rel="noopener noreferrer"
+          onClick={handleAddCountView}
         >
           {firstHotNews.imgUrl ? (
             <FirstHotImgUrl
@@ -25,19 +35,8 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
       </HotNewsInnerWrapper>
       <HotNewsInnerWrapper>
         {/* 매일 클릭수 가장 높은 뉴스 4개 */}
-        {hotNews.map((el) => (
-          <RestHotNewsInner
-            key={el.id}
-            href={el.linkUrl}
-            target={"_blank"}
-            rel="noopener noreferrer"
-          >
-            <RestHotNewsHeadline>
-              <Headline>{el.headline}</Headline>
-              <HeadlineDate>{el.uploadedAt}</HeadlineDate>
-            </RestHotNewsHeadline>
-            <RestHotImgUrl style={{ backgroundImage: `url(${el.imgUrl})` }} />
-          </RestHotNewsInner>
+        {hotNews.map((item) => (
+          <RestHotNews item={item} key={item.id} />
         ))}
       </HotNewsInnerWrapper>
     </HotNewsWrapper>
@@ -113,37 +112,6 @@ const FirstHotNewsHeadline = styled.div`
 const FirstHeadline = styled(Headline)`
   ${(props) => props.theme.typography.headRgBold};
   color: ${(props) => props.theme.color.white};
-`;
-
-// Rest Hot News
-const RestHotNewsInner = styled.a`
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  & + & {
-    border-width: 1px 0 0;
-    border-style: solid;
-    border-color: ${(props) => props.theme.color.grayScale.gray20};
-  }
-
-  &:hover > div > h4 {
-    text-decoration: underline;
-  }
-`;
-const RestHotNewsHeadline = styled.div`
-  flex-grow: 1;
-  margin-right: 10px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-`;
-const RestHotImgUrl = styled(ImageWrapper)`
-  min-width: 140px;
-  height: 100px;
 `;
 
 export default HotNewsLayout;

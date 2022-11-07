@@ -1,11 +1,20 @@
 import styled from "styled-components";
+import { postCountView } from "../../../api/news";
 
 const GreetingNews = ({ item }) => {
+  const handleAddCountView = async () => {
+    try {
+      await postCountView(item.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <GreetingNewsWrapper
       href={item.linkUrl}
       target={"_blank"}
       rel="noopener noreferrer"
+      onClick={handleAddCountView}
     >
       {item.imgUrl ? (
         <NewsImg src={item.imgUrl} alt="뉴스 이미지" />

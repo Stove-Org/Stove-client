@@ -13,3 +13,9 @@ export const getPublishedNews = async (offset, limit) => {
 
   return data;
 };
+
+export const postCountView = async (newsId) => {
+  const data = await customAxios.post(`/api/v1/news/${newsId}/view`);
+
+  return data;
+};
