@@ -8,39 +8,16 @@ import Roster from "../../molecules/Roster";
 import Progamer from "../../molecules/Progamer";
 
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
-  // useEffect(() => {
-  //   if (rosters) {
-  //     // Mount 될 때 이미 로스터에 올라와있는 선수들은 progamers 배열에서 [REMOVE]
-  //     const droppedProgamers = rosters
-  //       .filter((item) => item.progamer !== null)
-  //       .map((item) => item.progamer.nickname);
-
-  //     if (progamers) {
-  //       const unDroppedProgamer = progamers
-  //         .filter((item) => droppedProgamers.includes(item.nickname) !== true)
-  //         .sort((a, b) => {
-  //           if (a.nickname > b.nickname) return 1;
-  //           if (a.nickname < b.nickname) return -1;
-  //           return 0;
-  //         });
-
-  //       setProgamers(unDroppedProgamer);
-  //     }
-  //   }
-  // }, []);
-
   const handleRosterDrop = (index, item, progamer) => {
     const { nickname } = item;
 
     // 📌 현재 Drag 중인 progamer drop하는 roster에 [UPDATE] 📌
     // 📌 이미 roster에 올라와있는 선수가 다른 roster로 이동할 때 기존 Drop roster는 제거하고 Drop 📌
-    const prevRosterProgamer = rosters.find(
+    const prevRosterProgamer = rosters.findIndex(
       (item) => item.progamer && item.progamer.nickname === nickname
     );
 
     if (prevRosterProgamer) {
-      const prevRosterProgamerIndex = prevRosterProgamer.id - 1;
-
       setRosters(
         update(rosters, {
           [index]: {
@@ -48,7 +25,7 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
               $set: item,
             },
           },
-          [prevRosterProgamerIndex]: {
+          [prevRosterProgamer]: {
             progamer: {
               $set: null,
             },
