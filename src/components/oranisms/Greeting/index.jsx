@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import SliderLCKLogo from "../../molecules/SliderLCKLogo";
-import bannerImg from "../../../assets/img/banner_2022LCKFinal.jpg";
+import bannerImg from "../../../assets/img/banner_2022Worlds_DRX.jpg";
 import { useEffect } from "react";
 import { getHotNews } from "../../../api/news";
 import { useDispatch } from "react-redux";
@@ -23,6 +23,7 @@ const Greeting = () => {
     <GreetingWrapper>
       <Banner>
         <BannerBgImg src={bannerImg} alt="2022 LCK Final" />
+        <BannerFilter />
         <BannerTextWrapper>
           <p>Who's next LCK?</p>
           <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
@@ -174,18 +175,18 @@ const Banner = styled.article`
     }
   }
   @media screen and (min-width: 1080px) {
-    height: 340px;
+    height: 380px;
 
     & > button {
       top: 224px;
-      left: 160px;
+      left: 100px;
     }
   }
 `;
 const BannerBgImg = styled.img`
   width: 100%;
   position: static;
-  top: -60px;
+  top: -94px;
   left: auto;
   right: auto;
   @media screen and (min-width: 768px) {
@@ -193,6 +194,12 @@ const BannerBgImg = styled.img`
   @media screen and (min-width: 1080px) {
     position: absolute;
   }
+`;
+const BannerFilter = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.3);
+  position: absolute;
 `;
 const BannerTextWrapper = styled.div`
   color: ${(props) => props.theme.color.white};
@@ -223,7 +230,7 @@ const BannerTextWrapper = styled.div`
   }
   @media screen and (min-width: 1080px) {
     top: 54px;
-    left: 160px;
+    left: 100px;
 
     p {
       ${(props) => props.theme.typography.head};
