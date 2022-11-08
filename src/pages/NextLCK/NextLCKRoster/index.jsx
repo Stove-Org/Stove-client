@@ -14,14 +14,32 @@ import Countdown from "../../../components/atoms/Countdown";
 const NextLCKRoster = () => {
   const [rosters, setRosters] = useState(null);
   const [progamers, setProgamers] = useState(null);
-
-  useEffect(() => {
-    rostersGet().then((res) => setRosters(res.data));
-    progamerGet().then((res) => setProgamers(res.data));
-  }, []);
-
   const [participants, setParticipants] = useState("0");
+
   useEffect(() => {
+    rostersGet().then((res) => {
+      const rosterData = res.data;
+      progamerGet().then((res) => {
+        const progamersData = res.data;
+
+        const droppedProgamers = rosterData
+          .filter((item) => item.progamer !== null)
+          .map((item) => item.progamer.nickname);
+
+        const unDroppedProgamer = progamersData
+          .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+          .sort((a, b) => {
+            if (a.nickname > b.nickname) return 1;
+            if (a.nickname < b.nickname) return -1;
+            return 0;
+          });
+
+        setProgamers(unDroppedProgamer);
+      });
+
+      setRosters(rosterData);
+    });
+
     getParticipants().then((res) =>
       setParticipants((prev) => (prev = addCommas(res.data.count)))
     );

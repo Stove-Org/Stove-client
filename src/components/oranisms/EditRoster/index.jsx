@@ -8,6 +8,27 @@ import Roster from "../../molecules/Roster";
 import Progamer from "../../molecules/Progamer";
 
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
+  // useEffect(() => {
+  //   if (rosters) {
+  //     // Mount 될 때 이미 로스터에 올라와있는 선수들은 progamers 배열에서 [REMOVE]
+  //     const droppedProgamers = rosters
+  //       .filter((item) => item.progamer !== null)
+  //       .map((item) => item.progamer.nickname);
+
+  //     if (progamers) {
+  //       const unDroppedProgamer = progamers
+  //         .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+  //         .sort((a, b) => {
+  //           if (a.nickname > b.nickname) return 1;
+  //           if (a.nickname < b.nickname) return -1;
+  //           return 0;
+  //         });
+
+  //       setProgamers(unDroppedProgamer);
+  //     }
+  //   }
+  // }, []);
+
   const handleRosterDrop = (index, item, progamer) => {
     const { nickname } = item;
 
@@ -93,25 +114,6 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
 
     setProgamers(newProgamersArr);
   };
-
-  useEffect(() => {
-    if (rosters && progamers) {
-      // Mount 될 때 이미 로스터에 올라와있는 선수들은 progamers 배열에서 [REMOVE]
-      const droppedProgamers = rosters
-        .filter((item) => item.progamer !== null)
-        .map((item) => item.progamer.nickname);
-
-      const unDroppedProgamer = progamers
-        .filter((item) => droppedProgamers.includes(item.nickname) !== true)
-        .sort((a, b) => {
-          if (a.nickname > b.nickname) return 1;
-          if (a.nickname < b.nickname) return -1;
-          return 0;
-        });
-
-      setProgamers(unDroppedProgamer);
-    }
-  }, []);
 
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes.PLAYER,
