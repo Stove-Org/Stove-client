@@ -1,14 +1,21 @@
-import { useEffect } from "react";
+import { useState } from "react";
+import styled from "styled-components";
 import update from "immutability-helper";
-import { useSelector } from "react-redux";
 
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/ItemTypes";
 
 import Roster from "../../molecules/Roster";
 import Progamer from "../../molecules/Progamer";
+import NextLCKButtons from "./NextLCKButtons";
 
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
+  const [imgToggle, setImgToggle] = useState(true);
+  const [descriptionToggle, setDescriptionToggle] = useState(false);
+  const [search, setSearch] = useState("");
+  const [searchProgamer, setSearchProgamer] = useState([]);
+  const [isSearch, setIsSearch] = useState(false);
+
   const handleRosterDrop = (index, item, progamer) => {
     const { nickname } = item;
 
@@ -18,7 +25,7 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
       (item) => item.progamer && item.progamer.nickname === nickname
     );
 
-    if (prevRosterProgamer) {
+    if (prevRosterProgamer && prevRosterProgamer !== -1) {
       setRosters(
         update(rosters, {
           [index]: {
@@ -61,6 +68,14 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
     });
     // 3. set함수로 [UPDATE] 해준다.
     setProgamers(sortedProgamers);
+
+    // 📌 search중이라면? Search set 배열에서도 삭제해주기 📌
+    if (isSearch) {
+      let newSearchProgamers = searchProgamer.filter(
+        (item) => item.nickname !== nickname
+      );
+      setSearchProgamer(newSearchProgamers);
+    }
   };
 
   const handleProgamerListDrop = (item) => {
@@ -102,7 +117,7 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
     }),
   });
 
-  const isActive = isOver && canDrop;
+  const isActive = isOver && canDrop; // Drop중인 영역
 
   let backgroundColor = "#222";
   if (isActive) {
@@ -111,8 +126,76 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
     backgroundColor = "darkkhaki";
   }
 
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+
+    if (e.target.value === "") {
+      setIsSearch(false);
+    } else {
+      setIsSearch(true);
+      const filterProgamer = progamers.filter((item) => {
+        if (
+          item.nickname.toLowerCase().includes(e.target.value.toLowerCase())
+        ) {
+          return item;
+        } else if (item.name.includes(e.target.value)) {
+          return item;
+        }
+      });
+      setSearchProgamer(filterProgamer);
+    }
+  };
+
   return (
     <div>
+      <PlayerSearchBarWrapper>
+        <input
+          type="search"
+          value={search}
+          onChange={handleChange}
+          placeholder="선수 검색"
+        />
+      </PlayerSearchBarWrapper>
+      <div
+        ref={drop}
+        style={{ overflow: "hidden", clear: "both", backgroundColor }}
+      >
+        {isSearch ? (
+          searchProgamer !== "" && searchProgamer.length !== 0 ? (
+            searchProgamer.map((item) => (
+              <Progamer
+                key={item.id}
+                alias={item.alias}
+                nickname={item.nickname}
+                birthday={item.birthday}
+                career={item.career}
+                id={item.id}
+                imgUrl={item.imgUrl}
+                name={item.name}
+                position={item.position}
+              />
+            ))
+          ) : (
+            <div>찾고 계신 선수가 없으신가요?</div>
+          )
+        ) : progamers ? (
+          progamers.map((item) => (
+            <Progamer
+              key={item.id}
+              alias={item.alias}
+              nickname={item.nickname}
+              birthday={item.birthday}
+              career={item.career}
+              id={item.id}
+              imgUrl={item.imgUrl}
+              name={item.name}
+              position={item.position}
+            />
+          ))
+        ) : (
+          <></>
+        )}
+      </div>
       <div style={{ overflow: "hidden", clear: "both" }}>
         {rosters ? (
           rosters.map(({ progamer, team, position }, index) => (
@@ -128,21 +211,34 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
           <></>
         )}
       </div>
-
-      <div
-        ref={drop}
-        style={{ overflow: "hidden", clear: "both", backgroundColor }}
-      >
-        {progamers ? (
-          progamers.map(({ nickname, birthday }, index) => (
-            <Progamer nickname={nickname} birthday={birthday} key={index} />
-          ))
-        ) : (
-          <></>
-        )}
-      </div>
     </div>
   );
 };
+
+const PlayerSearchBarWrapper = styled.div`
+  width: 100%s;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
+  padding: 20px 20px 0;
+  margin-top: 20px;
+  border-radius: 3px 3px 0 0;
+  ${(props) => props.theme.typography.bodyRg};
+
+  & > input[type="search"] {
+    width: 200px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background-color: ${(props) => props.theme.color.white};
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+`;
 
 export default EditRoster;

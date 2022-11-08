@@ -42,7 +42,16 @@ const Roster = ({ progamer, teamName, position, onDrop }) => {
 
       {progamer && (
         // <p>Last dropped: {JSON.stringify(progamer)}</p>
-        <Progamer nickname={progamer.nickname} />
+        <Progamer
+          alias={progamer.alias}
+          nickname={progamer.nickname}
+          birthday={progamer.birthday}
+          career={progamer.career}
+          id={progamer.id}
+          imgUrl={progamer.imgUrl}
+          name={progamer.name}
+          position={progamer.position}
+        />
       )}
     </div>
   );

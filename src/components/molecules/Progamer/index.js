@@ -13,11 +13,20 @@ const style = {
   color: "#000000",
 };
 
-const Progamer = ({ nickname, birthday }) => {
+const Progamer = ({
+  nickname,
+  birthday,
+  alias,
+  career,
+  id,
+  imgUrl,
+  name,
+  position,
+}) => {
   const [{ opacity }, drag] = useDrag(
     () => ({
       type: ItemTypes.PLAYER,
-      item: { nickname, birthday },
+      item: { nickname, birthday, alias, career, id, imgUrl, name, position },
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.4 : 1,
       }),
