@@ -1,53 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import update from "immutability-helper";
 import { useSelector } from "react-redux";
 
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/ItemTypes";
 
-import PROGAMERS_DATA from "../../../data/PROGAMERS_DATA";
-
 import Roster from "../../molecules/Roster";
 import Progamer from "../../molecules/Progamer";
 
-const EditRoster = () => {
-  const isLogin = useSelector((state) => {
-    return state.user.signinState;
-  });
-
-  const [rosters, setRosters] = useState(
-    useSelector((state) => {
-      if (isLogin) {
-        return state.rosters.myRosters;
-      } else {
-        return state.rosters.defaultRosters;
-      }
-    })
-  );
-
-  const [progamers, setProgamers] = useState(
-    useSelector((state) => {
-      return state.progamers.progamers;
-    })
-  );
-
+const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
   const handleRosterDrop = (index, item, progamer) => {
     const { nickname } = item;
 
     // 📌 현재 Drag 중인 progamer drop하는 roster에 [UPDATE] 📌
     // 📌 이미 roster에 올라와있는 선수가 다른 roster로 이동할 때 기존 Drop roster는 제거하고 Drop 📌
-    const prevRosterProgamer = rosters.find(
+    const prevRosterProgamer = rosters.findIndex(
       (item) => item.progamer && item.progamer.nickname === nickname
     );
 
     if (prevRosterProgamer) {
-      const prevRosterProgamerIndex = rosters.findIndex((item) => {
-        return (
-          item.team === prevRosterProgamer.team &&
-          item.position === prevRosterProgamer.position
-        );
-      });
-
       setRosters(
         update(rosters, {
           [index]: {
@@ -55,7 +26,7 @@ const EditRoster = () => {
               $set: item,
             },
           },
-          [prevRosterProgamerIndex]: {
+          [prevRosterProgamer]: {
             progamer: {
               $set: null,
             },
@@ -122,23 +93,6 @@ const EditRoster = () => {
     setProgamers(newProgamersArr);
   };
 
-  useEffect(() => {
-    // Mount 될 때 이미 로스터에 올라와있는 선수들은 progamers 배열에서 [REMOVE]
-    const droppedProgamers = rosters
-      .filter((item) => item.progamer !== null)
-      .map((item) => item.progamer.nickname);
-
-    const unDroppedProgamer = progamers
-      .filter((item) => droppedProgamers.includes(item.nickname) !== true)
-      .sort((a, b) => {
-        if (a.nickname > b.nickname) return 1;
-        if (a.nickname < b.nickname) return -1;
-        return 0;
-      });
-
-    setProgamers(unDroppedProgamer);
-  }, []);
-
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes.PLAYER,
     drop: handleProgamerListDrop,
@@ -160,50 +114,32 @@ const EditRoster = () => {
   return (
     <div>
       <div style={{ overflow: "hidden", clear: "both" }}>
-        {/* {rosters.map(({ progamer, team, position }, index) => (
-          <Roster
-            progamer={progamer}
-            teamName={team}
-            position={position}
-            onDrop={(item) =>
-              handleRosterDrop(index, item, progamer)
-            }
-            key={index}
-          />
-        ))} */}
-        <Roster
-          progamer={rosters[0].progamer}
-          teamName={rosters[0].team}
-          position={rosters[0].position}
-          onDrop={(item) => handleRosterDrop(0, item, rosters[0].progamer)}
-        />
-        <Roster
-          progamer={rosters[1].progamer}
-          teamName={rosters[1].team}
-          position={rosters[1].position}
-          onDrop={(item) => handleRosterDrop(1, item, rosters[1].progamer)}
-        />
-        <Roster
-          progamer={rosters[2].progamer}
-          teamName={rosters[2].team}
-          position={rosters[2].position}
-          onDrop={(item) => handleRosterDrop(2, item, rosters[2].progamer)}
-        />
-        <Roster
-          progamer={rosters[3].progamer}
-          teamName={rosters[3].team}
-          position={rosters[3].position}
-          onDrop={(item) => handleRosterDrop(3, item, rosters[3].progamer)}
-        />
+        {rosters ? (
+          rosters.map(({ progamer, team, position }, index) => (
+            <Roster
+              progamer={progamer}
+              teamName={team}
+              position={position}
+              onDrop={(item) => handleRosterDrop(index, item, progamer)}
+              key={index}
+            />
+          ))
+        ) : (
+          <></>
+        )}
       </div>
 
       <div
         ref={drop}
         style={{ overflow: "hidden", clear: "both", backgroundColor }}
       >
-        {progamers.map(({ nickname, birthday }, index) => (
-          <Progamer nickname={nickname} birthday={birthday} key={index} />
-        ))}
+        {progamers ? (
+          progamers.map(({ nickname, birthday }, index) => (
+            <Progamer nickname={nickname} birthday={birthday} key={index} />
+          ))
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

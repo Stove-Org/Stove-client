@@ -40,7 +40,10 @@ const Roster = ({ progamer, teamName, position, onDrop }) => {
     <div ref={drop} style={{ ...style, backgroundColor }} data-testid="dustbin">
       {isActive ? "여기에 마우스 올렸어" : `${teamName}-${position}`}
 
-      {progamer && <Progamer nickname={progamer.nickname} />}
+      {progamer && (
+        // <p>Last dropped: {JSON.stringify(progamer)}</p>
+        <Progamer nickname={progamer.nickname} />
+      )}
     </div>
   );
 };
