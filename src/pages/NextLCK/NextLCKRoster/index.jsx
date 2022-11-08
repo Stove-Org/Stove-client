@@ -23,29 +23,9 @@ const NextLCKRoster = () => {
   });
 
   useEffect(() => {
-    rostersGet().then((res) => {
-      const rosterData = res.data;
-      if (isLogin) {
-        console.log(1);
-        getMyRosters().then((res) => {
-          const progamersData = res.data;
-
-          const droppedProgamers = rosterData
-            .filter((item) => item.progamer !== null)
-            .map((item) => item.progamer.nickname);
-
-          const unDroppedProgamer = progamersData
-            .filter((item) => droppedProgamers.includes(item.nickname) !== true)
-            .sort((a, b) => {
-              if (a.nickname > b.nickname) return 1;
-              if (a.nickname < b.nickname) return -1;
-              return 0;
-            });
-
-          setProgamers(unDroppedProgamer);
-        });
-      } else {
-        console.log(2);
+    if (isLogin) {
+      getMyRosters().then((res) => {
+        const rosterData = res.data;
         progamerGet().then((res) => {
           const progamersData = res.data;
 
@@ -63,10 +43,33 @@ const NextLCKRoster = () => {
 
           setProgamers(unDroppedProgamer);
         });
-      }
 
-      setRosters(rosterData);
-    });
+        setRosters(rosterData);
+      });
+    } else {
+      rostersGet().then((res) => {
+        const rosterData = res.data;
+        progamerGet().then((res) => {
+          const progamersData = res.data;
+
+          const droppedProgamers = rosterData
+            .filter((item) => item.progamer !== null)
+            .map((item) => item.progamer.nickname);
+
+          const unDroppedProgamer = progamersData
+            .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+            .sort((a, b) => {
+              if (a.nickname > b.nickname) return 1;
+              if (a.nickname < b.nickname) return -1;
+              return 0;
+            });
+
+          setProgamers(unDroppedProgamer);
+        });
+
+        setRosters(rosterData);
+      });
+    }
 
     getParticipants().then((res) =>
       setParticipants((prev) => (prev = addCommas(res.data.count)))
