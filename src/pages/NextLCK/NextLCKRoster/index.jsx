@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getParticipants } from "../../../api/next-lck";
 import { addCommas } from "../../../functions";
+import { rostersGet, progamerGet } from "../../../api/admin";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -11,6 +12,14 @@ import EditRoster from "../../../components/oranisms/EditRoster";
 import Countdown from "../../../components/atoms/Countdown";
 
 const NextLCKRoster = () => {
+  const [rosters, setRosters] = useState(null);
+  const [progamers, setProgamers] = useState(null);
+
+  useEffect(() => {
+    rostersGet().then((res) => setRosters(res.data));
+    progamerGet().then((res) => setProgamers(res.data));
+  }, []);
+
   const [participants, setParticipants] = useState("0");
   useEffect(() => {
     getParticipants().then((res) =>
@@ -32,7 +41,12 @@ const NextLCKRoster = () => {
         </div>
       </Description>
       <DndProvider backend={HTML5Backend}>
-        <EditRoster />
+        <EditRoster
+          rosters={rosters}
+          setRosters={setRosters}
+          progamers={progamers}
+          setProgamers={setProgamers}
+        />
       </DndProvider>
     </>
   );
