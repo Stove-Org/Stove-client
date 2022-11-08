@@ -17,13 +17,25 @@ const Footer = () => {
         <MailToLink href="mailto:stovegg@gmail.com">제휴</MailToLink>
       </FooterInnerWrapper>
       <FooterInnerWrapper>
-        <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
+        <SNSLogo
+          href="https://www.facebook.com/profile.php?id=100087614380077"
+          target={"_blank"}
+          rel="noopener noreferrer"
+        >
           <img src={facebookIcon} alt="facebook logo" />
         </SNSLogo>
-        <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
+        <SNSLogo
+          href="https://twitter.com/Stovegg"
+          target={"_blank"}
+          rel="noopener noreferrer"
+        >
           <img src={twitterIcon} alt="twitter logo" />
         </SNSLogo>
-        <SNSLogo href="/#" target={"_blank"} rel="noopener noreferrer">
+        <SNSLogo
+          href="https://www.instagram.com/stove.gg/"
+          target={"_blank"}
+          rel="noopener noreferrer"
+        >
           <img src={instagramIcon} alt="instagram logo" />
         </SNSLogo>
       </FooterInnerWrapper>

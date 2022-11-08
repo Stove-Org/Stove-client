@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-  getParticipants,
-  getDefaultRosters,
-  getMyRosters,
-} from "../../../api/next-lck";
+import { getParticipants } from "../../../api/next-lck";
 import { addCommas } from "../../../functions";
-import { progamerGet } from "../../../api/admin";
-import { useDispatch } from "react-redux";
-import { setInitProgamers } from "../../../reducers/progamersSlice";
+import { rostersGet, progamerGet } from "../../../api/admin";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -18,16 +12,37 @@ import EditRoster from "../../../components/oranisms/EditRoster";
 // import Countdown from "../../../components/atoms/Countdown";
 
 const NextLCKRoster = () => {
-  const dispatch = useDispatch();
+  const [rosters, setRosters] = useState(null);
+  const [progamers, setProgamers] = useState(null);
   const [participants, setParticipants] = useState("0");
 
   useEffect(() => {
+    rostersGet().then((res) => {
+      const rosterData = res.data;
+      progamerGet().then((res) => {
+        const progamersData = res.data;
+
+        const droppedProgamers = rosterData
+          .filter((item) => item.progamer !== null)
+          .map((item) => item.progamer.nickname);
+
+        const unDroppedProgamer = progamersData
+          .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+          .sort((a, b) => {
+            if (a.nickname > b.nickname) return 1;
+            if (a.nickname < b.nickname) return -1;
+            return 0;
+          });
+
+        setProgamers(unDroppedProgamer);
+      });
+
+      setRosters(rosterData);
+    });
+
     getParticipants().then((res) =>
       setParticipants((prev) => (prev = addCommas(res.data.count)))
     );
-    getDefaultRosters().then(console.log);
-    getMyRosters().then(console.log);
-    progamerGet().then((res) => dispatch(setInitProgamers(res.data)));
   }, []);
 
   return (
@@ -44,7 +59,12 @@ const NextLCKRoster = () => {
         </div>
       </Description>
       <DndProvider backend={HTML5Backend}>
-        <EditRoster />
+        <EditRoster
+          rosters={rosters}
+          setRosters={setRosters}
+          progamers={progamers}
+          setProgamers={setProgamers}
+        />
       </DndProvider>
     </>
   );
