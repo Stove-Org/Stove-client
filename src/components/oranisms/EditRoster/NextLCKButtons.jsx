@@ -20,7 +20,7 @@ const NextLCKButtons = (props) => {
           styleType={"light"}
           onClick={() => {}}
         />
-        <Button
+        {/* <Button
           icon={
             <>
               <StyleIcon src={kakaoIcon} alt="카카오톡 공유하기" />
@@ -28,7 +28,7 @@ const NextLCKButtons = (props) => {
           }
           styleType={"kakaoShare"}
           onClick={() => {}}
-        />
+        /> */}
       </ButtonInnerWrapper>
       <ToggleWrapper>
         <ToggleButton

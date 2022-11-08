@@ -119,12 +119,12 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
 
   const isActive = isOver && canDrop; // Drop중인 영역
 
-  let backgroundColor = "#222";
-  if (isActive) {
-    backgroundColor = "darkgreen";
-  } else if (canDrop) {
-    backgroundColor = "darkkhaki";
-  }
+  // let backgroundColor = "#222";
+  // if (isActive) {
+  //   backgroundColor = "darkgreen";
+  // } else if (canDrop) {
+  //   backgroundColor = "darkkhaki";
+  // }
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -147,19 +147,22 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
   };
 
   return (
-    <div>
-      <PlayerSearchBarWrapper>
+    <ContainerWrapper>
+      <NextLCKButtons
+        imgToggle={imgToggle}
+        setImgToggle={setImgToggle}
+        descriptionToggle={descriptionToggle}
+        setDescriptionToggle={setDescriptionToggle}
+      />
+      <SearchBarWrapper>
         <input
           type="search"
           value={search}
           onChange={handleChange}
           placeholder="선수 검색"
         />
-      </PlayerSearchBarWrapper>
-      <div
-        ref={drop}
-        style={{ overflow: "hidden", clear: "both", backgroundColor }}
-      >
+      </SearchBarWrapper>
+      <ProgamerWrapper ref={drop}>
         {isSearch ? (
           searchProgamer !== "" && searchProgamer.length !== 0 ? (
             searchProgamer.map((item) => (
@@ -173,6 +176,8 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                 imgUrl={item.imgUrl}
                 name={item.name}
                 position={item.position}
+                imgToggle={imgToggle}
+                descriptionToggle={descriptionToggle}
               />
             ))
           ) : (
@@ -190,34 +195,45 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
               imgUrl={item.imgUrl}
               name={item.name}
               position={item.position}
+              imgToggle={imgToggle}
+              descriptionToggle={descriptionToggle}
             />
           ))
         ) : (
           <></>
         )}
-      </div>
-      <div style={{ overflow: "hidden", clear: "both" }}>
-        {rosters ? (
-          rosters.map(({ progamer, team, position }, index) => (
-            <Roster
-              progamer={progamer}
-              teamName={team}
-              position={position}
-              onDrop={(item) => handleRosterDrop(index, item, progamer)}
-              key={index}
-            />
-          ))
-        ) : (
-          <></>
-        )}
-      </div>
-    </div>
+      </ProgamerWrapper>
+      <RosterWrapper>
+        <RosterInnerWrapper>
+          {rosters ? (
+            rosters.map(({ progamer, team, position }, index) => (
+              <Roster
+                imgToggle={imgToggle}
+                descriptionToggle={descriptionToggle}
+                progamer={progamer}
+                teamName={team}
+                position={position}
+                onDrop={(item) => handleRosterDrop(index, item, progamer)}
+                key={index}
+              />
+            ))
+          ) : (
+            <></>
+          )}
+        </RosterInnerWrapper>
+      </RosterWrapper>
+    </ContainerWrapper>
   );
 };
 
-const PlayerSearchBarWrapper = styled.div`
+const ContainerWrapper = styled.div`
+  margin-bottom: 80px;
+`;
+const InnerContainer = styled.div`
   width: 100%s;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
+`;
+const SearchBarWrapper = styled(InnerContainer)`
   padding: 20px 20px 0;
   margin-top: 20px;
   border-radius: 3px 3px 0 0;
@@ -239,6 +255,23 @@ const PlayerSearchBarWrapper = styled.div`
       outline: none;
     }
   }
+`;
+const ProgamerWrapper = styled(InnerContainer)`
+  padding: 0 20px 0;
+  height: 280px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+`;
+const RosterWrapper = styled(InnerContainer)`
+  border-radius: 3px;
+  margin-top: 20px;
+  padding: 10px 20px 10px;
+`;
+const RosterInnerWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 `;
 
 export default EditRoster;

@@ -16,7 +16,14 @@ const style = {
   float: "left",
 };
 
-const Roster = ({ progamer, teamName, position, onDrop }) => {
+const Roster = ({
+  progamer,
+  teamName,
+  position,
+  onDrop,
+  imgToggle,
+  descriptionToggle,
+}) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes.PLAYER,
     drop: onDrop,
@@ -51,6 +58,8 @@ const Roster = ({ progamer, teamName, position, onDrop }) => {
           imgUrl={progamer.imgUrl}
           name={progamer.name}
           position={progamer.position}
+          imgToggle={imgToggle}
+          descriptionToggle={descriptionToggle}
         />
       )}
     </div>
