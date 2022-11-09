@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { postMyRosters } from "../../../api/next-lck";
 import { rostersGet, progamerGet } from "../../../api/admin";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../atoms/Button";
 import shareIcon from "../../../assets/svg/share.svg";
@@ -8,25 +10,34 @@ import kakaoIcon from "../../../assets/svg/sns_logo/icon-logo-kakao.svg";
 import ToggleButton from "../../atoms/ToggleButton";
 
 const NextLCKButtons = (props) => {
-  const handleSave = async () => {
-    const droppedRosters = props.rosters
-      .filter((item) => item.progamer)
-      .map((item) => {
-        const itemArr = {
-          team: item.team,
-          position: item.position,
-          progamerId: item.progamer.id,
-        };
-        return itemArr;
-      });
+  const navigate = useNavigate();
+  const isLogin = useSelector((state) => {
+    return state.user.signinState;
+  });
 
-    if (droppedRosters.length !== 0) {
-      try {
-        await postMyRosters(droppedRosters);
-        alert("저장되었습니다.");
-      } catch (err) {
-        console.log(err);
+  const handleSave = async () => {
+    if (isLogin) {
+      const droppedRosters = props.rosters
+        .filter((item) => item.progamer)
+        .map((item) => {
+          const itemArr = {
+            team: item.team,
+            position: item.position,
+            progamerId: item.progamer.id,
+          };
+          return itemArr;
+        });
+
+      if (droppedRosters.length !== 0) {
+        try {
+          await postMyRosters(droppedRosters);
+          alert("저장되었습니다.");
+        } catch (err) {
+          navigate("/signin");
+        }
       }
+    } else {
+      navigate("/signin");
     }
   };
 
