@@ -75,7 +75,6 @@ const Progamer = ({
 };
 
 const DragWrapper = styled.div`
-  width: 159px;
   opacity: ${(props) => (props.isDragging ? 0.4 : 1)};
 `;
 

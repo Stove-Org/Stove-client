@@ -8,6 +8,7 @@ import { ItemTypes } from "../../../utils/ItemTypes";
 import Roster from "../../molecules/Roster";
 import Progamer from "../../molecules/Progamer";
 import NextLCKButtons from "./NextLCKButtons";
+import TeamLogo from "../../atoms/TeamLogo";
 
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
   const [imgToggle, setImgToggle] = useState(true);
@@ -206,17 +207,270 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
       <RosterWrapper>
         <RosterInnerWrapper>
           {rosters ? (
-            rosters.map(({ progamer, team, position }, index) => (
-              <Roster
-                imgToggle={imgToggle}
-                descriptionToggle={descriptionToggle}
-                progamer={progamer}
-                teamName={team}
-                position={position}
-                onDrop={(item) => handleRosterDrop(index, item, progamer)}
-                key={index}
-              />
-            ))
+            <>
+              <TeamLogoWrapper teamName="DRX" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>DRX</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("DRX")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "DRX")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) => handleRosterDrop(index, item, progamer)}
+                    key={index}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="T1" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>T1</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("T1")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "T1")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="GEN" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>GEN</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("GEN")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "GEN")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="DK" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>DK</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("DK")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "DK")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="LSB" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>LSB</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("LSB")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "LSB")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="KT" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>KT</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("KT")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "KT")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="KDF" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>KDF</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("KDF")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "KDF")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="NS" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>NS</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("NS")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "NS")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="BRO" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>BRO</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("BRO")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "BRO")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
+          ) : (
+            <></>
+          )}
+          {rosters ? (
+            <>
+              <TeamLogoWrapper teamName="HLE" imgToggle={imgToggle}>
+                <StyleTeamName imgToggle={imgToggle}>HLE</StyleTeamName>
+                <StyleTeamLogo imgToggle={imgToggle}>
+                  {TeamLogo("HLE")}
+                </StyleTeamLogo>
+              </TeamLogoWrapper>
+              {rosters
+                .filter((item) => item.team === "HLE")
+                .map(({ progamer, team, position }, index) => (
+                  <Roster
+                    imgToggle={imgToggle}
+                    descriptionToggle={descriptionToggle}
+                    progamer={progamer}
+                    teamName={team}
+                    position={position}
+                    onDrop={(item) =>
+                      handleRosterDrop(index + 5, item, progamer)
+                    }
+                    key={index + 5}
+                  />
+                ))}
+            </>
           ) : (
             <></>
           )}
@@ -271,7 +525,101 @@ const RosterWrapper = styled(InnerContainer)`
 `;
 const RosterInnerWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+
+  & + & {
+    margin-top: 10px;
+  }
+`;
+// imgToggle
+const TeamLogoWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  border-radius: 3px;
+
+  ${({ teamName }) => {
+    switch (teamName) {
+      case "GEN":
+        return `
+          border: 1px solid #AA8B30;
+          background: rgb(170,139,48);
+          background: linear-gradient(99deg, rgba(170,139,48,0) 0%, rgba(170,139,48,0.20214023109243695) 100%);
+        `;
+      case "T1":
+        return `
+          border: 1px solid #E2012D;
+          background: rgb(226,1,45);
+          background: linear-gradient(99deg, rgba(226,1,45,0) 0%, rgba(226,1,45,0.20214023109243695) 100%);
+        `;
+      case "LSB":
+        return `
+          border: 1px solid #FFC900;
+          background: rgb(255,201,0);
+          background: linear-gradient(99deg, rgba(255,201,0,0) 0%, rgba(255,201,0,0.2049413515406162) 100%);
+        `;
+      case "DK":
+        return `
+          border: 1px solid #0ec7b5;
+          background: rgb(14,199,181);
+          background: linear-gradient(99deg, rgba(14,199,181,0) 0%, rgba(14,199,181,0.1993391106442577) 100%);
+        `;
+      case "KT":
+        return `
+          border: 1px solid #ff0a07;
+          background: rgb(255,10,7);
+          background: linear-gradient(99deg, rgba(255,10,7,0) 0%, rgba(255,10,7,0.2049413515406162) 100%);
+        `;
+      case "DRX":
+        return `
+          border: 1px solid #5a8dff;
+          background: rgb(90,141,255);
+          background: linear-gradient(99deg, rgba(90,141,255,0) 0%, rgba(90,141,255,0.1993391106442577) 100%);
+        `;
+      case "KDF":
+        return `
+          border: 1px solid #e73312;
+          background: rgb(231,51,18);
+          background: linear-gradient(99deg, rgba(231,51,18,0) 0%, rgba(231,51,18,0.2049413515406162) 100%);
+        `;
+      case "NS":
+        return `
+          border: 1px solid #de2027;
+          background: rgb(222,32,39);
+          background: linear-gradient(99deg, rgba(222,32,39,0) 0%, rgba(222,32,39,0.2049413515406162) 100%);
+        `;
+      case "BRO":
+        return `
+          border: 1px solid #00492b;
+          background: rgb(0,73,43);
+          background: linear-gradient(99deg, rgba(0,73,43,0) 0%, rgba(0,73,43,0.1993391106442577) 100%);
+        `;
+      case "HLE":
+        return `
+          border: 1px solid #ff6b01;
+          background: rgb(255,107,1);
+          background: linear-gradient(99deg, rgba(255,107,1,0) 0%, rgba(255,107,1,0.19653799019607843) 100%);
+        `;
+      default:
+        return;
+    }
+  }}
+`;
+const StyleTeamName = styled.div`
+  ${(props) => props.theme.typography.bodySmBold};
+  flex-grow: 1;
+  margin-left: 16px;
+  display: ${(props) => props.imgToggle && "none"};
+`;
+const StyleTeamLogo = styled.div`
+  width: ${(props) => (props.imgToggle ? "100%" : "30px")};
+  padding: ${(props) => props.imgToggle && "20%"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: ${(props) => props.imgToggle === false && "0 10px 0 0"};
 `;
 
 export default EditRoster;

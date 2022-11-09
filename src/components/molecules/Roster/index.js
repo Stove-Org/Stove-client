@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/ItemTypes";
 
@@ -44,10 +45,10 @@ const Roster = ({
     backgroundColor = "darkkhaki";
   }
   return (
-    <div ref={drop} style={{ ...style, backgroundColor }} data-testid="dustbin">
-      {isActive ? "여기에 마우스 올렸어" : `${teamName}-${position}`}
+    <div ref={drop} data-testid="dustbin">
+      {/* {isActive ? "여기에 마우스 올렸어" : `${teamName}-${position}`} */}
 
-      {progamer && (
+      {progamer ? (
         // <p>Last dropped: {JSON.stringify(progamer)}</p>
         <Progamer
           alias={progamer.alias}
@@ -61,9 +62,33 @@ const Roster = ({
           imgToggle={imgToggle}
           descriptionToggle={descriptionToggle}
         />
+      ) : (
+        <FalsePositionBlock
+          imgToggle={imgToggle}
+          descriptionToggle={descriptionToggle}
+          ref={drop}
+        >
+          <p>{position}</p>
+        </FalsePositionBlock>
       )}
     </div>
   );
 };
+
+const FalsePositionBlock = styled.div`
+  height: ${(props) =>
+    props.imgToggle ? "100%" : props.descriptionToggle ? "100%" : "36.5px"};
+  align-self: center;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
+  ${(props) => props.theme.typography.bodySmBold};
+  color: ${(props) => props.theme.color.grayScale.gray60};
+  border-width: 1px;
+  border-style: dashed;
+  border-color: ${(props) => props.theme.color.grayScale.gray60};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default Roster;
