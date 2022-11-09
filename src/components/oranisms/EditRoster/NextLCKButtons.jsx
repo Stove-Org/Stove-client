@@ -94,7 +94,7 @@ const NextLCKButtons = (props) => {
     <ButtonsWrapper>
       <ButtonInnerWrapper>
         <Button text={"저장하기"} styleType={"primary"} onClick={handleSave} />
-        <Button text={"초기화"} onClick={handleReset} />
+        <Button text={"기본 로스터 불러오기"} onClick={handleReset} />
         <Button
           icon={
             <>
