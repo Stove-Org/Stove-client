@@ -32,7 +32,22 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
       (item) => item.progamer && item.progamer.nickname === nickname
     );
 
-    if (prevRosterProgamer && prevRosterProgamer !== -1) {
+    if (prevRosterProgamer === 0) {
+      setRosters(
+        update(rosters, {
+          [index]: {
+            progamer: {
+              $set: item,
+            },
+          },
+          0: {
+            progamer: {
+              $set: null,
+            },
+          },
+        })
+      );
+    } else if (prevRosterProgamer && prevRosterProgamer !== -1) {
       setRosters(
         update(rosters, {
           [index]: {
@@ -89,15 +104,12 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
     const { nickname } = item;
 
     // 1. rosters에서 item.nickname과 같은 progamer.nickname = null 로 변경
-    const removeProgamer = rosters.filter((item) => {
-      if (item.progamer) {
-        return item.progamer.nickname === nickname;
-      }
+    const removeProgamerIndex = rosters.findIndex((item) => {
+      return item.progamer && item.progamer.nickname === nickname;
     });
-    const index = removeProgamer[0].id - 1;
     setRosters(
       update(rosters, {
-        [index]: {
+        [removeProgamerIndex]: {
           progamer: {
             $set: null,
           },
@@ -124,14 +136,7 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
     }),
   });
 
-  const isActive = isOver && canDrop; // Drop중인 영역
-
-  // let backgroundColor = "#222";
-  // if (isActive) {
-  //   backgroundColor = "darkgreen";
-  // } else if (canDrop) {
-  //   backgroundColor = "darkkhaki";
-  // }
+  // const isActive = isOver && canDrop; // Drop중인 영역
 
   const handleChange = (e) => {
     setSearch(e.target.value);
