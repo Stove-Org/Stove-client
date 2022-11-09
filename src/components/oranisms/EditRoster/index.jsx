@@ -563,6 +563,7 @@ const SearchBarWrapper = styled(InnerContainer)`
 const ProgamerWrapper = styled(InnerContainer)`
   padding: 0 20px 0;
   height: 280px;
+  overflow-x: hidden;
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
