@@ -4,13 +4,7 @@ import { Cookies } from "react-cookie";
 const cookies = new Cookies();
 
 export const getDefaultRosters = async () => {
-  // admin 풀리면 토큰 빼기
-  const token = cookies.get("accessToken");
-  const data = await customAxios.get("/api/v1/next_lck/default", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const data = await customAxios.get("/api/v1/next_lck/default");
 
   return data;
 };
@@ -38,7 +32,10 @@ export const postMyRosters = async (dto) => {
 };
 
 export const getShareRosters = async (nickname) => {
-  const data = await customAxios.post("/api/v1/next_lck/share", nickname);
+  console.log(nickname);
+  const data = await customAxios.get(
+    `/api/v1/next_lck/share?nickname=${nickname}`
+  );
 
   return data;
 };

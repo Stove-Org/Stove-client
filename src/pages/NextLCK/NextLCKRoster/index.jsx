@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { getParticipants } from "../../../api/next-lck";
 import { addCommas } from "../../../functions";
 import { rostersGet, progamerGet } from "../../../api/admin";
+import { getMyRosters } from "../../../api/next-lck";
+import { useSelector } from "react-redux";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -16,29 +18,58 @@ const NextLCKRoster = () => {
   const [progamers, setProgamers] = useState(null);
   const [participants, setParticipants] = useState("0");
 
+  const isLogin = useSelector((state) => {
+    return state.user.signinState;
+  });
+
   useEffect(() => {
-    rostersGet().then((res) => {
-      const rosterData = res.data;
-      progamerGet().then((res) => {
-        const progamersData = res.data;
+    if (isLogin) {
+      getMyRosters().then((res) => {
+        const rosterData = res.data;
+        progamerGet().then((res) => {
+          const progamersData = res.data;
 
-        const droppedProgamers = rosterData
-          .filter((item) => item.progamer !== null)
-          .map((item) => item.progamer.nickname);
+          const droppedProgamers = rosterData
+            .filter((item) => item.progamer !== null)
+            .map((item) => item.progamer.nickname);
 
-        const unDroppedProgamer = progamersData
-          .filter((item) => droppedProgamers.includes(item.nickname) !== true)
-          .sort((a, b) => {
-            if (a.nickname > b.nickname) return 1;
-            if (a.nickname < b.nickname) return -1;
-            return 0;
-          });
+          const unDroppedProgamer = progamersData
+            .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+            .sort((a, b) => {
+              if (a.nickname > b.nickname) return 1;
+              if (a.nickname < b.nickname) return -1;
+              return 0;
+            });
 
-        setProgamers(unDroppedProgamer);
+          setProgamers(unDroppedProgamer);
+        });
+
+        setRosters(rosterData);
       });
+    } else {
+      rostersGet().then((res) => {
+        const rosterData = res.data;
+        progamerGet().then((res) => {
+          const progamersData = res.data;
 
-      setRosters(rosterData);
-    });
+          const droppedProgamers = rosterData
+            .filter((item) => item.progamer !== null)
+            .map((item) => item.progamer.nickname);
+
+          const unDroppedProgamer = progamersData
+            .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+            .sort((a, b) => {
+              if (a.nickname > b.nickname) return 1;
+              if (a.nickname < b.nickname) return -1;
+              return 0;
+            });
+
+          setProgamers(unDroppedProgamer);
+        });
+
+        setRosters(rosterData);
+      });
+    }
 
     getParticipants().then((res) =>
       setParticipants((prev) => (prev = addCommas(res.data.count)))

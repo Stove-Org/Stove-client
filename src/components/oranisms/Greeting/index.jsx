@@ -17,7 +17,7 @@ const Greeting = () => {
     getHotNews().then((res) => {
       dispatch(setHotNews(res.data));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <GreetingWrapper>
