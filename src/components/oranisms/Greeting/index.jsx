@@ -25,9 +25,9 @@ const Greeting = () => {
         <BannerBgImg src={bannerImg} alt="2022 LCK Final" />
         <BannerFilter />
         <BannerTextWrapper>
-          <p>Who's next LCK?</p>
+          <p>Next LCK 2023</p>
           <p>LCK 팀들의 다음 시즌 로스터를 맞춰보세요!</p>
-          <p>~11/31(목) 마감</p>
+          <p>Who's next LCK?</p>
         </BannerTextWrapper>
         <Button
           text={"바로가기 >"}
