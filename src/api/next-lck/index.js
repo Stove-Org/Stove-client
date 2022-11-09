@@ -32,7 +32,10 @@ export const postMyRosters = async (dto) => {
 };
 
 export const getShareRosters = async (nickname) => {
-  const data = await customAxios.post("/api/v1/next_lck/share", nickname);
+  console.log(nickname);
+  const data = await customAxios.get(
+    `/api/v1/next_lck/share?nickname=${nickname}`
+  );
 
   return data;
 };

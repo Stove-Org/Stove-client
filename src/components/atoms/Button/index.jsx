@@ -25,7 +25,6 @@ const Button = ({ text, styleType, onClick, type, icon, isActive }) => {
 };
 
 const ButtonStyle = styled.button`
-  cursor: pointer;
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;

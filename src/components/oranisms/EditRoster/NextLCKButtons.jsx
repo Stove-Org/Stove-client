@@ -14,6 +14,9 @@ const NextLCKButtons = (props) => {
   const isLogin = useSelector((state) => {
     return state.user.signinState;
   });
+  const userNickname = useSelector((state) => {
+    return state.user.userData.nickname;
+  });
 
   const handleSave = async () => {
     if (isLogin) {
@@ -31,7 +34,7 @@ const NextLCKButtons = (props) => {
       if (droppedRosters.length !== 0) {
         try {
           await postMyRosters(droppedRosters);
-          alert("저장되었습니다.");
+          alert("로스터가 저장되었습니다.");
         } catch (err) {
           navigate("/signin");
         }
@@ -65,6 +68,28 @@ const NextLCKButtons = (props) => {
       props.setRosters(rosterData);
     });
   };
+
+  const copyLink = async () => {
+    if (isLogin) {
+      if ("clipboard" in navigator) {
+        await navigator.clipboard.writeText(
+          `https://stove.gg/nextlck/${userNickname}`
+        );
+        alert("링크를 클립보드에 저장했습니다.");
+        return;
+      } else {
+        document.execCommand(
+          "copy",
+          true,
+          `https://stove.gg/nextlck/${userNickname}`
+        );
+        alert("링크를 클립보드에 저장했습니다.");
+        return;
+      }
+    }
+    return;
+  };
+
   return (
     <ButtonsWrapper>
       <ButtonInnerWrapper>
@@ -77,7 +102,8 @@ const NextLCKButtons = (props) => {
             </>
           }
           styleType={"light"}
-          onClick={() => {}}
+          onClick={copyLink}
+          isActive={isLogin}
         />
         {/* <Button
           icon={
