@@ -15,10 +15,17 @@ const AuthPageTemplate = () => {
       <TemplateInnerWrapper>
         {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}
         <Outlet />
-        {isSignUp && (
+        {isSignUp ? (
           <SignUpButton>
             이미 회원이신가요?{" "}
             <button onClick={() => navigate("/signin")}>로그인하러 가기</button>
+          </SignUpButton>
+        ) : (
+          <SignUpButton>
+            Stove 회원이 아니신가요?{" "}
+            <button onClick={() => navigate("/signup")}>
+              회원가입하러 가기
+            </button>
           </SignUpButton>
         )}
       </TemplateInnerWrapper>
