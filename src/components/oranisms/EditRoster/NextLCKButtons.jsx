@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { postMyRosters } from "../../../api/next-lck";
 
 import Button from "../../atoms/Button";
 import shareIcon from "../../../assets/svg/share.svg";
@@ -6,10 +7,31 @@ import kakaoIcon from "../../../assets/svg/sns_logo/icon-logo-kakao.svg";
 import ToggleButton from "../../atoms/ToggleButton";
 
 const NextLCKButtons = (props) => {
+  const handleSave = async () => {
+    const droppedRosters = props.rosters
+      .filter((item) => item.progamer)
+      .map((item) => {
+        const itemArr = {
+          team: item.team,
+          position: item.position,
+          progamerId: item.progamer.id,
+        };
+        return itemArr;
+      });
+
+    if (droppedRosters.length !== 0) {
+      try {
+        await postMyRosters(droppedRosters);
+        alert("저장되었습니다.");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <ButtonsWrapper>
       <ButtonInnerWrapper>
-        <Button text={"저장하기"} styleType={"primary"} onClick={() => {}} />
+        <Button text={"저장하기"} styleType={"primary"} onClick={handleSave} />
         <Button text={"초기화"} onClick={() => {}} />
         <Button
           icon={

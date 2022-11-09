@@ -154,6 +154,7 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
         setImgToggle={setImgToggle}
         descriptionToggle={descriptionToggle}
         setDescriptionToggle={setDescriptionToggle}
+        rosters={rosters}
       />
       <SearchBarWrapper>
         <input
@@ -276,9 +277,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 10, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 10}
                   />
                 ))}
             </>
@@ -303,9 +304,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 15, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 15}
                   />
                 ))}
             </>
@@ -330,9 +331,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 20, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 20}
                   />
                 ))}
             </>
@@ -357,9 +358,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 25, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 25}
                   />
                 ))}
             </>
@@ -384,9 +385,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 30, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 30}
                   />
                 ))}
             </>
@@ -411,9 +412,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 35, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 35}
                   />
                 ))}
             </>
@@ -438,9 +439,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 40, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 40}
                   />
                 ))}
             </>
@@ -465,9 +466,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     teamName={team}
                     position={position}
                     onDrop={(item) =>
-                      handleRosterDrop(index + 5, item, progamer)
+                      handleRosterDrop(index + 45, item, progamer)
                     }
-                    key={index + 5}
+                    key={index + 45}
                   />
                 ))}
             </>
