@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { postMyRosters } from "../../../api/next-lck";
+import { rostersGet, progamerGet } from "../../../api/admin";
 
 import Button from "../../atoms/Button";
 import shareIcon from "../../../assets/svg/share.svg";
@@ -28,11 +29,36 @@ const NextLCKButtons = (props) => {
       }
     }
   };
+
+  const handleReset = () => {
+    rostersGet().then((res) => {
+      const rosterData = res.data;
+      progamerGet().then((res) => {
+        const progamersData = res.data;
+
+        const droppedProgamers = rosterData
+          .filter((item) => item.progamer !== null)
+          .map((item) => item.progamer.nickname);
+
+        const unDroppedProgamer = progamersData
+          .filter((item) => droppedProgamers.includes(item.nickname) !== true)
+          .sort((a, b) => {
+            if (a.nickname > b.nickname) return 1;
+            if (a.nickname < b.nickname) return -1;
+            return 0;
+          });
+
+        props.setProgamers(unDroppedProgamer);
+      });
+
+      props.setRosters(rosterData);
+    });
+  };
   return (
     <ButtonsWrapper>
       <ButtonInnerWrapper>
         <Button text={"저장하기"} styleType={"primary"} onClick={handleSave} />
-        <Button text={"초기화"} onClick={() => {}} />
+        <Button text={"초기화"} onClick={handleReset} />
         <Button
           icon={
             <>

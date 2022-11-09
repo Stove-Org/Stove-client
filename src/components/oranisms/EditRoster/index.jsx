@@ -155,6 +155,8 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
         descriptionToggle={descriptionToggle}
         setDescriptionToggle={setDescriptionToggle}
         rosters={rosters}
+        setRosters={setRosters}
+        setProgamers={setProgamers}
       />
       <SearchBarWrapper>
         <input
