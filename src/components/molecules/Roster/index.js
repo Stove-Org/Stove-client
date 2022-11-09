@@ -58,6 +58,7 @@ const Roster = ({
 };
 
 const FalsePositionBlock = styled.div`
+  width: 162px;
   height: ${(props) =>
     props.imgToggle ? "100%" : props.descriptionToggle ? "100%" : "36.5px"};
   align-self: center;

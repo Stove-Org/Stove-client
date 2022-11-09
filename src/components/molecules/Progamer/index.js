@@ -86,6 +86,7 @@ const PlayerBlock = styled.div`
 `;
 const PlayerImgBlock = styled(PlayerBlock)`
   height: 150px;
+  width: 162px;
   padding: 20px 0 0;
   border-radius: 3px 3px 0 0;
   position: relative;
