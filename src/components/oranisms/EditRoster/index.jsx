@@ -10,6 +10,12 @@ import Progamer from "../../molecules/Progamer";
 import NextLCKButtons from "./NextLCKButtons";
 import TeamLogo from "../../atoms/TeamLogo";
 
+import TOP from "../../../assets/svg/positions/TOP";
+import JGL from "../../../assets/svg/positions/JGL";
+import MID from "../../../assets/svg/positions/MID";
+import BOT from "../../../assets/svg/positions/BOT";
+import SPT from "../../../assets/svg/positions/SPT";
+
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
   const [imgToggle, setImgToggle] = useState(true);
   const [descriptionToggle, setDescriptionToggle] = useState(false);
@@ -208,6 +214,24 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
         )}
       </ProgamerWrapper>
       <RosterWrapper>
+        <RosterInnerWrapper>
+          <PositionWrapper></PositionWrapper>
+          <PositionWrapper>
+            <TOP width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <JGL width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <MID width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <BOT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <SPT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+        </RosterInnerWrapper>
         <RosterInnerWrapper>
           {rosters ? (
             <>
@@ -478,6 +502,24 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
             <></>
           )}
         </RosterInnerWrapper>
+        <RosterInnerWrapper>
+          <PositionWrapper></PositionWrapper>
+          <PositionWrapper>
+            <TOP width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <JGL width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <MID width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <BOT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <SPT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+        </RosterInnerWrapper>
       </RosterWrapper>
     </ContainerWrapper>
   );
@@ -623,6 +665,12 @@ const StyleTeamLogo = styled.div`
   justify-content: center;
   align-items: center;
   margin: ${(props) => props.imgToggle === false && "0 10px 0 0"};
+`;
+
+const PositionWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default EditRoster;

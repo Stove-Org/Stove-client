@@ -8,6 +8,12 @@ import PositionIcon from "../../../components/atoms/PositionIcon";
 import PageTitle from "../../../components/atoms/PageTitle";
 import Button from "../../../components/atoms/Button";
 
+import TOP from "../../../assets/svg/positions/TOP";
+import JGL from "../../../assets/svg/positions/JGL";
+import MID from "../../../assets/svg/positions/MID";
+import BOT from "../../../assets/svg/positions/BOT";
+import SPT from "../../../assets/svg/positions/SPT";
+
 const NextLCKResult = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,6 +52,24 @@ const NextLCKResult = () => {
         />
       </ButtonsWrapper>
       <RosterWrapper>
+        <RosterInnerWrapper>
+          <PositionWrapper></PositionWrapper>
+          <PositionWrapper>
+            <TOP width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <JGL width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <MID width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <BOT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <SPT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+        </RosterInnerWrapper>
         <RosterInnerWrapper>
           {resultRosters ? (
             <>
@@ -988,6 +1012,24 @@ const NextLCKResult = () => {
             <></>
           )}
         </RosterInnerWrapper>
+        <RosterInnerWrapper>
+          <PositionWrapper></PositionWrapper>
+          <PositionWrapper>
+            <TOP width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <JGL width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <MID width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <BOT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+          <PositionWrapper>
+            <SPT width={36} height={36} fill={"#777777"} />
+          </PositionWrapper>
+        </RosterInnerWrapper>
       </RosterWrapper>
       ;
     </>
@@ -1180,6 +1222,12 @@ const FalsePositionBlock = styled.div`
   border-width: 1px;
   border-style: dashed;
   border-color: ${(props) => props.theme.color.grayScale.gray60};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PositionWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
