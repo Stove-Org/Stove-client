@@ -1031,7 +1031,6 @@ const NextLCKResult = () => {
           </PositionWrapper>
         </RosterInnerWrapper>
       </RosterWrapper>
-      ;
     </>
   );
 };
@@ -1042,7 +1041,7 @@ const InnerContainer = styled.div`
 `;
 const RosterWrapper = styled(InnerContainer)`
   border-radius: 3px;
-  margin-top: 20px;
+  margin: 20px 0 40px;
   padding: 10px 20px 10px;
 `;
 const RosterInnerWrapper = styled.div`

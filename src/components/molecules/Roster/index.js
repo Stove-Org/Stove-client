@@ -62,10 +62,10 @@ const FalsePositionBlock = styled.div`
     props.imgToggle ? "100%" : props.descriptionToggle ? "100%" : "36.5px"};
   align-self: center;
   border-radius: 3px;
-  background-color: ${(props) => props.theme.color.grayScale.gray20};
+  background-color: ${(props) => (props.isActive ? "#F54242" : "#EEEEEE")};
   ${(props) => props.theme.typography.bodySmBold};
-  color: ${(props) => props.theme.color.grayScale.gray60};
-  border-width: 1px;
+  color: ${(props) => (props.isActive ? "#ffffff" : "#999999")};
+  border-width: ${(props) => (props.isActive ? "0" : "1px")};
   border-style: dashed;
   border-color: ${(props) => props.theme.color.grayScale.gray60};
   display: flex;
