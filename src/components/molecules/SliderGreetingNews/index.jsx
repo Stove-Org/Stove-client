@@ -39,7 +39,7 @@ const SliderGreetingNews = () => {
         dots={false}
         margin={20}
         autoplay={false}
-        slideTransition="linear"
+        slidetransition="linear"
         responsive={state.responsive}
       >
         {hotNews ? (
