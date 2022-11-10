@@ -47,3 +47,9 @@ export const getParticipants = async () => {
       return response;
     });
 };
+
+export const getRanking = async () => {
+  const data = await customAxios.get("/api/v1/next_lck/ranking");
+
+  return data;
+};

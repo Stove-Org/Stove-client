@@ -8,6 +8,7 @@ import { getHotNews } from "../../../api/news";
 import { useDispatch } from "react-redux";
 import { setHotNews } from "../../../reducers/newsSlice";
 import SliderGreetingNews from "../../molecules/SliderGreetingNews";
+import NextLCKRanking from "../../molecules/NextLCKRanking";
 
 const Greeting = () => {
   const navigate = useNavigate();
@@ -45,36 +46,7 @@ const Greeting = () => {
         </Content>
         <Content>
           <h4>Next LCK 실시간 순위</h4>
-          <Grid>
-            <GridFirst>
-              <select name="team" id="team">
-                <option value="volvo">Gen.G</option>
-                <option value="saab">T1</option>
-                <option value="opel">DRX</option>
-                <option value="audi">DWG KIA</option>
-                <option value="audi">리브 샌드박스</option>
-                <option value="audi">KT Rolster</option>
-                <option value="audi">광동 프릭스</option>
-                <option value="audi">농심 레드포스</option>
-                <option value="audi">프레딧 브리온</option>
-                <option value="audi">한화 e스포츠</option>
-              </select>
-            </GridFirst>
-            <GridSec>
-              <button>탑</button>
-              <button>정글</button>
-              <button>미드</button>
-              <button>바텀</button>
-              <button>서포터</button>
-            </GridSec>
-            <GridThird>
-              <div>Top1 Doran 89.6% (선수 이미지 url)</div>
-              <div>Top2 AAAAA 5.0% (선수 이미지 url)</div>
-              <div>Top3 BBBBB 3.3% (선수 이미지 url)</div>
-              <div>Top4 CCCCC 2.0% (선수 이미지 url)</div>
-              <div>Top5 DDDDD 0.1% (선수 이미지 url)</div>
-            </GridThird>
-          </Grid>
+          <NextLCKRanking />
         </Content>
         <Content>
           <h4>LCK 프랜차이즈 팀</h4>
@@ -84,48 +56,6 @@ const Greeting = () => {
     </GreetingWrapper>
   );
 };
-
-const Grid = styled.div`
-  display: flex;
-  ${(props) => props.theme.typography.headRg};
-
-  & > div + div {
-    margin-left: 20px;
-  }
-
-  & > div > * {
-    padding: 10px;
-  }
-
-  & > div > button {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    border: none;
-    border-radius: 3px;
-    background-color: ${(props) => props.theme.color.grayScale.gray10};
-    cursor: pointer;
-  }
-  & > div > button + button {
-    margin-top: 10px;
-  }
-  & > div > button:first-child {
-    background-color: ${(props) => props.theme.color.grayScale.gray30};
-  }
-`;
-
-const GridFirst = styled.div`
-  width: 200px;
-`;
-const GridSec = styled.div`
-  width: 300px;
-`;
-const GridThird = styled.div`
-  flex-grow: 1;
-  & > div + div {
-    margin-top: 10px;
-  }
-`;
 
 const ContentsWrapper = styled.article`
   margin: 40px 0 0;
