@@ -47,7 +47,7 @@ const NextLCKResult = () => {
           text={"+ 내 로스터 만들기"}
           styleType={"primary"}
           onClick={() => {
-            navigate("/next-lck");
+            navigate("/nextlck");
           }}
         />
       </ButtonsWrapper>
