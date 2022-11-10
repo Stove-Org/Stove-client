@@ -1,4 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
+import { down } from "styled-breakpoints";
+import { useBreakpoint } from "styled-breakpoints/react-styled";
 import Select from "react-select";
 import styled from "styled-components";
 import { getRanking } from "../../../api/next-lck";
@@ -43,6 +45,8 @@ const customStyles = {
 };
 
 const NextLCKRanking = () => {
+  const isMobile = useBreakpoint(down("sm"));
+
   const options = useMemo(
     () => [
       { value: "DRX", label: "DRX" },
@@ -115,43 +119,63 @@ const NextLCKRanking = () => {
           </div>
           <ButtonsWrapper>
             <TopButton position={position} onClick={() => setPosition("TOP")}>
-              <TOP
-                width={24}
-                height={24}
-                fill={position === "TOP" ? "#ffffff" : "#999999"}
-              />
+              {isMobile ? (
+                <></>
+              ) : (
+                <TOP
+                  width={24}
+                  height={24}
+                  fill={position === "TOP" ? "#ffffff" : "#999999"}
+                />
+              )}
               <div>Top</div>
             </TopButton>
             <JGLButton position={position} onClick={() => setPosition("JGL")}>
-              <JGL
-                width={24}
-                height={24}
-                fill={position === "JGL" ? "#ffffff" : "#999999"}
-              />
+              {isMobile ? (
+                <></>
+              ) : (
+                <JGL
+                  width={24}
+                  height={24}
+                  fill={position === "JGL" ? "#ffffff" : "#999999"}
+                />
+              )}
               <div>Junggle</div>
             </JGLButton>
             <MIDButton position={position} onClick={() => setPosition("MID")}>
-              <MID
-                width={24}
-                height={24}
-                fill={position === "MID" ? "#ffffff" : "#999999"}
-              />
+              {isMobile ? (
+                <></>
+              ) : (
+                <MID
+                  width={24}
+                  height={24}
+                  fill={position === "MID" ? "#ffffff" : "#999999"}
+                />
+              )}
               <div>Mid</div>
             </MIDButton>
             <BOTButton position={position} onClick={() => setPosition("BOT")}>
-              <BOT
-                width={24}
-                height={24}
-                fill={position === "BOT" ? "#ffffff" : "#999999"}
-              />
+              {isMobile ? (
+                <></>
+              ) : (
+                <BOT
+                  width={24}
+                  height={24}
+                  fill={position === "BOT" ? "#ffffff" : "#999999"}
+                />
+              )}
               <div>Bottom</div>
             </BOTButton>
             <SPTButton position={position} onClick={() => setPosition("SPT")}>
-              <SPT
-                width={24}
-                height={24}
-                fill={position === "SPT" ? "#ffffff" : "#999999"}
-              />
+              {isMobile ? (
+                <></>
+              ) : (
+                <SPT
+                  width={24}
+                  height={24}
+                  fill={position === "SPT" ? "#ffffff" : "#999999"}
+                />
+              )}
               <div>Support</div>
             </SPTButton>
           </ButtonsWrapper>
@@ -175,10 +199,11 @@ const NextLCKRanking = () => {
 };
 
 const RankingWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 0.8fr 2fr;
+  display: block;
   gap: 10px;
   @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 2fr;
     gap: 20px;
   }
   @media screen and (min-width: 1080px) {
@@ -188,11 +213,21 @@ const RankingWrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    gap: 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  @media screen and (min-width: 1080px) {
+  }
 `;
 const StyleButton = styled.button`
-  ${(props) => props.theme.typography.description}
-  padding: 12px 16px;
+  ${(props) => props.theme.typography.bodySmRegular}
+  padding: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 1px 8px 0px;
   border: none;
   border-radius: 3px;
@@ -203,14 +238,24 @@ const StyleButton = styled.button`
   border-width: 1px;
   border-style: solid;
 
-  &:hover {
-    border-color: ${(props) => props.theme.color.main100};
-  }
-  & + & {
-    margin-top: 14px;
-  }
   & > div {
-    width: 90px;
+    width: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    ${(props) => props.theme.typography.description}
+    padding: 12px 16px;
+    & > div {
+      width: 90px;
+    }
+    & + & {
+      margin-top: 14px;
+    }
+    &:hover {
+      border-color: ${(props) => props.theme.color.main100};
+    }
+  }
+  @media screen and (min-width: 1080px) {
   }
 `;
 const TopButton = styled(StyleButton)`

@@ -88,17 +88,18 @@ const GreetingWrapper = styled.div`
 `;
 const Banner = styled.article`
   position: relative;
-  height: 260px;
+  height: 200px;
   overflow: hidden;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
 
   & > button {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 102px;
+    left: 20px;
   }
 
   @media screen and (min-width: 768px) {
+    height: 260px;
     & > button {
       top: 173px;
       left: 60px;
@@ -136,8 +137,8 @@ const BannerFilter = styled.div`
 const BannerTextWrapper = styled.div`
   color: ${(props) => props.theme.color.white};
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 20px;
 
   p {
     ${(props) => props.theme.typography.bodySmRegular};
