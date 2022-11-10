@@ -177,7 +177,13 @@ const NextLCKRanking = () => {
 const RankingWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 0.8fr 2fr;
-  gap: 30px;
+  gap: 10px;
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+  }
+  @media screen and (min-width: 1080px) {
+    gap: 30px;
+  }
 `;
 
 const ButtonsWrapper = styled.div`

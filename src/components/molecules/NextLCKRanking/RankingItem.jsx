@@ -72,10 +72,15 @@ const StylePercentText = styled.div`
 const StyleImg = styled.img`
   position: absolute;
   bottom: 0;
-  right: 40px;
+  right: 20px;
   max-height: 110%;
   width: 64px;
   object-fit: contain;
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1080px) {
+    right: 40px;
+  }
 `;
 
 export default RankingItem;

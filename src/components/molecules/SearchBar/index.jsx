@@ -14,7 +14,7 @@ const SearchBar = () => {
   };
 
   return (
-    <>
+    <SearchWrapper>
       <SearchInput
         type="text"
         value={searchTxt}
@@ -26,10 +26,20 @@ const SearchBar = () => {
       <SearchButton onClick={() => navigate(`/search/${searchTxt}`)}>
         <img src={searchIcon} alt="search button" />
       </SearchButton>
-    </>
+    </SearchWrapper>
   );
 };
 
+const SearchWrapper = styled.div`
+  display: none;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+  @media screen and (min-width: 1080px) {
+    display: flex;
+  }
+`;
 const SearchInput = styled.input`
   ${(props) => props.theme.typography.bodyRg};
   outline: none;

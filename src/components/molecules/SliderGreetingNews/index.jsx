@@ -66,8 +66,8 @@ const SliderGreetingNewsWrapper = styled.div`
     padding: 0;
   }
 
-  .owl-nav > button.owl-prev,
-  .owl-nav > button.owl-next {
+  .owl-carousel > .owl-nav > button.owl-prev,
+  .owl-carousel > .owl-nav > button.owl-next {
     position: absolute;
     top: 80px;
     width: 40px;
@@ -88,9 +88,11 @@ const SliderGreetingNewsWrapper = styled.div`
 
   .owl-nav > button.owl-prev {
     left: -20px;
+    background-color: ${(props) => props.theme.color.white};
   }
   .owl-nav > button.owl-next {
     right: -20px;
+    background-color: ${(props) => props.theme.color.white};
   }
 `;
 

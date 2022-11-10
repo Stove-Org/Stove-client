@@ -101,7 +101,7 @@ const Banner = styled.article`
   @media screen and (min-width: 768px) {
     & > button {
       top: 173px;
-      left: 100px;
+      left: 60px;
     }
   }
   @media screen and (min-width: 1080px) {
@@ -115,14 +115,14 @@ const Banner = styled.article`
 `;
 const BannerBgImg = styled.img`
   width: 100%;
-  position: static;
-  top: -94px;
+  position: absolute;
   left: auto;
   right: auto;
   @media screen and (min-width: 768px) {
+    top: -69px;
   }
   @media screen and (min-width: 1080px) {
-    position: absolute;
+    top: -94px;
   }
 `;
 const BannerFilter = styled.div`
@@ -130,6 +130,8 @@ const BannerFilter = styled.div`
   height: 100%;
   background-color: rgb(0, 0, 0, 0.3);
   position: absolute;
+  top: 0;
+  left: 0;
 `;
 const BannerTextWrapper = styled.div`
   color: ${(props) => props.theme.color.white};
@@ -147,7 +149,7 @@ const BannerTextWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     top: 44px;
-    left: 100px;
+    left: 60px;
 
     p {
       ${(props) => props.theme.typography.headTablet};

@@ -127,33 +127,69 @@ const HeaderWrapper = styled.header`
   width: 100%;
   height: 62px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
+  @media screen and (min-width: 768px) {
+    justify-content: baseline;
+    padding: 0;
+  }
+  @media screen and (min-width: 1080px) {
+  }
 `;
 
 const HeaderLeft = styled.div`
   display: flex;
-  flex-grow: 1;
   align-items: center;
+  flex-grow: 0;
+  @media screen and (min-width: 768px) {
+    flex-grow: 1;
+  }
+  @media screen and (min-width: 1080px) {
+  }
 `;
 const HeaderRight = styled.div`
+  & > button:last-child {
+    display: none;
+  }
   & > button + button {
     margin-left: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    & > button:last-child {
+      display: inline-block;
+    }
+  }
+  @media screen and (min-width: 1080px) {
   }
 `;
 
 const Logo = styled.img`
-  margin-right: 20px;
+  margin-right: 0;
+  @media screen and (min-width: 768px) {
+    margin-right: 20px;
+  }
+  @media screen and (min-width: 1080px) {
+  }
 `;
 
 const Nav = styled.nav`
   ${(props) => props.theme.typography.bodyRg};
   & > a {
-    margin-left: 20px;
+    margin-left: 10px;
     padding: 5px;
   }
 
   & > a:hover {
     color: ${(props) => props.theme.color.main100};
+  }
+  @media screen and (min-width: 768px) {
+    & > a {
+      margin-left: 20px;
+      padding: 5px;
+    }
+  }
+  @media screen and (min-width: 1080px) {
   }
 `;
 
