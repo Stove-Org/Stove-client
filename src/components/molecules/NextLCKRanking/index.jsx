@@ -176,7 +176,7 @@ const NextLCKRanking = () => {
 
 const RankingWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 0.8fr 2fr;
   gap: 30px;
 `;
 
@@ -194,10 +194,11 @@ const StyleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-width: 1px;
+  border-style: solid;
 
   &:hover {
-    background-color: #f54242;
-    color: #ffffff;
+    border-color: ${(props) => props.theme.color.main100};
   }
   & + & {
     margin-top: 14px;
@@ -210,26 +211,36 @@ const TopButton = styled(StyleButton)`
   background-color: ${(props) =>
     props.position === "TOP" ? "#F54242" : "#ffffff"};
   color: ${(props) => (props.position === "TOP" ? "#ffffff" : "#000000")};
+  border-color: ${(props) =>
+    props.position === "TOP" ? "#F54242" : "#ffffff"};
 `;
 const JGLButton = styled(StyleButton)`
   background-color: ${(props) =>
     props.position === "JGL" ? "#F54242" : "#ffffff"};
   color: ${(props) => (props.position === "JGL" ? "#ffffff" : "#000000")};
+  border-color: ${(props) =>
+    props.position === "JGL" ? "#F54242" : "#ffffff"};
 `;
 const MIDButton = styled(StyleButton)`
   background-color: ${(props) =>
     props.position === "MID" ? "#F54242" : "#ffffff"};
   color: ${(props) => (props.position === "MID" ? "#ffffff" : "#000000")};
+  border-color: ${(props) =>
+    props.position === "MID" ? "#F54242" : "#ffffff"};
 `;
 const BOTButton = styled(StyleButton)`
   background-color: ${(props) =>
     props.position === "BOT" ? "#F54242" : "#ffffff"};
   color: ${(props) => (props.position === "BOT" ? "#ffffff" : "#000000")};
+  border-color: ${(props) =>
+    props.position === "BOT" ? "#F54242" : "#ffffff"};
 `;
 const SPTButton = styled(StyleButton)`
   background-color: ${(props) =>
     props.position === "SPT" ? "#F54242" : "#ffffff"};
   color: ${(props) => (props.position === "SPT" ? "#ffffff" : "#000000")};
+  border-color: ${(props) =>
+    props.position === "SPT" ? "#F54242" : "#ffffff"};
 `;
 
 const RankingListWrapper = styled.div`
