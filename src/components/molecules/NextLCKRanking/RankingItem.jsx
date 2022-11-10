@@ -73,7 +73,9 @@ const StyleImg = styled.img`
   position: absolute;
   bottom: 0;
   right: 40px;
-  height: 56px;
+  max-height: 110%;
+  width: 64px;
+  object-fit: contain;
 `;
 
 export default RankingItem;
