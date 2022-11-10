@@ -199,9 +199,9 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
             <div>찾고 계신 선수가 없으신가요?</div>
           )
         ) : progamers ? (
-          progamers.map((item) => (
+          progamers.map((item, index) => (
             <Progamer
-              key={item.id}
+              key={`progamer-${index}`}
               alias={item.alias}
               nickname={item.nickname}
               birthday={item.birthday}
@@ -212,6 +212,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
               position={item.position}
               imgToggle={imgToggle}
               descriptionToggle={descriptionToggle}
+              rosters={rosters}
+              setRosters={setRosters}
+              setProgamers={setProgamers}
+              progamers={progamers}
             />
           ))
         ) : (
@@ -257,6 +261,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                     position={position}
                     onDrop={(item) => handleRosterDrop(index, item, progamer)}
                     key={index}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -284,6 +292,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 5, item, progamer)
                     }
                     key={index + 5}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -311,6 +323,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 10, item, progamer)
                     }
                     key={index + 10}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -338,6 +354,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 15, item, progamer)
                     }
                     key={index + 15}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -365,6 +385,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 20, item, progamer)
                     }
                     key={index + 20}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -392,6 +416,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 25, item, progamer)
                     }
                     key={index + 25}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -419,6 +447,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 30, item, progamer)
                     }
                     key={index + 30}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -446,6 +478,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 35, item, progamer)
                     }
                     key={index + 35}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -473,6 +509,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 40, item, progamer)
                     }
                     key={index + 40}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>
@@ -500,6 +540,10 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                       handleRosterDrop(index + 45, item, progamer)
                     }
                     key={index + 45}
+                    rosters={rosters}
+                    setRosters={setRosters}
+                    progamers={progamers}
+                    setProgamers={setProgamers}
                   />
                 ))}
             </>

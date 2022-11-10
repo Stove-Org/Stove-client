@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useDrag } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
+import update from "immutability-helper";
 
 import { ItemTypes } from "../../../utils/ItemTypes";
 import PositionIcon from "../../atoms/PositionIcon";
@@ -19,6 +20,10 @@ const Progamer = ({
   position,
   imgToggle,
   descriptionToggle,
+  rosters,
+  setRosters,
+  setProgamers,
+  progamers,
 }) => {
   const [{ isDragging }, drag] = useDrag(
     () => ({
@@ -31,8 +36,87 @@ const Progamer = ({
     [nickname]
   );
 
+  const handleProgamerDrop = (item) => {
+    // console.log(item.nickname, nickname);
+    // item은 내가 drag중인 선수
+    // 그냥 nickname은 로스터에 이미 등록되어있는, 내가 drop하려는 자리의 선수
+
+    const currentInRoster = rosters.find((roster) => {
+      if (roster.progamer) {
+        return roster.progamer.nickname === nickname;
+      }
+    });
+    const inRoster = rosters.find((roster) => {
+      if (roster.progamer) {
+        return roster.progamer.nickname === item.nickname;
+      }
+    });
+
+    if (currentInRoster) {
+      if (inRoster) {
+        // 로스터에 drop된 선수일 경우
+        // 1. 로스터에 drop되어 있는 선수와 Change
+        const currnetIndex = rosters.findIndex(
+          (roster) =>
+            roster.team === currentInRoster.team &&
+            roster.position === currentInRoster.position
+        );
+        const changeIndex = rosters.findIndex(
+          (roster) =>
+            roster.team === inRoster.team &&
+            roster.position === inRoster.position
+        );
+
+        setRosters(
+          update(rosters, {
+            [currnetIndex]: {
+              progamer: {
+                $set: inRoster.progamer,
+              },
+            },
+            [changeIndex]: {
+              progamer: {
+                $set: null,
+              },
+            },
+          })
+        );
+      } else {
+        // 리스트에 있는 선수일 경우
+      }
+
+      // 📌 Drop할 때 이전 게이머 제거하고 현재 드랍된 게이머 리스트에 추가하기 📌
+      // 1. progamers useState 배열에 드랍하는 nickname을 제외하고 새 배열에 담는다.
+      let newProgamers = progamers.filter(
+        (item) => item.nickname !== inRoster.progamer.nickname
+      );
+      // 2. progamer가 null이 아닌 경우
+      //    Drop하는 로스터 포지션의 이전 progamer 정보를 새 배열에 push 한다
+      if (inRoster !== null) {
+        newProgamers.push(currentInRoster.progamer);
+      }
+
+      const sortedProgamers = newProgamers.sort((a, b) => {
+        if (a.nickname > b.nickname) return 1;
+        if (a.nickname < b.nickname) return -1;
+        return 0;
+      });
+      // 3. set함수로 [UPDATE] 해준다.
+      setProgamers(sortedProgamers);
+    }
+  };
+
+  const [, drop] = useDrop({
+    accept: ItemTypes.PLAYER,
+    drop: handleProgamerDrop,
+  });
+
   return (
-    <DragWrapper ref={drag} isDragging={isDragging} data-testid="box">
+    <DragWrapper
+      ref={(node) => drag(drop(node))}
+      isDragging={isDragging}
+      data-testid="box"
+    >
       {imgToggle && (
         <PlayerImgBlock>
           <PlayerPosition>{PositionIcon(position)}</PlayerPosition>

@@ -11,6 +11,10 @@ const Roster = ({
   onDrop,
   imgToggle,
   descriptionToggle,
+  rosters,
+  setRosters,
+  progamers,
+  setProgamers,
 }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes.PLAYER,
@@ -42,6 +46,10 @@ const Roster = ({
           position={progamer.position}
           imgToggle={imgToggle}
           descriptionToggle={descriptionToggle}
+          rosters={rosters}
+          setRosters={setRosters}
+          progamers={progamers}
+          setProgamers={setProgamers}
         />
       ) : (
         <FalsePositionBlock
