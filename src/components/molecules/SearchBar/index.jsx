@@ -20,7 +20,7 @@ const SearchBar = () => {
         value={searchTxt}
         onChange={(e) => setSearchTxt(e.target.value)}
         onKeyPress={onKeyPress}
-        placeholder="선수, 팀 검색"
+        placeholder="프로게이머 검색"
         autoComplete="off"
       />
       <SearchButton onClick={() => navigate(`/search/${searchTxt}`)}>

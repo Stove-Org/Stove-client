@@ -40,6 +40,7 @@ const DefaultImg = styled.div`
 const NewsImg = styled.img`
   width: 100%;
   height: 160px;
+  object-fit: cover;
   border-radius: 3px;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
 `;
