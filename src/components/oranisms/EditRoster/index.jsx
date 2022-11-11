@@ -618,7 +618,7 @@ const SearchBarWrapper = styled(InnerContainer)`
   }
 `;
 const ProgamerWrapper = styled(InnerContainer)`
-  padding: 0 20px 0;
+  padding: 0 20px 20px;
   height: 280px;
   overflow-x: hidden;
   overflow-y: auto;
