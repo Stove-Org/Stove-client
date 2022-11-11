@@ -196,7 +196,20 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
               />
             ))
           ) : (
-            <div>찾고 계신 선수가 없으신가요?</div>
+            <SearchNotFound>
+              <div>찾고 계신 선수가 없으신가요?</div>
+              <SearchNotFoundText>
+                Stove{" "}
+                <a
+                  href="https://discord.gg/xWqcpyk3"
+                  target={"_blank"}
+                  rel="noopener noreferrer"
+                >
+                  Discord 서버
+                </a>
+                에서 선수 요청하기
+              </SearchNotFoundText>
+            </SearchNotFound>
           )
         ) : progamers ? (
           progamers.map((item, index) => (
@@ -723,4 +736,21 @@ const PositionWrapper = styled.div`
   align-items: center;
 `;
 
+const SearchNotFound = styled.div`
+  ${(props) => props.theme.typography.bodyRg};
+  grid-column-start: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  line-height: 1.6;
+`;
+const SearchNotFoundText = styled.div`
+  ${(props) => props.theme.typography.bodyMd};
+  & > a {
+    color: #7289da;
+    text-decoration: underline;
+  }
+`;
 export default EditRoster;

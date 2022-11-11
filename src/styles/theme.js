@@ -35,6 +35,11 @@ const typography = {
     font-weight: normal;
     font-family:NotoSansKR-Regular;
   `,
+  bodyMd: `
+    font-size: 1.4rem;
+    font-weight: Medium;
+    font-family:NotoSansKR-Medium;
+  `,
   bodyRgBold: `
     font-size: 1.4rem;
     font-weight: bold;
