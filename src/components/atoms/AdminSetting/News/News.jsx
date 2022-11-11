@@ -183,7 +183,15 @@ const EditNews = ({ item }) => {
           />
         ) : (
           <>
-            <StyleUrl urlOpen={urlOpen}>{news.linkUrl}</StyleUrl>
+            <StyleUrl urlOpen={urlOpen}>
+              <a
+                href={news.linkUrl}
+                target={"_blank"}
+                rel="noopener noreferrer"
+              >
+                {news.linkUrl}
+              </a>
+            </StyleUrl>
             <button onClick={() => openHandler()}>
               {urlOpen ? "닫기" : "펼치기"}
             </button>
@@ -265,6 +273,10 @@ const StyleUrl = styled.div`
   white-space: ${(props) => (props.urlOpen ? "normal" : "nowrap")};
   overflow: ${(props) => (props.urlOpen ? "visible" : "hidden")};
   text-overflow: ${(props) => (props.urlOpen ? "clip" : "ellipsis")};
+  text-decoration: underline;
+  & > a {
+    color: blue;
+  }
 `;
 
 const StyleImg = styled.img`
