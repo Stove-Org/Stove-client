@@ -19,6 +19,7 @@ import SPT from "../../../assets/svg/positions/SPT";
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
   const [imgToggle, setImgToggle] = useState(true);
   const [descriptionToggle, setDescriptionToggle] = useState(false);
+  const [stickyList, setStickyList] = useState(false);
   const [search, setSearch] = useState("");
   const [searchProgamer, setSearchProgamer] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
@@ -168,21 +169,56 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
         rosters={rosters}
         setRosters={setRosters}
         setProgamers={setProgamers}
+        stickyList={stickyList}
+        setStickyList={setStickyList}
       />
-      <SearchBarWrapper>
-        <input
-          type="search"
-          value={search}
-          onChange={handleChange}
-          placeholder="선수 검색"
-        />
-      </SearchBarWrapper>
-      <ProgamerWrapper ref={drop}>
-        {isSearch ? (
-          searchProgamer !== "" && searchProgamer.length !== 0 ? (
-            searchProgamer.map((item) => (
+      <ProgamerListWrapper stickyList={stickyList}>
+        <SearchBarWrapper>
+          <input
+            type="search"
+            value={search}
+            onChange={handleChange}
+            placeholder="선수 검색"
+          />
+        </SearchBarWrapper>
+        <ProgamerWrapper ref={drop}>
+          {isSearch ? (
+            searchProgamer !== "" && searchProgamer.length !== 0 ? (
+              searchProgamer.map((item) => (
+                <Progamer
+                  key={item.id}
+                  alias={item.alias}
+                  nickname={item.nickname}
+                  birthday={item.birthday}
+                  career={item.career}
+                  id={item.id}
+                  imgUrl={item.imgUrl}
+                  name={item.name}
+                  position={item.position}
+                  imgToggle={imgToggle}
+                  descriptionToggle={descriptionToggle}
+                />
+              ))
+            ) : (
+              <SearchNotFound>
+                <div>찾고 계신 선수가 없으신가요?</div>
+                <SearchNotFoundText>
+                  Stove{" "}
+                  <a
+                    href="https://discord.gg/xWqcpyk3"
+                    target={"_blank"}
+                    rel="noopener noreferrer"
+                  >
+                    Discord 서버
+                  </a>
+                  에서 선수 요청하기
+                </SearchNotFoundText>
+              </SearchNotFound>
+            )
+          ) : progamers ? (
+            progamers.map((item, index) => (
               <Progamer
-                key={item.id}
+                key={`progamer-${index}`}
                 alias={item.alias}
                 nickname={item.nickname}
                 birthday={item.birthday}
@@ -193,48 +229,19 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                 position={item.position}
                 imgToggle={imgToggle}
                 descriptionToggle={descriptionToggle}
+                rosters={rosters}
+                setRosters={setRosters}
+                setProgamers={setProgamers}
+                progamers={progamers}
               />
             ))
           ) : (
-            <SearchNotFound>
-              <div>찾고 계신 선수가 없으신가요?</div>
-              <SearchNotFoundText>
-                Stove{" "}
-                <a
-                  href="https://discord.gg/xWqcpyk3"
-                  target={"_blank"}
-                  rel="noopener noreferrer"
-                >
-                  Discord 서버
-                </a>
-                에서 선수 요청하기
-              </SearchNotFoundText>
-            </SearchNotFound>
-          )
-        ) : progamers ? (
-          progamers.map((item, index) => (
-            <Progamer
-              key={`progamer-${index}`}
-              alias={item.alias}
-              nickname={item.nickname}
-              birthday={item.birthday}
-              career={item.career}
-              id={item.id}
-              imgUrl={item.imgUrl}
-              name={item.name}
-              position={item.position}
-              imgToggle={imgToggle}
-              descriptionToggle={descriptionToggle}
-              rosters={rosters}
-              setRosters={setRosters}
-              setProgamers={setProgamers}
-              progamers={progamers}
-            />
-          ))
-        ) : (
-          <></>
-        )}
-      </ProgamerWrapper>
+            <></>
+          )}
+        </ProgamerWrapper>
+        <ProgamerFooter />
+        <ProgamerFooterGradient />
+      </ProgamerListWrapper>
       <RosterWrapper>
         <RosterInnerWrapper>
           <PositionWrapper></PositionWrapper>
@@ -628,7 +635,6 @@ const ProgamerWrapper = styled(InnerContainer)`
 `;
 const RosterWrapper = styled(InnerContainer)`
   border-radius: 3px;
-  margin-top: 20px;
   padding: 10px 20px 10px;
 `;
 const RosterInnerWrapper = styled.div`
@@ -752,5 +758,22 @@ const SearchNotFoundText = styled.div`
     color: #7289da;
     text-decoration: underline;
   }
+`;
+const ProgamerListWrapper = styled.div`
+  position: ${(props) => (!props.stickyList ? "-webkit-sticky" : null)};
+  position: ${(props) => (!props.stickyList ? "sticky" : "static")};
+  top: 0;
+  z-index: 100;
+`;
+const ProgamerFooter = styled.div`
+  width: 100%;
+  height: 20px;
+  background-color: ${(props) => props.theme.color.grayScale.gray20};
+  border-radius: 0 0 3px 3px;
+`;
+const ProgamerFooterGradient = styled.div`
+  width: 100%;
+  height: 20px;
+  background-color: ${(props) => props.theme.color.white};
 `;
 export default EditRoster;

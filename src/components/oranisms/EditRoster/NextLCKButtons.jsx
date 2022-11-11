@@ -126,6 +126,11 @@ const NextLCKButtons = (props) => {
           toggle={props.descriptionToggle}
           text="소개"
         />
+        <ToggleButton
+          onClick={() => props.setStickyList((prev) => !prev)}
+          toggle={props.stickyList}
+          text="선수리스트 고정"
+        />
       </ToggleWrapper>
     </ButtonsWrapper>
   );
