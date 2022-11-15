@@ -7,7 +7,7 @@ const Sitemap = require("react-router-sitemap").default;
 
 function generateSitemap() {
   return new Sitemap(router)
-    .build("https://stove.gg/")
+    .build("https://www.stove.gg/")
     .save("./public/sitemap.xml");
 }
 
