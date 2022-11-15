@@ -10,7 +10,7 @@ export const validateEmail = (email) => {
 
 // 비밀번호 유효성 검사
 export const validatePassword = (pwd) => {
-  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-_])(?=.*[0-9]).{8,25}$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,25}$/;
   if (passwordRegex.test(pwd)) {
     return false;
   }
