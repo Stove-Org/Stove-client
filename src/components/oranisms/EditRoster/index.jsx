@@ -19,7 +19,7 @@ import SPT from "../../../assets/svg/positions/SPT";
 const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
   const [imgToggle, setImgToggle] = useState(true);
   const [descriptionToggle, setDescriptionToggle] = useState(false);
-  const [stickyList, setStickyList] = useState(false);
+  const [stickyList, setStickyList] = useState(true);
   const [search, setSearch] = useState("");
   const [searchProgamer, setSearchProgamer] = useState([]);
   const [isSearch, setIsSearch] = useState(false);

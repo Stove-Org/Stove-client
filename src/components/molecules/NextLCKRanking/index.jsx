@@ -80,7 +80,7 @@ const NextLCKRanking = () => {
 
   useEffect(() => {
     getRanking().then((res) => setData(res.data));
-    setTeamName(teamList[Math.random().toFixed(1) * 10]);
+    setTeamName(teamList[Math.random().toFixed(1) * 10 - 1]);
   }, []);
 
   useEffect(() => {
@@ -244,7 +244,7 @@ const StyleButton = styled.button`
 
   @media screen and (min-width: 768px) {
     ${(props) => props.theme.typography.description}
-    padding: 12px 16px;
+    padding: 11px 16px;
     & > div {
       width: 90px;
     }

@@ -78,11 +78,11 @@ const NewsWrapper = styled.div`
   border-color: ${(props) => props.theme.color.grayScale.gray20};
   border-width: 1px 0 0;
   border-style: solid;
-  /* @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding: 20px 0;
   }
   @media screen and (min-width: 1080px) {
-  } */
+  }
 `;
 
 const StylePagination = styled.div`
