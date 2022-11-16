@@ -8,13 +8,10 @@ import { useSelector } from "react-redux";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import withScrolling from "react-dnd-scrolling";
 
 import PageTitle from "../../../components/atoms/PageTitle";
 import EditRoster from "../../../components/oranisms/EditRoster";
 // import Countdown from "../../../components/atoms/Countdown";
-
-const ScrollingComponent = withScrolling("div");
 
 const NextLCKRoster = () => {
   const [rosters, setRosters] = useState(null);
@@ -93,14 +90,12 @@ const NextLCKRoster = () => {
         </div>
       </Description>
       <DndProvider backend={HTML5Backend}>
-        <ScrollingComponent>
-          <EditRoster
-            rosters={rosters}
-            setRosters={setRosters}
-            progamers={progamers}
-            setProgamers={setProgamers}
-          />
-        </ScrollingComponent>
+        <EditRoster
+          rosters={rosters}
+          setRosters={setRosters}
+          progamers={progamers}
+          setProgamers={setProgamers}
+        />
       </DndProvider>
     </>
   );
