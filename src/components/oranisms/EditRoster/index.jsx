@@ -205,7 +205,7 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
                 <SearchNotFoundText>
                   Stove{" "}
                   <a
-                    href="https://discord.gg/xWqcpyk3"
+                    href="https://discord.gg/QCF3SDv7t5"
                     target={"_blank"}
                     rel="noopener noreferrer"
                   >
