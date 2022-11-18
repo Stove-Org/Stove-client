@@ -3,8 +3,8 @@ import RankingItem from "./RankingItem";
 const RankingList = ({ item }) => {
   return (
     <>
-      {item.items.map((item) => {
-        return <RankingItem item={item} />;
+      {item.items.map((item, index) => {
+        return <RankingItem item={item} key={index} />;
       })}
     </>
   );

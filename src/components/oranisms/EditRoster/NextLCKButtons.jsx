@@ -73,7 +73,7 @@ const NextLCKButtons = (props) => {
     if (isLogin) {
       if ("clipboard" in navigator) {
         await navigator.clipboard.writeText(
-          `https://stove.gg/nextlck/${userNickname}`
+          `https://www.stove.gg/nextlck/${userNickname}`
         );
         alert("링크를 클립보드에 저장했습니다.");
         return;
@@ -81,7 +81,7 @@ const NextLCKButtons = (props) => {
         document.execCommand(
           "copy",
           true,
-          `https://stove.gg/nextlck/${userNickname}`
+          `https://www.stove.gg/nextlck/${userNickname}`
         );
         alert("링크를 클립보드에 저장했습니다.");
         return;
@@ -125,6 +125,11 @@ const NextLCKButtons = (props) => {
           onClick={() => props.setDescriptionToggle(!props.descriptionToggle)}
           toggle={props.descriptionToggle}
           text="소개"
+        />
+        <ToggleButton
+          onClick={() => props.setStickyList((prev) => !prev)}
+          toggle={props.stickyList}
+          text="선수리스트 고정"
         />
       </ToggleWrapper>
     </ButtonsWrapper>

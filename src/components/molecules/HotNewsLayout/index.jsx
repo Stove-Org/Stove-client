@@ -13,26 +13,30 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
 
   return (
     <HotNewsWrapper>
-      <HotNewsInnerWrapper>
-        <FirstHotNews
-          href={hotNews[0].linkUrl}
-          target={"_blank"}
-          rel="noopener noreferrer"
-          onClick={handleAddCountView}
-        >
-          {firstHotNews.imgUrl ? (
-            <FirstHotImgUrl
-              style={{ backgroundImage: `url(${firstHotNews.imgUrl})` }}
-            />
-          ) : (
-            <DefaultFirstHotImgUrl />
-          )}
-          <FirstHotNewsHeadline>
-            <FirstHeadline>{firstHotNews.headline}</FirstHeadline>
-            <HeadlineDate>{firstHotNews.uploadedAt}</HeadlineDate>
-          </FirstHotNewsHeadline>
-        </FirstHotNews>
-      </HotNewsInnerWrapper>
+      {firstHotNews ? (
+        <HotNewsInnerWrapper>
+          <FirstHotNews
+            href={hotNews[0].linkUrl}
+            target={"_blank"}
+            rel="noopener noreferrer"
+            onClick={handleAddCountView}
+          >
+            {firstHotNews.imgUrl ? (
+              <FirstHotImgUrl
+                style={{ backgroundImage: `url(${firstHotNews.imgUrl})` }}
+              />
+            ) : (
+              <DefaultFirstHotImgUrl />
+            )}
+            <FirstHotNewsHeadline>
+              <FirstHeadline>{firstHotNews.headline}</FirstHeadline>
+              <HeadlineDate>{firstHotNews.uploadedAt}</HeadlineDate>
+            </FirstHotNewsHeadline>
+          </FirstHotNews>
+        </HotNewsInnerWrapper>
+      ) : (
+        <></>
+      )}
       <HotNewsInnerWrapper>
         {/* 매일 클릭수 가장 높은 뉴스 4개 */}
         {hotNews.map((item) => (
@@ -44,13 +48,22 @@ const HotNewsLayout = ({ firstHotNews, hotNews }) => {
 };
 
 const HotNewsWrapper = styled.div`
-  display: flex;
+  display: block;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+  @media screen and (min-width: 1080px) {
+  }
 `;
 const HotNewsInnerWrapper = styled.div`
-  width: 50%;
+  @media screen and (min-width: 768px) {
+    width: 50%;
 
-  & + & {
-    margin-left: 30px;
+    & + & {
+      margin-left: 30px;
+    }
+  }
+  @media screen and (min-width: 1080px) {
   }
 `;
 const ImageWrapper = styled.div`

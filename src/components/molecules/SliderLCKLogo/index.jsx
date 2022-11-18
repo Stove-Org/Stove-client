@@ -45,7 +45,7 @@ const SliderLCKLogo = () => {
         autoplayTimeout={2200}
         autoplaySpeed={2200}
         autoplayHoverPause={true}
-        slideTransition="linear"
+        slidetransition="linear"
         responsive={state.responsive}
       >
         <a href="https://geng.gg/" target={"_blank"} rel="noopener noreferrer">

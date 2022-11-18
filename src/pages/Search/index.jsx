@@ -21,7 +21,6 @@ const Search = () => {
           return item;
         }
       });
-      console.log(filterArr);
       setSearchProgamer(filterArr);
     });
   }, [search]);

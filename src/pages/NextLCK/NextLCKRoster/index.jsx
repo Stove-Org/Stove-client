@@ -86,7 +86,7 @@ const NextLCKRoster = () => {
             스토브리그 종료까지{" "}
             <span>{Countdown("2022-11-31T00:00:00+0900")}</span>
           </p> */}
-          <SubDescription>현재 {participants}명 참여 중 🔥</SubDescription>
+          {/* <SubDescription>현재 {participants}명 참여 중 🔥</SubDescription> */}
         </div>
       </Description>
       <DndProvider backend={HTML5Backend}>

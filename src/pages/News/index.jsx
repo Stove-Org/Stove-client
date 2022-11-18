@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { down } from "styled-breakpoints";
+import { useBreakpoint } from "styled-breakpoints/react-styled";
 import { useSelector, useDispatch } from "react-redux";
 import { getPublishedNews } from "../../api/news";
 import Pagination from "react-js-pagination";
@@ -10,6 +12,7 @@ import HotNewsLayout from "../../components/molecules/HotNewsLayout";
 import NewsList from "../../components/atoms/NewsList";
 
 const News = () => {
+  const isMobile = useBreakpoint(down("sm"));
   const dispatch = useDispatch();
 
   const [offset, setOffset] = useState(0); // 총 아이템 갯수
@@ -43,7 +46,11 @@ const News = () => {
     <>
       <PageTitle title={"오늘의 HOT 뉴스"} />
       <NewsWrapper>
-        <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} />
+        {isMobile ? (
+          <HotNewsLayout hotNews={[firstHotNews, ...hotNews]} />
+        ) : (
+          <HotNewsLayout firstHotNews={firstHotNews} hotNews={hotNews} />
+        )}
       </NewsWrapper>
 
       <PageTitle title={"최신 뉴스"} />
@@ -66,11 +73,16 @@ const News = () => {
 };
 
 const NewsWrapper = styled.div`
-  padding: 20px 0;
+  padding: 20px 10px;
   margin-top: 20px;
   border-color: ${(props) => props.theme.color.grayScale.gray20};
   border-width: 1px 0 0;
   border-style: solid;
+  @media screen and (min-width: 768px) {
+    padding: 20px 0;
+  }
+  @media screen and (min-width: 1080px) {
+  }
 `;
 
 const StylePagination = styled.div`

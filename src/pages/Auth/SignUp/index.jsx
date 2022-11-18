@@ -33,8 +33,7 @@ const SingUp = () => {
   const [erroMessage, setErrorMessage] = useState({
     errorEmail: "",
     errorNickname: "",
-    errorPwd:
-      "숫자+영문자+특수문자(!,@,#,$,%,^,*,+,=,-,_) 조합으로 8자리 이상 입력해 주세요.",
+    errorPwd: "숫자+영문자 조합으로 6자리 이상 입력해 주세요.",
     errorPwdConfirm: "작성된 비밀번호와 일치하지 않습니다.",
     errorNicknameCheck: "이미 사용중인 닉네임입니다.",
   });
@@ -99,7 +98,6 @@ const SingUp = () => {
         setValidate({ ...validate, nickname: true });
       }
     }
-
     // 비밀번호 유효성 검사
     if (name === "pwd" && validatePassword(value)) {
       if (initUser.pwdConfirm.length > 0) {
@@ -171,7 +169,7 @@ const SingUp = () => {
       alert("정상적으로 가입이 완료되었습니다.");
       navigate("/signin", { replace: true });
     } catch (err) {
-      console.log(`error: ${err}`);
+      console.log(err);
     }
   };
 

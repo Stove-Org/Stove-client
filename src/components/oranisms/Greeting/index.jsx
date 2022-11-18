@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import SliderLCKLogo from "../../molecules/SliderLCKLogo";
-import bannerImg from "../../../assets/img/banner_2022Worlds_DRX.jpg";
+import bannerImg from "../../../assets/img/banner_2022_worlds.jpg";
 import { useEffect } from "react";
 import { getHotNews } from "../../../api/news";
 import { useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ const Greeting = () => {
     getHotNews().then((res) => {
       dispatch(setHotNews(res.data));
     });
-  }, [dispatch]);
+  }, []);
 
   return (
     <GreetingWrapper>
@@ -88,20 +88,21 @@ const GreetingWrapper = styled.div`
 `;
 const Banner = styled.article`
   position: relative;
-  height: 260px;
+  height: 200px;
   overflow: hidden;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
 
   & > button {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 102px;
+    left: 20px;
   }
 
   @media screen and (min-width: 768px) {
+    height: 260px;
     & > button {
       top: 173px;
-      left: 100px;
+      left: 60px;
     }
   }
   @media screen and (min-width: 1080px) {
@@ -115,14 +116,14 @@ const Banner = styled.article`
 `;
 const BannerBgImg = styled.img`
   width: 100%;
-  position: static;
-  top: -94px;
+  position: absolute;
   left: auto;
   right: auto;
   @media screen and (min-width: 768px) {
+    top: -69px;
   }
   @media screen and (min-width: 1080px) {
-    position: absolute;
+    top: -94px;
   }
 `;
 const BannerFilter = styled.div`
@@ -130,12 +131,14 @@ const BannerFilter = styled.div`
   height: 100%;
   background-color: rgb(0, 0, 0, 0.3);
   position: absolute;
+  top: 0;
+  left: 0;
 `;
 const BannerTextWrapper = styled.div`
   color: ${(props) => props.theme.color.white};
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 20px;
 
   p {
     ${(props) => props.theme.typography.bodySmRegular};
@@ -147,7 +150,7 @@ const BannerTextWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     top: 44px;
-    left: 100px;
+    left: 60px;
 
     p {
       ${(props) => props.theme.typography.headTablet};

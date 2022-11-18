@@ -39,7 +39,7 @@ const SliderGreetingNews = () => {
         dots={false}
         margin={20}
         autoplay={false}
-        slideTransition="linear"
+        slidetransition="linear"
         responsive={state.responsive}
       >
         {hotNews ? (
@@ -66,18 +66,18 @@ const SliderGreetingNewsWrapper = styled.div`
     padding: 0;
   }
 
-  .owl-nav > button.owl-prev,
-  .owl-nav > button.owl-next {
+  .owl-carousel > .owl-nav > button.owl-prev,
+  .owl-carousel > .owl-nav > button.owl-next {
     position: absolute;
     top: 80px;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-color: ${(props) => props.theme.color.white};
     border-radius: 50%;
     margin: 0;
     color: ${(props) => props.theme.color.grayScale.gray60};
     box-shadow: rgba(0 0 0 / 13%) 0px 2px 4px 0px;
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .owl-nav > button.owl-prev:hover,
@@ -87,10 +87,29 @@ const SliderGreetingNewsWrapper = styled.div`
   }
 
   .owl-nav > button.owl-prev {
-    left: -20px;
+    left: -10px;
+    background-color: ${(props) => props.theme.color.white};
   }
   .owl-nav > button.owl-next {
-    right: -20px;
+    right: -10px;
+    background-color: ${(props) => props.theme.color.white};
+  }
+
+  @media screen and (min-width: 768px) {
+    .owl-carousel > .owl-nav > button.owl-prev,
+    .owl-carousel > .owl-nav > button.owl-next {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+    .owl-nav > button.owl-prev {
+      left: -20px;
+    }
+    .owl-nav > button.owl-next {
+      right: -20px;
+    }
+  }
+  @media screen and (min-width: 1080px) {
   }
 `;
 

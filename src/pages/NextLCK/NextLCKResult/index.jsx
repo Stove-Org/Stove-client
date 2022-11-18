@@ -14,6 +14,10 @@ import MID from "../../../assets/svg/positions/MID";
 import BOT from "../../../assets/svg/positions/BOT";
 import SPT from "../../../assets/svg/positions/SPT";
 
+import worldsTrophy from "../../../assets/svg/trophys/worlds.svg";
+import msiTrophy from "../../../assets/svg/trophys/msi.svg";
+import lckTrophy from "../../../assets/svg/trophys/lck.svg";
+
 const NextLCKResult = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,7 +51,7 @@ const NextLCKResult = () => {
           text={"+ 내 로스터 만들기"}
           styleType={"primary"}
           onClick={() => {
-            navigate("/next-lck");
+            navigate("/nextlck");
           }}
         />
       </ButtonsWrapper>
@@ -113,7 +117,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -126,7 +130,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -139,7 +143,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -207,7 +211,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -220,7 +224,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -233,7 +237,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -301,7 +305,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -314,7 +318,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -327,7 +331,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -395,7 +399,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -408,7 +412,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -421,7 +425,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -489,7 +493,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -502,7 +506,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -515,7 +519,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -583,7 +587,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -596,7 +600,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -609,7 +613,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -677,7 +681,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -690,7 +694,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -703,7 +707,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -771,7 +775,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -784,7 +788,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -797,7 +801,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -865,7 +869,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -878,7 +882,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -891,7 +895,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -959,7 +963,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.worldsTrophy}
+                                        src={progamer.career.worldsTrophy}
                                         alt="Worlds Trophy"
                                       />
                                     );
@@ -972,7 +976,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.msiTrophy}
+                                        src={progamer.career.msiTrophy}
                                         alt="MSI Trophy"
                                       />
                                     );
@@ -985,7 +989,7 @@ const NextLCKResult = () => {
                                     return (
                                       <img
                                         key={idx}
-                                        src={progamer.lckTrophy}
+                                        src={progamer.career.lckTrophy}
                                         alt="LCK Trophy"
                                       />
                                     );
@@ -1043,6 +1047,7 @@ const RosterWrapper = styled(InnerContainer)`
   border-radius: 3px;
   margin: 20px 0 40px;
   padding: 10px 20px 10px;
+  overflow-x: scroll;
 `;
 const RosterInnerWrapper = styled.div`
   display: grid;

@@ -104,7 +104,6 @@ const EditNews = ({ item }) => {
           ...news,
           imgUrl: "",
         };
-        console.log(newData);
         newsUpdate(item.id, newData);
         dispatch(setUpdateAllNews({ id: item.id, news }));
       } else {
@@ -127,9 +126,7 @@ const EditNews = ({ item }) => {
       } else {
         return;
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (
@@ -183,7 +180,15 @@ const EditNews = ({ item }) => {
           />
         ) : (
           <>
-            <StyleUrl urlOpen={urlOpen}>{news.linkUrl}</StyleUrl>
+            <StyleUrl urlOpen={urlOpen}>
+              <a
+                href={news.linkUrl}
+                target={"_blank"}
+                rel="noopener noreferrer"
+              >
+                {news.linkUrl}
+              </a>
+            </StyleUrl>
             <button onClick={() => openHandler()}>
               {urlOpen ? "닫기" : "펼치기"}
             </button>
@@ -265,6 +270,10 @@ const StyleUrl = styled.div`
   white-space: ${(props) => (props.urlOpen ? "normal" : "nowrap")};
   overflow: ${(props) => (props.urlOpen ? "visible" : "hidden")};
   text-overflow: ${(props) => (props.urlOpen ? "clip" : "ellipsis")};
+  text-decoration: underline;
+  & > a {
+    color: blue;
+  }
 `;
 
 const StyleImg = styled.img`
