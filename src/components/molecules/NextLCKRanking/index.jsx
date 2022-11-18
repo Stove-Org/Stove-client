@@ -201,6 +201,9 @@ const NextLCKRanking = () => {
 const RankingWrapper = styled.div`
   display: block;
   gap: 10px;
+  & > div > .css-b62m3t-container {
+    z-index: 10;
+  }
   @media screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 0.8fr 2fr;
