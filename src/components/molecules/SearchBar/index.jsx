@@ -13,6 +13,12 @@ const SearchBar = () => {
     }
   };
 
+  const handleClick = () => {
+    if (searchTxt !== "") {
+      navigate(`/search/${searchTxt}`);
+    }
+    return;
+  };
   return (
     <SearchWrapper>
       <SearchInput
@@ -23,7 +29,7 @@ const SearchBar = () => {
         placeholder="프로게이머 검색"
         autoComplete="off"
       />
-      <SearchButton onClick={() => navigate(`/search/${searchTxt}`)}>
+      <SearchButton onClick={handleClick}>
         <img src={searchIcon} alt="search button" />
       </SearchButton>
     </SearchWrapper>
