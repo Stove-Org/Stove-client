@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import SliderLCKLogo from "../../molecules/SliderLCKLogo";
-import bannerImg from "../../../assets/img/banner_2022Worlds_DRX.jpg";
+import bannerImg from "../../../assets/img/banner_2022_worlds.jpg";
 import { useEffect } from "react";
 import { getHotNews } from "../../../api/news";
 import { useDispatch } from "react-redux";
