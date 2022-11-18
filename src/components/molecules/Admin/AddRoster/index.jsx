@@ -29,7 +29,6 @@ const AddRoster = ({ teamName, position }) => {
         position,
         progamerId: parseInt(progamerId),
       };
-      console.log(data);
 
       await RosterPost([data]);
       dispatch(setAddDefaultRosters([...defaultRoster, data]));

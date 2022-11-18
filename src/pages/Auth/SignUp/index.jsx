@@ -169,7 +169,7 @@ const SingUp = () => {
       alert("정상적으로 가입이 완료되었습니다.");
       navigate("/signin", { replace: true });
     } catch (err) {
-      console.log(`error: ${err}`);
+      console.log(err);
     }
   };
 

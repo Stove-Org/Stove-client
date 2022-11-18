@@ -37,7 +37,6 @@ const Progamer = ({
   );
 
   const handleProgamerDrop = (item) => {
-    // console.log(item.nickname, nickname);
     // item은 내가 drag중인 선수
     // 그냥 nickname은 로스터에 이미 등록되어있는, 내가 drop하려는 자리의 선수
 

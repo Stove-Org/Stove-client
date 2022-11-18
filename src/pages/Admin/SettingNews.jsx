@@ -28,7 +28,6 @@ const SettingNews = () => {
     try {
       await naverNewsRefreshGet();
       window.location.reload();
-      console.log("새로고침 완료");
     } catch (err) {
       console.log(err);
     }

@@ -104,7 +104,6 @@ const EditNews = ({ item }) => {
           ...news,
           imgUrl: "",
         };
-        console.log(newData);
         newsUpdate(item.id, newData);
         dispatch(setUpdateAllNews({ id: item.id, news }));
       } else {
@@ -127,9 +126,7 @@ const EditNews = ({ item }) => {
       } else {
         return;
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

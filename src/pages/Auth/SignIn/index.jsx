@@ -48,7 +48,6 @@ const SignIn = ({ userProfile, setUserProfile }) => {
       inputPwd.current.focus();
       return;
     }
-    console.log(1);
     try {
       const loginObj = {
         email: userInput.email,
@@ -57,7 +56,6 @@ const SignIn = ({ userProfile, setUserProfile }) => {
 
       const res = await signin(loginObj);
       const { data, status } = res;
-      console.log(2);
 
       if (status === 201 || status === 200) {
         cookies.set("accessToken", data, {
