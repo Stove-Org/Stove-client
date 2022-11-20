@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
@@ -27,6 +27,8 @@ import NextLCKRoster from "./pages/NextLCK/NextLCKRoster";
 import NextLCKResult from "./pages/NextLCK/NextLCKResult";
 import News from "./pages/News";
 import Search from "./pages/Search";
+
+import NotFound from "./pages/NotFound";
 
 export let persistor = persistStore(store);
 
@@ -66,6 +68,7 @@ function App() {
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/signIn" element={<SignIn />} />
               </Route>
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
