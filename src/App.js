@@ -62,13 +62,13 @@ function App() {
                 <Route path="/nextlck/:id" element={<NextLCKResult />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/search/:id" element={<Search />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
 
               <Route element={<AuthPageTemplate />}>
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/signIn" element={<SignIn />} />
               </Route>
-              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
