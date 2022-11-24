@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
@@ -27,6 +27,8 @@ import NextLCKRoster from "./pages/NextLCK/NextLCKRoster";
 import NextLCKResult from "./pages/NextLCK/NextLCKResult";
 import News from "./pages/News";
 import Search from "./pages/Search";
+
+import NotFound from "./pages/NotFound";
 
 export let persistor = persistStore(store);
 
@@ -60,6 +62,7 @@ function App() {
                 <Route path="/nextlck/:id" element={<NextLCKResult />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/search/:id" element={<Search />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
 
               <Route element={<AuthPageTemplate />}>
