@@ -9,10 +9,12 @@ const AuthPageTemplate = () => {
 
   return (
     <TemplateWrapper>
-      <Link to="/">
-        <Logo src={stoveLogo} alt="main logo of Stove" />
-      </Link>
-      <TemplateInnerWrapper>
+      <LogoWrapper>
+        <Link to="/">
+          <Logo src={stoveLogo} alt="main logo of Stove" />
+        </Link>
+      </LogoWrapper>
+      <StyleFormContainer>
         {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}
         <Outlet />
         {isSignUp ? (
@@ -28,31 +30,34 @@ const AuthPageTemplate = () => {
             </button>
           </SignUpButton>
         )}
-      </TemplateInnerWrapper>
+      </StyleFormContainer>
     </TemplateWrapper>
   );
 };
 
 const TemplateWrapper = styled.div`
   background-color: ${(props) => props.theme.color.grayScale.gray10};
-  height: 100vh;
-  margin: 0;
+  margin: 80px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+const LogoWrapper = styled.div`
+  text-align: center;
+  padding: 40px 0 0;
 `;
 const Logo = styled.img`
   width: 140px;
 `;
 
-const TemplateInnerWrapper = styled.div`
+const StyleFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.color.white};
-  margin-top: 40px;
+  margin: 40px 0;
   padding: 40px 60px;
   border-radius: 3px;
 `;
