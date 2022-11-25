@@ -9,25 +9,31 @@ const AuthPageTemplate = () => {
 
   return (
     <TemplateWrapper>
-      <Link to="/">
-        <Logo src={stoveLogo} alt="main logo of Stove" />
-      </Link>
       <TemplateInnerWrapper>
-        {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}
-        <Outlet />
-        {isSignUp ? (
-          <SignUpButton>
-            이미 회원이신가요?{" "}
-            <button onClick={() => navigate("/signin")}>로그인하러 가기</button>
-          </SignUpButton>
-        ) : (
-          <SignUpButton>
-            Stove 회원이 아니신가요?{" "}
-            <button onClick={() => navigate("/signup")}>
-              회원가입하러 가기
-            </button>
-          </SignUpButton>
-        )}
+        <LogoWrapper>
+          <Link to="/">
+            <Logo src={stoveLogo} alt="main logo of Stove" />
+          </Link>
+        </LogoWrapper>
+        <StyleFormContainer>
+          {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}
+          <Outlet />
+          {isSignUp ? (
+            <SignUpButton>
+              이미 회원이신가요?{" "}
+              <button onClick={() => navigate("/signin")}>
+                로그인하러 가기
+              </button>
+            </SignUpButton>
+          ) : (
+            <SignUpButton>
+              Stove 회원이 아니신가요?{" "}
+              <button onClick={() => navigate("/signup")}>
+                회원가입하러 가기
+              </button>
+            </SignUpButton>
+          )}
+        </StyleFormContainer>
       </TemplateInnerWrapper>
     </TemplateWrapper>
   );
@@ -42,17 +48,24 @@ const TemplateWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const TemplateInnerWrapper = styled.div`
+  height: 100%;
+  padding: 40px 0;
+`;
+const LogoWrapper = styled.div`
+  text-align: center;
+`;
 const Logo = styled.img`
   width: 140px;
 `;
 
-const TemplateInnerWrapper = styled.div`
+const StyleFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.color.white};
-  margin-top: 40px;
+  margin: 40px 0;
   padding: 40px 60px;
   border-radius: 3px;
 `;
