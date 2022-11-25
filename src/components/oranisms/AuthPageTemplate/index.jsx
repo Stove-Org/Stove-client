@@ -9,51 +9,43 @@ const AuthPageTemplate = () => {
 
   return (
     <TemplateWrapper>
-      <TemplateInnerWrapper>
-        <LogoWrapper>
-          <Link to="/">
-            <Logo src={stoveLogo} alt="main logo of Stove" />
-          </Link>
-        </LogoWrapper>
-        <StyleFormContainer>
-          {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}
-          <Outlet />
-          {isSignUp ? (
-            <SignUpButton>
-              이미 회원이신가요?{" "}
-              <button onClick={() => navigate("/signin")}>
-                로그인하러 가기
-              </button>
-            </SignUpButton>
-          ) : (
-            <SignUpButton>
-              Stove 회원이 아니신가요?{" "}
-              <button onClick={() => navigate("/signup")}>
-                회원가입하러 가기
-              </button>
-            </SignUpButton>
-          )}
-        </StyleFormContainer>
-      </TemplateInnerWrapper>
+      <LogoWrapper>
+        <Link to="/">
+          <Logo src={stoveLogo} alt="main logo of Stove" />
+        </Link>
+      </LogoWrapper>
+      <StyleFormContainer>
+        {isSignUp ? <Title>회원가입</Title> : <Title>로그인</Title>}
+        <Outlet />
+        {isSignUp ? (
+          <SignUpButton>
+            이미 회원이신가요?{" "}
+            <button onClick={() => navigate("/signin")}>로그인하러 가기</button>
+          </SignUpButton>
+        ) : (
+          <SignUpButton>
+            Stove 회원이 아니신가요?{" "}
+            <button onClick={() => navigate("/signup")}>
+              회원가입하러 가기
+            </button>
+          </SignUpButton>
+        )}
+      </StyleFormContainer>
     </TemplateWrapper>
   );
 };
 
 const TemplateWrapper = styled.div`
   background-color: ${(props) => props.theme.color.grayScale.gray10};
-  height: 100vh;
-  margin: 0;
+  margin: 80px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
-const TemplateInnerWrapper = styled.div`
-  height: 100%;
-  padding: 40px 0;
-`;
 const LogoWrapper = styled.div`
   text-align: center;
+  padding: 40px 0 0;
 `;
 const Logo = styled.img`
   width: 140px;
