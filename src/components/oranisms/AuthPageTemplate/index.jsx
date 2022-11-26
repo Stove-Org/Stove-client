@@ -58,8 +58,13 @@ const StyleFormContainer = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.color.white};
   margin: 40px 0;
-  padding: 40px 60px;
+  padding: 40px 20px;
+  width: 100%;
   border-radius: 3px;
+  @media screen and (min-width: 768px) {
+    padding: 40px 60px;
+    width: auto;
+  }
 `;
 
 const Title = styled.h1`

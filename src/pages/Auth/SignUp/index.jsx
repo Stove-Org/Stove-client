@@ -231,14 +231,22 @@ const FormWrapper = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
 `;
 
 const InputWrapper = styled.div`
   margin: 40px 0;
   max-width: 450px;
+  width: 100%;
 
   & > div + div {
     margin-top: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    width: auto;
   }
 `;
 
