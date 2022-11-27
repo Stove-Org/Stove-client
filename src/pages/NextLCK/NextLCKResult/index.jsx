@@ -1040,14 +1040,21 @@ const NextLCKResult = () => {
 };
 
 const InnerContainer = styled.div`
-  width: 100%;
+  width: auto;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
 `;
 const RosterWrapper = styled(InnerContainer)`
   border-radius: 3px;
-  margin: 20px 0 40px;
-  padding: 10px 20px 10px;
+  margin: 20px 10px 40px;
+  padding: 10px;
   overflow-x: scroll;
+  @media screen and (min-width: 768px) {
+    margin: 20px 0 40px;
+    padding: 10px 20px 10px;
+  }
 `;
 const RosterInnerWrapper = styled.div`
   display: grid;
@@ -1055,7 +1062,13 @@ const RosterInnerWrapper = styled.div`
   gap: 10px;
 
   & + & {
-    margin-top: 10px;
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    & + & {
+      margin-top: 10px;
+    }
   }
 `;
 // imgToggle
@@ -1136,8 +1149,12 @@ const TeamLogoWrapper = styled.div`
 const StyleTeamName = styled.div`
   ${(props) => props.theme.typography.bodySmBold};
   flex-grow: 1;
-  margin-left: 16px;
   display: ${(props) => props.imgToggle && "none"};
+  margin-left: 16px;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 `;
 const StyleTeamLogo = styled.div`
   width: ${(props) => (props.imgToggle ? "100%" : "30px")};
@@ -1145,22 +1162,32 @@ const StyleTeamLogo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: ${(props) => props.imgToggle === false && "0 10px 0 0"};
+  margin: 0 10px;
+  @media screen and (min-width: 768px) {
+    margin: ${(props) => props.imgToggle === false && "0 10px 0 0"};
+  }
 `;
 
 const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin: 20px 10px 0;
+  @media screen and (min-width: 768px) {
+    margin: 20px 0 0;
+  }
 `;
 
 const ToggleWrapper = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
 
   & > div + div {
     margin-left: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `;
 
@@ -1232,8 +1259,12 @@ const FalsePositionBlock = styled.div`
 `;
 
 const PositionWrapper = styled.div`
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
+
 export default NextLCKResult;
