@@ -53,17 +53,24 @@ const FormInputWrapper = styled.div`
   width: 100%;
 `;
 const FormInputInnerWrapper = styled.div`
-  width: 450px;
+  width: 100%;
   display: flex;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    width: 450px;
+  }
 `;
 const LabelStyle = styled.label`
   ${(props) => props.theme.typography.description};
-  width: 130px;
+  width: 100px;
   display: inline-block;
 
   & > span {
     color: ${(props) => props.theme.color.main100};
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 130px;
   }
 `;
 const InputStyle = styled.input`
