@@ -104,7 +104,7 @@ const NextLCKRoster = () => {
 const Description = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 0 40px;
+  margin: 0 10px 40px;
   p {
     ${(props) => props.theme.typography.description};
   }
@@ -115,6 +115,9 @@ const Description = styled.div`
 
   & > div {
     text-align: end;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0 0 40px;
   }
 `;
 const SubDescription = styled.p`

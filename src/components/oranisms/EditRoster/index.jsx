@@ -595,7 +595,11 @@ const EditRoster = ({ rosters, setRosters, progamers, setProgamers }) => {
 };
 
 const ContainerWrapper = styled.div`
-  margin-bottom: 80px;
+  margin: 20px 10px 80px;
+
+  @media screen and (min-width: 768px) {
+    margin: 20px 0 80px;
+  }
 `;
 const InnerContainer = styled.div`
   width: 100%s;
@@ -627,11 +631,10 @@ const SearchBarWrapper = styled(InnerContainer)`
 const ProgamerWrapper = styled(InnerContainer)`
   padding: 0 20px 20px;
   height: 280px;
-  overflow-x: hidden;
   overflow-y: auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 `;
 const RosterWrapper = styled(InnerContainer)`
   border-radius: 3px;

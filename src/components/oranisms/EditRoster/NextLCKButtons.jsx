@@ -137,9 +137,11 @@ const NextLCKButtons = (props) => {
 };
 
 const ButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 `;
 const ButtonInnerWrapper = styled.div`
   align-self: flex-end;
@@ -154,10 +156,15 @@ const ToggleWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: end;
+  margin-top: 20px;
 
   & > div + div {
     margin-left: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: end;
+    margin-top: 0;
   }
 `;
 
