@@ -198,7 +198,6 @@ const Progamer = ({
 
 const DragWrapper = styled.div`
   opacity: ${(props) => (props.isDragging ? 0.4 : 1)};
-  width: 48%;
   @media screen and (min-width: 768px) {
     width: 158px;
   }

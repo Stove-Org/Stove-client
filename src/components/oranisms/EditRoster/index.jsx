@@ -602,7 +602,7 @@ const ContainerWrapper = styled.div`
   }
 `;
 const InnerContainer = styled.div`
-  width: 100%s;
+  width: 100%;
   background-color: ${(props) => props.theme.color.grayScale.gray20};
 `;
 const SearchBarWrapper = styled(InnerContainer)`
@@ -629,16 +629,22 @@ const SearchBarWrapper = styled(InnerContainer)`
   }
 `;
 const ProgamerWrapper = styled(InnerContainer)`
-  padding: 0 20px 20px;
-  height: 280px;
+  padding: 0 0 20px 20px;
+  height: 220px;
   overflow-y: auto;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 20px 20px;
+  height: 280px;
+  }
 `;
 const RosterWrapper = styled(InnerContainer)`
   border-radius: 3px;
   padding: 10px 20px 10px;
+  overflow-x: auto;
 `;
 const RosterInnerWrapper = styled.div`
   display: grid;
@@ -652,6 +658,7 @@ const RosterInnerWrapper = styled.div`
 // imgToggle
 const TeamLogoWrapper = styled.div`
   width: 100%;
+  min-width: 60px;
   display: flex;
   align-items: center;
   justify-self: center;
