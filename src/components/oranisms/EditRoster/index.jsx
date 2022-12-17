@@ -740,9 +740,12 @@ const StyleTeamLogo = styled.div`
 `;
 
 const PositionWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const SearchNotFound = styled.div`

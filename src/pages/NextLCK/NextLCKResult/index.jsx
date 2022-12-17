@@ -1260,10 +1260,10 @@ const FalsePositionBlock = styled.div`
 
 const PositionWrapper = styled.div`
   display: none;
-  justify-content: center;
-  align-items: center;
   @media screen and (min-width: 768px) {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
